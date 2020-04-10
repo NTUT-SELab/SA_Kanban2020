@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5e140258-b604-4cc1-80c0-5930888e4398" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="167" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aIDZqLFdm9KcQqNB6ElU9kctqq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/kanban/domain" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="kanban.domain.usecase.card" />
+      <recent name="kanban.domain.model" />
+      <recent name="kanban.domain.usecase.stage" />
+      <recent name="kanban.domain.usecase.workflow" />
+      <recent name="kanban.domain.usecase" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CreateWorkflowTest and 2 more">
+    <configuration name="CreateCardTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SA_Kanban" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="kanban.domain.usecase.CreateCardTest" />
+        <pattern testClass="kanban.domain.usecase.CreateStageTest" />
+        <pattern testClass="kanban.domain.usecase.CreateWorkflowTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateCardTest.Create_card_should_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SA_Kanban" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kanban.domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kanban.domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="kanban.domain.usecase.CreateCardTest" />
+      <option name="METHOD_NAME" value="Create_card_should_success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateStageTest.GetStageNameById_should_throw_exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SA_Kanban" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kanban.domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kanban.domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="kanban.domain.usecase.CreateStageTest" />
+      <option name="METHOD_NAME" value="GetStageNameById_should_throw_exception" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateWorkflowTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SA_Kanban" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="kanban.domain.usecase.CreateWorkflowTest" />
+        <pattern testClass="kanban.domain.usecase.CreateCardTest" />
+        <pattern testClass="kanban.domain.usecase.CreateStageTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateWorkflowTest.Workflow_repository_should_throw_exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SA_Kanban" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kanban.domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kanban.domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="kanban.domain.usecase.CreateWorkflowTest" />
+      <option name="METHOD_NAME" value="Workflow_repository_should_throw_exception" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CreateWorkflowTest and 2 more" />
+        <item itemvalue="JUnit.CreateCardTest and 2 more" />
+        <item itemvalue="JUnit.CreateStageTest.GetStageNameById_should_throw_exception" />
+        <item itemvalue="JUnit.CreateWorkflowTest.Workflow_repository_should_throw_exception" />
+        <item itemvalue="JUnit.CreateCardTest.Create_card_should_success" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5e140258-b604-4cc1-80c0-5930888e4398" name="Default Changelist" comment="" />
+      <created>1586414272994</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586414272994</updated>
+      <workItem from="1586414276977" duration="2451000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="660" y="154" key="#com.intellij.ide.util.MemberChooser" timestamp="1586512421137">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="660" y="154" key="#com.intellij.ide.util.MemberChooser/0.0.1707.920@0.0.1707.920" timestamp="1586512421137" />
+    <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1586417746182">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586417746182" />
+    <state x="540" y="178" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1586417743854">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="178" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586417743854" />
+    <state x="558" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586501046669">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="558" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1707.920@0.0.1707.920" timestamp="1586501046669" />
+    <state width="1664" height="242" key="GridCell.Tab.0.bottom" timestamp="1586513646156">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="242" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1586513537694" />
+    <state width="1664" height="242" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586513646156" />
+    <state width="1664" height="242" key="GridCell.Tab.0.center" timestamp="1586513646155">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="242" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1586513537694" />
+    <state width="1664" height="242" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586513646155" />
+    <state width="1664" height="242" key="GridCell.Tab.0.left" timestamp="1586513646155">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="242" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1586513537694" />
+    <state width="1664" height="242" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586513646155" />
+    <state width="1664" height="242" key="GridCell.Tab.0.right" timestamp="1586513646156">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1664" height="242" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1586513537694" />
+    <state width="1664" height="242" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586513646156" />
+    <state x="463" y="157" key="SettingsEditor" timestamp="1586420140584">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="463" y="157" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586420140584" />
+    <state x="657" y="241" key="chooseDestDirectoryDialog" timestamp="1586513352411">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="657" y="241" key="chooseDestDirectoryDialog/0.0.1707.920@0.0.1707.920" timestamp="1586513352411" />
+    <state x="512" y="211" key="run.anything.popup" timestamp="1586511307141">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="512" y="211" key="run.anything.popup/0.0.1707.920@0.0.1707.920" timestamp="1586511307141" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SA1321_kanban$CreateWorkflowTest_and_2_more.ic" NAME="CreateWorkflowTest and 2 more Coverage Results" MODIFIED="1586513492412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SA1321_kanban$CreateCardTest_and_2_more.ic" NAME="CreateCardTest and 2 more Coverage Results" MODIFIED="1586513225172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

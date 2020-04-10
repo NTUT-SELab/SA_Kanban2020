@@ -1,4 +1,4 @@
-package kanban.domain.usecase.stage;
+package kanban.domain.usecase.stage.create;
 
 import kanban.domain.model.Workflow;
 import kanban.domain.usecase.workflow.WorkflowRepository;
@@ -15,7 +15,7 @@ public class CreateStageUseCase {
         Workflow workflow = workflowRepository.getWorkflowById(input.getWorkflowId());
         String stageId = workflow.createStage(input.getStageName());
         output.setStageId(stageId);
-        output.setStageName(workflow.getStageNameById(output.getStageId()));
+        output.setStageName(workflow.getStageById(output.getStageId()).getStageName());
         workflowRepository.save(workflow);
     }
 }

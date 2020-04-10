@@ -1,11 +1,11 @@
 package kanban.domain;
 
-import kanban.domain.usecase.stage.CreateStageInput;
-import kanban.domain.usecase.stage.CreateStageOutput;
-import kanban.domain.usecase.stage.CreateStageUseCase;
-import kanban.domain.usecase.workflow.CreateWorkflowInput;
-import kanban.domain.usecase.workflow.CreateWorkflowOutput;
-import kanban.domain.usecase.workflow.CreateWorkflowUseCase;
+import kanban.domain.usecase.stage.create.CreateStageInput;
+import kanban.domain.usecase.stage.create.CreateStageOutput;
+import kanban.domain.usecase.stage.create.CreateStageUseCase;
+import kanban.domain.usecase.workflow.create.CreateWorkflowInput;
+import kanban.domain.usecase.workflow.create.CreateWorkflowOutput;
+import kanban.domain.usecase.workflow.create.CreateWorkflowUseCase;
 import kanban.domain.usecase.workflow.WorkflowRepository;
 
 public class Utility {

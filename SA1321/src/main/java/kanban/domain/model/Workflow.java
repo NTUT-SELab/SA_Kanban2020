@@ -6,13 +6,11 @@ import java.util.UUID;
 
 public class Workflow {
     private String name;
-    private String boardId;
     private String workflowId;
     private List<Stage> stages;
 
-    public Workflow(String name, String boardId) {
+    public Workflow(String name) {
         this.name = name;
-        this.boardId = boardId;
         workflowId = UUID.randomUUID().toString();
         stages = new ArrayList<Stage>();
     }
@@ -31,12 +29,18 @@ public class Workflow {
         return stage.getStageId();
     }
 
-    public String getStageNameById(String stageId) {
+    public Stage getStageById(String stageId) {
         for (Stage each : stages) {
             if (each.getStageId().equalsIgnoreCase(stageId)) {
-                return each.getStageName();
+                return each;
             }
         }
         throw new RuntimeException("Stage is not found,id=" + stageId);
+    }
+
+    public String commitCardInStage(String cardId, String stageId) {
+        Stage stage = getStageById(stageId);
+        String _cardId = stage.commitCard(cardId);
+        return _cardId;
     }
 }

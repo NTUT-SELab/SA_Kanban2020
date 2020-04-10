@@ -1,4 +1,4 @@
-package kanban.domain.usecase.card;
+package kanban.domain.usecase.card.create;
 
 public class CreateCardOutput {
     

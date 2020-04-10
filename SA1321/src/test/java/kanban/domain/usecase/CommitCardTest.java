@@ -1,23 +1,22 @@
 package kanban.domain.usecase;
 
 import kanban.domain.Utility;
+import kanban.domain.model.Workflow;
 import kanban.domain.usecase.card.CardRepository;
-import kanban.domain.usecase.card.create.CreateCardInput;
-import kanban.domain.usecase.card.create.CreateCardOutput;
-import kanban.domain.usecase.card.create.CreateCardUseCase;
+import kanban.domain.usecase.card.commit.CommitCardInput;
+import kanban.domain.usecase.card.commit.CommitCardOutput;
+import kanban.domain.usecase.card.commit.CommitCardUseCase;
 import kanban.domain.usecase.workflow.WorkflowRepository;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
-public class CreateCardTest {
+public class CommitCardTest {
 
     private String workflowId;
     private String stageId;
     private WorkflowRepository workflowRepository = new WorkflowRepository();
-    private CardRepository cardRepository = new CardRepository();
     private Utility utility;
 
     @Before
@@ -29,17 +28,16 @@ public class CreateCardTest {
     }
 
     @Test
-    public void Create_card_should_success() {
-        CreateCardUseCase createCardUseCase = new CreateCardUseCase(workflowRepository, cardRepository);
-        CreateCardInput input = new CreateCardInput();
-        input.setCardName("card");
+    public void Should_Card_Can_Commit_In_Stage() {
+        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository);
+        CommitCardInput input = new CommitCardInput();
+        input.setCardId("cardId");
         input.setWorkflowId(workflowId);
         input.setStageId(stageId);
-        CreateCardOutput output = new CreateCardOutput();
+        CommitCardOutput output = new CommitCardOutput();
 
-        createCardUseCase.execute(input, output);
+        commitCardUseCase.execute(input, output);
 
-        assertEquals("card", output.getCardName());
-        assertNotNull(output.getCardId());
+        assertEquals("cardId", output.getCardId());
     }
 }

@@ -1,4 +1,4 @@
-package kanban.domain.usecase.stage;
+package kanban.domain.usecase.stage.create;
 
 public class CreateStageOutput {
     private String stageName;

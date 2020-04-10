@@ -2,9 +2,9 @@ package kanban.domain.usecase;
 
 import kanban.domain.Utility;
 import kanban.domain.model.Workflow;
-import kanban.domain.usecase.stage.CreateStageInput;
-import kanban.domain.usecase.stage.CreateStageOutput;
-import kanban.domain.usecase.stage.CreateStageUseCase;
+import kanban.domain.usecase.stage.create.CreateStageInput;
+import kanban.domain.usecase.stage.create.CreateStageOutput;
+import kanban.domain.usecase.stage.create.CreateStageUseCase;
 import kanban.domain.usecase.workflow.WorkflowRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,24 +26,21 @@ public class CreateStageTest {
 
     @Test
     public void Create_stage_should_success() {
-
         CreateStageUseCase createStageUseCase = new CreateStageUseCase(workflowRepository);
         CreateStageInput input = new CreateStageInput();
         input.setStageName("stage");
         input.setWorkflowId(workflowId);
-
         CreateStageOutput output = new CreateStageOutput();
+
         createStageUseCase.execute(input, output);
-        assertEquals("stage", output.getStageName());
+
         assertNotNull(output.getStageId());
+        assertEquals("stage", output.getStageName());
     }
 
     @Test(expected = RuntimeException.class)
     public void GetStageNameById_should_throw_exception() {
-
         Workflow workflow = workflowRepository.getWorkflowById(workflowId);
-
-        workflow.getStageNameById("12345678");
-
+        workflow.getStageById("123-456-789");
     }
 }

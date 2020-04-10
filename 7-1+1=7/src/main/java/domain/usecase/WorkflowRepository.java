@@ -2,7 +2,8 @@ package domain.usecase;
 
 import domain.model.Workflow;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 
 public class WorkflowRepository {
     Map<String, Workflow> map = new HashMap<String, Workflow>();

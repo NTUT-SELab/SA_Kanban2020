@@ -11,4 +11,8 @@ public class StageRepository {
     public void add(Stage stage) {
         map.put(stage.getStageId(), stage);
     }
+
+    public Stage getStageById(String stageId) {
+        return map.get(stageId);
+    }
 }

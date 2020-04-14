@@ -2,55 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="764f0db4-1361-4e33-a6bf-0502bac88f8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/commit/CommitCardInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/commit/CommitCardOutput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/commit/CommitCardUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CommitCardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SA1321.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SA1321.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/model/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/model/Stage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/model/Stage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/model/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/model/Workflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/CreateCardInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/create/CreateCardInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/CreateCardOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/create/CreateCardOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/CreateCardUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/create/CreateCardUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/CreateStageInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/create/CreateStageInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/CreateStageOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/create/CreateStageOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/CreateStageUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/create/CreateStageUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/workflow/CreateWorkflowInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/workflow/create/CreateWorkflowInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/workflow/CreateWorkflowOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/workflow/create/CreateWorkflowOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/workflow/CreateWorkflowUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/workflow/create/CreateWorkflowUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/kanban/domain/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/kanban/domain/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/create/CreateStageUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/stage/create/CreateStageUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateCardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateStageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateStageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateWorkflowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateWorkflowTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kanban/domain/model/Card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/model/Stage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kanban/domain/model/Stage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/model/Workflow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kanban/domain/model/Workflow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/card/CardRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/card/CardRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/card/CreateCardInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/card/CreateCardOutput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/card/CreateCardUseCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/stage/CreateStageInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/stage/CreateStageOutput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/stage/CreateStageUseCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/workflow/CreateWorkflowInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/workflow/CreateWorkflowOutput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/workflow/CreateWorkflowUseCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/workflow/WorkflowRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kanban/domain/usecase/workflow/WorkflowRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/SA_Kanban.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/kanban/domain/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/kanban/domain/Utility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/kanban/domain/usecase/CreateCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/kanban/domain/usecase/CreateCardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/kanban/domain/usecase/CreateStageTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/kanban/domain/usecase/CreateStageTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/kanban/domain/usecase/CreateWorkflowTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/kanban/domain/usecase/CreateWorkflowTest.class" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,11 +32,17 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
@@ -87,23 +52,31 @@
       <recent name="kanban.domain.usecase.card.commit" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="JUnit.kanban.domain.usecase in SA1321">
-    <configuration name="All in SA1321" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CommitCardTest and 3 more">
+    <configuration name="CommitCardTest and 3 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SA1321" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="kanban.domain.usecase.CommitCardTest" />
+        <pattern testClass="kanban.domain.usecase.CreateCardTest" />
+        <pattern testClass="kanban.domain.usecase.CreateStageTest" />
+        <pattern testClass="kanban.domain.usecase.CreateWorkflowTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommitCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SA1321" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kanban.domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kanban.domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="kanban.domain.usecase.CommitCardTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,10 +129,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommitCardTest and 3 more" />
+        <item itemvalue="JUnit.CommitCardTest" />
         <item itemvalue="JUnit.kanban.domain.usecase in SA1321" />
         <item itemvalue="JUnit.CommitCardTest.Should_Card_Can_Commit_In_Stage" />
         <item itemvalue="JUnit.CreateWorkflowTest.Workflow_repository_should_throw_exception" />
-        <item itemvalue="JUnit.All in SA1321" />
       </list>
     </recent_temporary>
   </component>
@@ -193,6 +167,40 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="181" key="#Project_Structure" timestamp="1586862076671">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="181" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1586862076671" />
+    <state x="753" y="386" width="414" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586862236833">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="753" y="386" width="414" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1586862236833" />
+    <state x="740" y="264" key="FileChooserDialogImpl" timestamp="1586862174644">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586862174644" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586862246548">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586862246548" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586862246548">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586862246548" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586862246548">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586862246548" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586862246548">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586862246548" />
+    <state x="336" y="136" key="new project wizard" timestamp="1586862154545">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="336" y="136" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1586862154545" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SA1321$CommitCardTest_Should_Card_Can_Commit_In_Stage.ic" NAME="CommitCardTest.Should_Card_Can_Commit_In_Stage Coverage Results" MODIFIED="1586529117640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

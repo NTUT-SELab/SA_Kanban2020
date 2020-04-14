@@ -1,6 +1,6 @@
 package phd.sa.csie.ntut.edu.tw.usecase;
 
-public class CreateCardInput {
+public class CreateCardUseCaseInput {
   private String cardName;
 
   public void setCardName(String cardName) {

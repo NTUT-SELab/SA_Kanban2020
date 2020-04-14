@@ -2,15 +2,15 @@ package phd.sa.csie.ntut.edu.tw.usecase;
 
 import phd.sa.csie.ntut.edu.tw.domain.Card;
 
-public class CreateCard {
+public class CreateCardUseCase {
 
   private CardRepository cardRepository;
 
-  public CreateCard(CardRepository cardRepository) {
+  public CreateCardUseCase(CardRepository cardRepository) {
     this.cardRepository = cardRepository;
   }
 
-  public void execute(CreateCardInput createCardInput, CreateCardOutput createCardOutput) {
+  public void execute(CreateCardUseCaseInput createCardInput, CreateCardUseCaseOutput createCardOutput) {
     String cardName = createCardInput.getCardName();
     Card card = new Card(cardName);
     cardRepository.add(card);

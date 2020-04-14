@@ -1,0 +1,13 @@
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\CreateColumnInput.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\CardRepository.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\GetColumnUseCase.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\entity\Column.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\CreateTaskUseCase.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\entity\Task.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\CreateColumnOutput.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\CreateTaskInput.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\entity\Workflow.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\entity\Card.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\CreateTaskOutput.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\CreateColumnUseCase.java
+D:\NTUT\Master\SA\DDD.Kanban\src\main\java\ddd\kanban\domain\usecase\WorkflowRepository.java

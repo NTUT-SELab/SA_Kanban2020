@@ -2,6 +2,7 @@ package phd.sa.csie.ntut.edu.tw.domain;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public class Board {
 
@@ -29,8 +30,26 @@ public class Board {
     return column.getTitle();
   }
 
-  public void addCardToColumn(Card card, String columnTitle) {
-    
+  public void addCardToColumn(UUID cardId, String columnTitle) {
+    Column column = this.getColumnByTitle(columnTitle);
+    column.addCard(cardId);
+  }
+
+  public String moveCard(UUID cardId, String fromColumnTitle, String toColumnTitle) {
+    Column from = this.getColumnByTitle(fromColumnTitle);
+    Column to = this.getColumnByTitle(toColumnTitle);
+    from.removeCard(cardId);
+    to.addCard(cardId);
+    return to.getTitle();
+  }
+
+  private Column getColumnByTitle(String title) {
+    for (Column column : columns) {
+      if(column.getTitle().equals(title)) {
+        return column;
+      }
+    }
+    throw new RuntimeException("Column Not Found");
   }
 
 }

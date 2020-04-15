@@ -1,6 +1,7 @@
 package kanban.domain.usecase;
 
 import kanban.domain.Utility;
+import kanban.domain.model.Workflow;
 import kanban.domain.usecase.card.CardRepository;
 import kanban.domain.usecase.card.create.CreateCardInput;
 import kanban.domain.usecase.card.create.CreateCardOutput;
@@ -30,6 +31,9 @@ public class CreateCardTest {
 
     @Test
     public void Create_card_should_success() {
+        Workflow workflow = workflowRepository.getWorkflowById(workflowId);
+        assertEquals(0, workflow.getStageCloneById(stageId).getCardIds().size());
+
         CreateCardUseCase createCardUseCase = new CreateCardUseCase(workflowRepository, cardRepository);
         CreateCardInput input = new CreateCardInput();
         input.setCardName("card");
@@ -41,5 +45,8 @@ public class CreateCardTest {
 
         assertEquals("card", output.getCardName());
         assertNotNull(output.getCardId());
+
+        workflow = workflowRepository.getWorkflowById(workflowId);
+        assertEquals(1, workflow.getStageCloneById(stageId).getCardIds().size());
     }
 }

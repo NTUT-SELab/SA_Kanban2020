@@ -8,9 +8,7 @@ import java.util.HashMap;
 public class WorkflowRepository {
     Map<String, Workflow> map = new HashMap<String, Workflow>();
 
-    public String add(Workflow workflow) {
-        String workflowId = "W"+Integer.toString(map.size()+1);
-        map.put(workflowId, workflow);
-        return workflowId;
+    public void add(Workflow workflow) {
+        map.put(workflow.getWorkflowId(), workflow);
     }
 }

@@ -1,11 +1,17 @@
 package domain.model;
 
+import java.util.UUID;
+
 public class Workflow {
     private String workflowName;
-    private String boardId;
+    private String workflowId;
 
-    public Workflow(String workflowName, String boardId) {
+    public Workflow(String workflowName) {
         this.workflowName = workflowName;
-        this.boardId = boardId;
+        workflowId = "W" + UUID.randomUUID().toString();
+    }
+
+    public String getWorkflowId() {
+        return workflowId;
     }
 }

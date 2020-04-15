@@ -2,6 +2,7 @@ package domain.usecase;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class CreateWorkflowUseCaseTest {
@@ -17,9 +18,6 @@ public class CreateWorkflowUseCaseTest {
 
         createWorkflowUseCase.execute(input, output);
 
-        assertEquals("W1", output.getWorkflowId());
+        assertEquals('W', output.getWorkflowId().charAt(0));
     }
-
-
-
 }

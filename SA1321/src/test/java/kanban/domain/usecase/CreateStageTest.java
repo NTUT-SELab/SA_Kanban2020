@@ -41,6 +41,6 @@ public class CreateStageTest {
     @Test(expected = RuntimeException.class)
     public void GetStageNameById_should_throw_exception() {
         Workflow workflow = workflowRepository.getWorkflowById(workflowId);
-        workflow.getStageById("123-456-789");
+        workflow.getStageCloneById("123-456-789");
     }
 }

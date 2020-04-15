@@ -10,8 +10,9 @@ public class CreateWorkflowUseCase {
     }
 
     public void execute(CreateWorkflowInput input, CreateWorkflowOutput output) {
-        String workflowId = workflowRepository.add(new Workflow(input.getWorkflowName(), "B1"));
+        Workflow workflow = new Workflow(input.getWorkflowName());
+        workflowRepository.add(workflow);
 
-        output.setWorkflowId(workflowId);
+        output.setWorkflowId(workflow.getWorkflowId());
     }
 }

@@ -1,7 +1,5 @@
 package domain.controller;
 
-import domain.usecase.CreateStageOutputInterface;
-
 public class CreateStageOutputImpl implements CreateStageOutputInterface {
     private String _id ;
 

@@ -1,4 +1,4 @@
-package domain.usecase;
+package domain.controller;
 
 public interface CreateCardInputInterface {
     public void setCardName( String name ) ;

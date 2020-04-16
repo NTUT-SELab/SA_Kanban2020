@@ -1,4 +1,4 @@
-package domain.usecase;
+package domain.controller;
 
 public interface CreateWorkflowOutputInterface {
     public String getWorkflowId();

@@ -1,7 +1,5 @@
 package domain.controller;
 
-import domain.usecase.CreateStageInputInterface;
-
 public class CreateStageInputImpl implements CreateStageInputInterface {
     private String _name ;
 

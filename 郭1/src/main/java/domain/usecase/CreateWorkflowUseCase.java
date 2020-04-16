@@ -1,12 +1,12 @@
 package domain.usecase;
 
+import domain.controller.CreateWorkflowOutputInterface;
 import domain.entity.Workflow;
 
-import domain.usecase.CreateWorkflowInputInterface;
-import domain.usecase.CreateWorkflowOutputInterface;
+import domain.controller.CreateWorkflowInputInterface;
 
 
-public class CreateWorkflowUseCase implements CreateWorkflowOutputInterface{
+public class CreateWorkflowUseCase implements CreateWorkflowOutputInterface {
     private CreateWorkflowInputInterface createWorkflowInputInterface;
     private CreateWorkflowOutputInterface createWorkflowOutputInterface;
 

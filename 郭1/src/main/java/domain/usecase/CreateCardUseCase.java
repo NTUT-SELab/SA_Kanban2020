@@ -1,6 +1,9 @@
 package domain.usecase;
 
+import domain.controller.CreateCardInputInterface;
+import domain.controller.CreateCardOutputInterface;
 import domain.entity.Card;
+import domain.entity.CardRepository;
 
 public class CreateCardUseCase {
     private CreateCardInputInterface _input ;
@@ -13,7 +16,12 @@ public class CreateCardUseCase {
         Card newCard = new Card() ;
         newCard.setName( input.getCardName() ) ;
 
+        CardRepository cardRepository = CardRepository.getInstance() ;
+        cardRepository.add( newCard ) ;
+
+
         output.setCardId( newCard.getId()) ;
+
     }
 
 

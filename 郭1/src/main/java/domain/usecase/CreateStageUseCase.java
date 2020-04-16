@@ -1,5 +1,7 @@
 package domain.usecase;
 
+import domain.controller.CreateStageInputInterface;
+import domain.controller.CreateStageOutputInterface;
 import domain.entity.Stage;
 
 public class CreateStageUseCase {

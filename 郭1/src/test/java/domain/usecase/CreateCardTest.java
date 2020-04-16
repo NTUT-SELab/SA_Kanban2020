@@ -1,7 +1,9 @@
 package domain.usecase;
 
 import domain.controller.CreateCardInputImpl;
+import domain.controller.CreateCardInputInterface;
 import domain.controller.CreateCardOutputImpl;
+import domain.controller.CreateCardOutputInterface;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;

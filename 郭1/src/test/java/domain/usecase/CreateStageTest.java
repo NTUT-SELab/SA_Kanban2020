@@ -1,7 +1,9 @@
 package domain.usecase;
 
 import domain.controller.CreateStageInputImpl;
+import domain.controller.CreateStageInputInterface;
 import domain.controller.CreateStageOutputImpl;
+import domain.controller.CreateStageOutputInterface;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;

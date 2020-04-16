@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="becc22e7-3450-45f6-95ab-dd2854e53baa" name="Default Changelist" comment="" />
+    <list default="true" id="becc22e7-3450-45f6-95ab-dd2854e53baa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardInputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardInputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardOutputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardOutputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageInputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageInputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageOutputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageOutputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateWorkflowInputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateWorkflowInputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateWorkflowOutputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateWorkflowOutputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardInputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardOutputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageInputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageOutputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowInputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowOutputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateCardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateStageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateStageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateWorkFlowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateWorkFlowTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateCardInputImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/controller/CreateCardInputImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateCardOutputImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/controller/CreateCardOutputImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateStageInputImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/controller/CreateStageInputImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateStageOutputImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/controller/CreateStageOutputImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateWorkflowInputImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/controller/CreateWorkflowInputImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateWorkflowOutputImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/controller/CreateWorkflowOutputImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardInputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardOutputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageInputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageOutputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageUseCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageUseCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowInputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowOutputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowUseCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowUseCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateCardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateStageTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateStageTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateWorkFlowTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateWorkFlowTest.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +56,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1aWP4AXRrAxB7Ot0GXoN6D5XJsG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
@@ -41,12 +86,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CreateCardTest">
+  <component name="RunManager" selected="JUnit.CreateWorkFlowTest.createWorkflow">
     <configuration name="CreateCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.usecase.*" />
+          <option name="PATTERN" value="domain.entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -57,11 +102,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CreateCardTest.CreateCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="郭1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateCardTest" />
+      <option name="METHOD_NAME" value="CreateCard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CreateStageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="kanban" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.usecase.*" />
+          <option name="PATTERN" value="domain.entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -72,8 +133,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CreateWorkFlowTest.createWorkflow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="郭1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateWorkFlowTest" />
+      <option name="METHOD_NAME" value="createWorkflow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CreateWorkFlowTest.createWorkflow" />
+        <item itemvalue="JUnit.CreateCardTest.CreateCard" />
         <item itemvalue="JUnit.CreateCardTest" />
         <item itemvalue="JUnit.CreateStageTest" />
       </list>
@@ -91,10 +170,23 @@
       <updated>1586848182786</updated>
       <workItem from="1586848184073" duration="3865000" />
       <workItem from="1586933975306" duration="1925000" />
+      <workItem from="1586965519563" duration="3388000" />
+      <workItem from="1586969521475" duration="716000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

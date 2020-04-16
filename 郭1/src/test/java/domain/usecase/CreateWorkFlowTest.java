@@ -1,7 +1,9 @@
 package domain.usecase;
 
 import domain.controller.CreateWorkflowInputImpl;
+import domain.controller.CreateWorkflowInputInterface;
 import domain.controller.CreateWorkflowOutputImpl;
+import domain.controller.CreateWorkflowOutputInterface;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

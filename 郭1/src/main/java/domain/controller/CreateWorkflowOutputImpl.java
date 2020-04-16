@@ -1,7 +1,5 @@
 package domain.controller;
 
-import domain.usecase.CreateWorkflowOutputInterface;
-
 public class CreateWorkflowOutputImpl implements CreateWorkflowOutputInterface {
     private String workflowId;
 

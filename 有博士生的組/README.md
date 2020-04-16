@@ -1,3 +1,3 @@
 create card
-create stage
+create Column
 move card

@@ -4,35 +4,29 @@ import domain.controller.CreateWorkflowOutputInterface;
 import domain.entity.Workflow;
 
 import domain.controller.CreateWorkflowInputInterface;
+import domain.entity.WorkflowRepository;
 
 
-public class CreateWorkflowUseCase implements CreateWorkflowOutputInterface {
-    private CreateWorkflowInputInterface createWorkflowInputInterface;
-    private CreateWorkflowOutputInterface createWorkflowOutputInterface;
+public class CreateWorkflowUseCase {
+    private CreateWorkflowInputInterface _createWorkflowInput;
+    private CreateWorkflowOutputInterface _createWorkflowOutput;
 
     public void execute() {
-        Workflow workflow = new Workflow();
-        workflow.setName(createWorkflowInputInterface.getWorkflowName());
+        Workflow newWorkflow = new Workflow();
+        newWorkflow.setName(_createWorkflowInput.getWorkflowName());
 
-        createWorkflowOutputInterface.setWorkFlowId(workflow.getId());
+        WorkflowRepository workflowRepository = WorkflowRepository.getInstance();
+        workflowRepository.add(newWorkflow);
+
+        _createWorkflowOutput.setWorkFlowId(newWorkflow.getId());
 
     }
 
-    public void setCreateWorkflowInputInterface(CreateWorkflowInputInterface createWorkflowInputInterface) {
-        this.createWorkflowInputInterface = createWorkflowInputInterface;
+    public void setCreateWorkflowInput(CreateWorkflowInputInterface createWorkflowInput) {
+        this._createWorkflowInput = createWorkflowInput;
     }
 
-    public void setCreateWorkflowOutputInterface(CreateWorkflowOutputInterface createWorkflowOutputInterface) {
-        this.createWorkflowOutputInterface = createWorkflowOutputInterface;
-    }
-
-
-
-    public String getWorkflowId() {
-        return null;
-    }
-
-    public void setWorkFlowId(String id) {
-
+    public void setCreateWorkflowOutput(CreateWorkflowOutputInterface createWorkflowOutputInterface) {
+        this._createWorkflowOutput = createWorkflowOutputInterface;
     }
 }

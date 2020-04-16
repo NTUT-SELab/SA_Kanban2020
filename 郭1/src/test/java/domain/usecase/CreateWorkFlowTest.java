@@ -4,6 +4,7 @@ import domain.controller.CreateWorkflowInputImpl;
 import domain.controller.CreateWorkflowInputInterface;
 import domain.controller.CreateWorkflowOutputImpl;
 import domain.controller.CreateWorkflowOutputInterface;
+import domain.entity.WorkflowRepository;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,14 +18,14 @@ public class CreateWorkFlowTest {
         CreateWorkflowOutputInterface createWorkflowOutput = new CreateWorkflowOutputImpl();
 
         createWorkflowInput.setWorkflowName("workflow1");
-        ///
-        createWorkflowUseCase.setCreateWorkflowInputInterface(createWorkflowInput);
-        createWorkflowUseCase.setCreateWorkflowOutputInterface(createWorkflowOutput);
+        createWorkflowUseCase.setCreateWorkflowInput(createWorkflowInput);
+        createWorkflowUseCase.setCreateWorkflowOutput(createWorkflowOutput);
 
+        WorkflowRepository workflowRepository = WorkflowRepository.getInstance();
 
         createWorkflowUseCase.execute();
 
-        assertNotNull(createWorkflowOutput.getWorkflowId());
+        assertNotNull(workflowRepository.get(createWorkflowOutput.getWorkflowId()));
 
     }
 

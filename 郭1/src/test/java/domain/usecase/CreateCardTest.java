@@ -4,9 +4,10 @@ import domain.controller.CreateCardInputImpl;
 import domain.controller.CreateCardInputInterface;
 import domain.controller.CreateCardOutputImpl;
 import domain.controller.CreateCardOutputInterface;
+import domain.entity.CardRepository;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class CreateCardTest {
 
@@ -16,8 +17,11 @@ public class CreateCardTest {
         CreateCardInputInterface CreateCardInput = new CreateCardInputImpl();
         CreateCardOutputInterface CreateCardOutput = new CreateCardOutputImpl();
 
+        CardRepository cardRepository = CardRepository.getInstance();
+
         CreateCardInput.setCardName( "card1" ) ;
         createCardUseCase.execute( CreateCardInput, CreateCardOutput ) ;
-        assertNotNull( CreateCardOutput.getCardId() ) ;
+
+        assertNotNull(cardRepository.get(CreateCardOutput.getCardId()));
     }
 }

@@ -1,12 +1,12 @@
 package kanban.domain.usecase;
 
 import kanban.domain.Utility;
-import kanban.domain.model.Workflow;
+import kanban.domain.model.aggregate.workflow.Workflow;
 import kanban.domain.usecase.card.CardRepository;
 import kanban.domain.usecase.card.create.CreateCardInput;
 import kanban.domain.usecase.card.create.CreateCardOutput;
 import kanban.domain.usecase.card.create.CreateCardUseCase;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.usecase.workflow.repository.WorkflowRepository;
 import org.junit.Before;
 import org.junit.Test;
 

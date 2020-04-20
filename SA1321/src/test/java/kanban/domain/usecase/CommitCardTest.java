@@ -1,12 +1,10 @@
 package kanban.domain.usecase;
 
 import kanban.domain.Utility;
-import kanban.domain.model.Workflow;
-import kanban.domain.usecase.card.CardRepository;
 import kanban.domain.usecase.card.commit.CommitCardInput;
 import kanban.domain.usecase.card.commit.CommitCardOutput;
 import kanban.domain.usecase.card.commit.CommitCardUseCase;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.usecase.workflow.repository.WorkflowRepository;
 import org.junit.Before;
 import org.junit.Test;
 

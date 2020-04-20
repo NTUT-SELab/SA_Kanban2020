@@ -1,11 +1,11 @@
-package kanban.domain.usecase.workflow;
+package kanban.domain.usecase.workflow.repository;
 
-import kanban.domain.model.Workflow;
+import kanban.domain.model.aggregate.workflow.Workflow;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkflowRepository {
+public class WorkflowRepository implements IWorkflowRepository {
 
     private List<Workflow> workflows;
 
@@ -13,10 +13,12 @@ public class WorkflowRepository {
         workflows = new ArrayList<Workflow>();
     }
 
+    @Override
     public void add(Workflow workflow) {
         workflows.add(workflow);
     }
 
+    @Override
     public Workflow getWorkflowById(String workflowId) {
 
         for (Workflow each : workflows) {
@@ -27,6 +29,7 @@ public class WorkflowRepository {
         throw new RuntimeException("Workflow is not found,id=" + workflowId);
     }
 
+    @Override
     public void save(Workflow workflow) {
 
         for (Workflow each : workflows) {

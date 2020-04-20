@@ -1,4 +1,4 @@
-package kanban.domain.model;
+package kanban.domain.model.aggregate.card;
 
 import java.util.UUID;
 

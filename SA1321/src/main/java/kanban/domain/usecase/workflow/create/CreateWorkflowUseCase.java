@@ -1,7 +1,7 @@
 package kanban.domain.usecase.workflow.create;
 
-import kanban.domain.model.Workflow;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.model.aggregate.workflow.Workflow;
+import kanban.domain.usecase.workflow.repository.WorkflowRepository;
 
 public class CreateWorkflowUseCase {
     private WorkflowRepository workflowRepository;

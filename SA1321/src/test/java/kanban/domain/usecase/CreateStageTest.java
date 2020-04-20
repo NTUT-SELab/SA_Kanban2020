@@ -1,11 +1,11 @@
 package kanban.domain.usecase;
 
 import kanban.domain.Utility;
-import kanban.domain.model.Workflow;
+import kanban.domain.model.aggregate.workflow.Workflow;
 import kanban.domain.usecase.stage.create.CreateStageInput;
 import kanban.domain.usecase.stage.create.CreateStageOutput;
 import kanban.domain.usecase.stage.create.CreateStageUseCase;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.usecase.workflow.repository.WorkflowRepository;
 import org.junit.Before;
 import org.junit.Test;
 

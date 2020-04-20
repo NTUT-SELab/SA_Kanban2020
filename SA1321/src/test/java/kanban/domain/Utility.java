@@ -6,7 +6,7 @@ import kanban.domain.usecase.stage.create.CreateStageUseCase;
 import kanban.domain.usecase.workflow.create.CreateWorkflowInput;
 import kanban.domain.usecase.workflow.create.CreateWorkflowOutput;
 import kanban.domain.usecase.workflow.create.CreateWorkflowUseCase;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.usecase.workflow.repository.WorkflowRepository;
 
 public class Utility {
 

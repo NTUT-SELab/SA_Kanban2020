@@ -1,4 +1,4 @@
-package kanban.domain.model;
+package kanban.domain.model.aggregate.workflow;
 
 import java.util.ArrayList;
 import java.util.List;

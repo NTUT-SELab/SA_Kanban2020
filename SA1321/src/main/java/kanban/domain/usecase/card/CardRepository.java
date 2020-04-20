@@ -1,7 +1,6 @@
 package kanban.domain.usecase.card;
 
-import kanban.domain.model.Card;
-import kanban.domain.model.Workflow;
+import kanban.domain.model.aggregate.card.Card;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,7 @@
 package kanban.domain.usecase.stage.create;
 
-import kanban.domain.model.Stage;
-import kanban.domain.model.Workflow;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.model.aggregate.workflow.Workflow;
+import kanban.domain.usecase.workflow.repository.WorkflowRepository;
 
 public class CreateStageUseCase {
     private WorkflowRepository workflowRepository;

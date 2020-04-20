@@ -1,11 +1,11 @@
 package kanban.domain.usecase.card.create;
 
-import kanban.domain.model.Card;
+import kanban.domain.model.aggregate.card.Card;
 import kanban.domain.usecase.card.CardRepository;
 import kanban.domain.usecase.card.commit.CommitCardInput;
 import kanban.domain.usecase.card.commit.CommitCardOutput;
 import kanban.domain.usecase.card.commit.CommitCardUseCase;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.usecase.workflow.repository.WorkflowRepository;
 
 public class CreateCardUseCase {
 

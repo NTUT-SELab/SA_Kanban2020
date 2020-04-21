@@ -9,6 +9,10 @@ public class Workflow {
     private String workflowId;
     private List<Stage> stages;
 
+    public Workflow() {
+        stages = new ArrayList<>();
+    }
+
     public Workflow(String name) {
         this.name = name;
         workflowId = UUID.randomUUID().toString();

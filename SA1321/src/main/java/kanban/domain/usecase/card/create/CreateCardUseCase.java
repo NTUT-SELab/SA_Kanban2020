@@ -1,18 +1,18 @@
 package kanban.domain.usecase.card.create;
 
-import kanban.domain.model.Card;
-import kanban.domain.usecase.card.CardRepository;
+import kanban.domain.model.aggregate.card.Card;
 import kanban.domain.usecase.card.commit.CommitCardInput;
 import kanban.domain.usecase.card.commit.CommitCardOutput;
 import kanban.domain.usecase.card.commit.CommitCardUseCase;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.usecase.card.repository.ICardRepository;
+import kanban.domain.usecase.workflow.repository.IWorkflowRepository;
 
 public class CreateCardUseCase {
 
-    private WorkflowRepository workflowRepository;
-    private CardRepository cardRepository;
+    private IWorkflowRepository workflowRepository;
+    private ICardRepository cardRepository;
 
-    public CreateCardUseCase(WorkflowRepository workflowRepository, CardRepository cardRepository) {
+    public CreateCardUseCase(IWorkflowRepository workflowRepository, ICardRepository cardRepository) {
         this.workflowRepository = workflowRepository;
         this.cardRepository = cardRepository;
     }

@@ -1,29 +1,33 @@
 package kanban.domain.usecase;
 
 import kanban.domain.Utility;
-import kanban.domain.model.Workflow;
-import kanban.domain.usecase.card.CardRepository;
+import kanban.domain.adapter.repository.board.InMemoryBoardRepository;
+import kanban.domain.adapter.repository.workflow.InMemoryWorkflowRepository;
+import kanban.domain.usecase.board.repository.IBoardRepository;
 import kanban.domain.usecase.card.commit.CommitCardInput;
 import kanban.domain.usecase.card.commit.CommitCardOutput;
 import kanban.domain.usecase.card.commit.CommitCardUseCase;
-import kanban.domain.usecase.workflow.WorkflowRepository;
+import kanban.domain.usecase.workflow.repository.IWorkflowRepository;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class CommitCardTest {
-
+    private String boardId;
     private String workflowId;
     private String stageId;
-    private WorkflowRepository workflowRepository = new WorkflowRepository();
+    private IBoardRepository boardRepository;
+    private IWorkflowRepository workflowRepository;
     private Utility utility;
 
     @Before
     public void setup() {
-        workflowRepository = new WorkflowRepository();
-        utility = new Utility(workflowRepository);
-        workflowId = utility.createWorkflow("boardId","workflowName");
+        boardRepository = new InMemoryBoardRepository();
+        workflowRepository = new InMemoryWorkflowRepository();
+        utility = new Utility(boardRepository, workflowRepository);
+        boardId = utility.createBoard("test automation");
+        workflowId = utility.createWorkflow(boardId,"workflowName");
         stageId = utility.createStage(workflowId,"stageName");
     }
 

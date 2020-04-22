@@ -1,12 +1,12 @@
 package kanban.domain.usecase.board.create;
 
 import kanban.domain.model.aggregate.board.Board;
-import kanban.domain.usecase.board.repository.BoardRepository;
+import kanban.domain.usecase.board.repository.IBoardRepository;
 
 public class CreateBoardUseCase {
-    private BoardRepository boardRepository;
+    private IBoardRepository boardRepository;
 
-    public CreateBoardUseCase(BoardRepository boardRepository) {
+    public CreateBoardUseCase(IBoardRepository boardRepository) {
         this.boardRepository = boardRepository;
     }
 

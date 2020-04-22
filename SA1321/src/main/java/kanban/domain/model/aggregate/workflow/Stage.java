@@ -10,6 +10,10 @@ public class Stage implements Cloneable {
     private String name;
     private List<String> cardIds;
 
+    public Stage() {
+        cardIds = new ArrayList<>();
+    }
+
     public Stage(String workflowId, String stageName) {
         this.workflowId = workflowId;
         stageId = UUID.randomUUID().toString();

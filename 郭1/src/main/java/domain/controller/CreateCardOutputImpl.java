@@ -1,6 +1,8 @@
 package domain.controller;
 
-public class CreateCardOutputImpl implements CreateCardOutputInterface {
+import domain.usecase.card.create.CreateCardOutput;
+
+public class CreateCardOutputImpl implements CreateCardOutput {
     private String _id ;
     public void setCardId(String id) {
         this._id = id ;

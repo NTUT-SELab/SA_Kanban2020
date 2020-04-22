@@ -19,6 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="2afec333-bbef-41df-aa27-8087c7371fbe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/src/main/java/domain/adapter/repository/workflow/MySqlWorkflowRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/src/main/java/domain/adapter/repository/workflow/MySqlWorkflowRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/src/main/java/domain/aggregate/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/src/main/java/domain/aggregate/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/src/main/java/domain/aggregate/workflow/Swimlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/src/main/java/domain/aggregate/workflow/Swimlane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/src/main/java/domain/aggregate/workflow/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/src/main/java/domain/aggregate/workflow/Workflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/src/test/java/domain/usecase/stage/create/CreateStageUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/src/test/java/domain/usecase/stage/create/CreateStageUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/src/test/java/domain/usecase/swimlane/create/CreateSwimlaneUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/src/test/java/domain/usecase/swimlane/create/CreateSwimlaneUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../郭2/src/test/java/domain/usecase/task/create/CreateTaskUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../郭2/src/test/java/domain/usecase/task/create/CreateTaskUseCaseTest.java" afterDir="false" />
+=======
     <list default="true" id="9eab9e26-9a14-4d70-87d2-f4a8894e485a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/adapter/database/StageCardTable.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/adapter/repository/card/MySqlCardRepository.java" afterDir="false" />
@@ -37,6 +51,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/repository/ICardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/card/repository/ICardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kanban/domain/usecase/workflow/repository/WorkflowRepository.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/kanban/domain/usecase/CreateCardTest.java" afterDir="false" />
+>>>>>>> b2a41d1c1b445cf283b228b147acbdd9806b2dc7
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,9 +113,15 @@
       <created>1587549945385</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1587463767090</updated>
+      <workItem from="1587463769806" duration="7770000" />
+      <workItem from="1587563733170" duration="2266000" />
+=======
       <updated>1587549945385</updated>
       <workItem from="1587549948023" duration="940000" />
       <workItem from="1587550921266" duration="2283000" />
+>>>>>>> b2a41d1c1b445cf283b228b147acbdd9806b2dc7
     </task>
     <servers />
   </component>
@@ -112,11 +133,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+<<<<<<< HEAD
+=======
     <option name="oldMeFiltersMigrated" value="true" />
+>>>>>>> b2a41d1c1b445cf283b228b147acbdd9806b2dc7
   </component>
 </project>

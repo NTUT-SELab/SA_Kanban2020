@@ -32,4 +32,8 @@ public class Swimlane {
     public List<String> getCardIds() {
         return cardIds;
     }
+
+    public void setSwimlaneId(String swimlane_id) {
+        this.swimlaneId = swimlane_id;
+    }
 }

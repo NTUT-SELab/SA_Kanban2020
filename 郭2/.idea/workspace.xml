@@ -2,51 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd2b58e5-4f3d-42f2-913e-9c37349d73f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/adapter/repository/card/InMemoryCardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/adapter/repository/workflow/InMemoryWorkflowRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/swimlane/create/CreateSwimlaneUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/swimlane/create/CreateSwimlaneUseCaseInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/workflow/create/CreateWorkflowUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SA1321/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SA1321/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SA1321/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SA1321/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SoftwareArchitecture.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/Stage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Stage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Workflow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CardRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/card/create/CreateCardUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCaseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/card/create/CreateCardUseCaseInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCaseOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/card/create/CreateCardUseCaseOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/stage/create/CreateStageUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/workflow/create/CreateWorkflowUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/StageUseCaseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/stage/create/CreateStageUseCaseInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/StageUseCaseOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/stage/create/CreateStageUseCaseOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/WorkflowRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/WorkflowUseCaseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/workflow/create/CreateWorkflowUseCaseInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/WorkflowUseCaseOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/workflow/create/CreateWorkflowUseCaseOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/CreateCardUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/card/create/CreateCardUseCaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/CreateStageUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/stage/create/CreateStageUseCaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/CreateWorkflowUseCaseTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/entity/Card.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/entity/Stage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/entity/Workflow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CardRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCaseInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCaseOutput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageUseCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowUseCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/StageUseCaseInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/StageUseCaseOutput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/WorkflowRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/WorkflowUseCaseInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/WorkflowUseCaseOutput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/CreateCardUseCaseTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/CreateStageUseCaseTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/CreateWorkflowUseCaseTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/adapter/repository/workflow/MySqlWorkflowRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/adapter/repository/workflow/MySqlWorkflowRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/aggregate/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Swimlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Swimlane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Workflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/stage/create/CreateStageUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/stage/create/CreateStageUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/swimlane/create/CreateSwimlaneUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/swimlane/create/CreateSwimlaneUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/task/create/CreateTaskUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/task/create/CreateTaskUseCaseTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,8 +87,10 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Kyle\Desktop\SoftwareArchitecture\src\main\java\domain" />
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="domain.usecase.workflow.repository" />
+      <recent name="domain.usecase.card.repository" />
+      <recent name="domain.usecase.board.repository" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="domain.usecase.workflow.create" />
@@ -131,17 +99,15 @@
       <recent name="domain" />
       <recent name="domain.usecase" />
     </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="domain.usecase.workflow.repository" />
-      <recent name="domain.usecase.card.repository" />
-      <recent name="domain.usecase.board.repository" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="domain.aggregate.board" />
       <recent name="domain.usecase.board.create" />
       <recent name="domain.usecase.board.repository" />
       <recent name="domain.aggregate.card" />
       <recent name="domain.usecase.task.create" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kyle\Desktop\SoftwareArchitecture\src\main\java\domain" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -196,23 +162,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateWorkflowUseCaseTest.createWorkflowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SoftwareArchitecture" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.usecase.workflow.create.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.usecase.workflow.create" />
-      <option name="MAIN_CLASS_NAME" value="domain.usecase.workflow.create.CreateWorkflowUseCaseTest" />
-      <option name="METHOD_NAME" value="createWorkflowTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="domain in SoftwareArchitecture" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateStageUseCaseTest.CreateStageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoftwareArchitecture" />
       <extension name="coverage">
         <pattern>
@@ -220,8 +170,26 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="domain" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="domain.usecase.stage.create" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.stage.create.CreateStageUseCaseTest" />
+      <option name="METHOD_NAME" value="CreateStageTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateSwimlaneUseCaseTest.CreateSwimlaneUseCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SoftwareArchitecture" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.swimlane.create.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase.swimlane.create" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.swimlane.create.CreateSwimlaneUseCaseTest" />
+      <option name="METHOD_NAME" value="CreateSwimlaneUseCase" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -229,10 +197,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in SoftwareArchitecture" />
-        <item itemvalue="JUnit.CreateCardUseCaseTest" />
+        <item itemvalue="JUnit.CreateSwimlaneUseCaseTest.CreateSwimlaneUseCase" />
+        <item itemvalue="JUnit.CreateStageUseCaseTest.CreateStageTest" />
         <item itemvalue="JUnit.CreateCardUseCaseTest.CreateCardUseCaseTest" />
-        <item itemvalue="JUnit.CreateWorkflowUseCaseTest.createWorkflowTest" />
-        <item itemvalue="JUnit.domain in SoftwareArchitecture" />
+        <item itemvalue="JUnit.CreateCardUseCaseTest" />
       </list>
     </recent_temporary>
   </component>
@@ -268,6 +236,7 @@
       <workItem from="1586830257127" duration="5114000" />
       <workItem from="1587019987993" duration="675000" />
       <workItem from="1587130668854" duration="39998000" />
+      <workItem from="1587562197002" duration="7378000" />
     </task>
     <servers />
   </component>

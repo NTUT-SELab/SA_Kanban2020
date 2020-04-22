@@ -7,8 +7,12 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
-import phd.sa.csie.ntut.edu.tw.domain.Board;
-import phd.sa.csie.ntut.edu.tw.domain.Card;
+import phd.sa.csie.ntut.edu.tw.domain.model.board.Board;
+import phd.sa.csie.ntut.edu.tw.domain.model.card.Card;
+import phd.sa.csie.ntut.edu.tw.usecase.repository.*;
+import phd.sa.csie.ntut.edu.tw.usecase.board.column.create.*;
+import phd.sa.csie.ntut.edu.tw.usecase.card.create.*;
+import phd.sa.csie.ntut.edu.tw.usecase.card.move.*;
 
 public class MoveCardUseCaseTest {
 

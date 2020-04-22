@@ -7,6 +7,9 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
+import phd.sa.csie.ntut.edu.tw.usecase.repository.CardRepository;
+import phd.sa.csie.ntut.edu.tw.usecase.card.create.*;
+
 public class CreateCardUseCaseTest {
 
   private CardRepository cardRepository;

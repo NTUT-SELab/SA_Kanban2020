@@ -1,15 +1,17 @@
 package domain.model.workflow;
 
-import java.util.UUID;
+import java.util.Map;
 
 public interface Lane {
-    public String getLaneId();
-    public void addLane(Lane lane);
-    public int getChildAmount();
+    String getLaneId();
+    void addLane(Lane lane);
+    int getChildAmount();
 //    public String getWorkflowId();
-    public Lane findById(String laneId);
+    Lane findById(String laneId);
 
     void addCard(String cardId);
-
+    Map<String, Lane> getChildMap();
     boolean isCardContained(String cardId);
+
+    String getLaneName();
 }

@@ -1,18 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd2b58e5-4f3d-42f2-913e-9c37349d73f3" name="Default Changelist" comment="" />
+    <list default="true" id="dd2b58e5-4f3d-42f2-913e-9c37349d73f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/adapter/repository/card/InMemoryCardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/adapter/repository/workflow/InMemoryWorkflowRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/swimlane/create/CreateSwimlaneUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/swimlane/create/CreateSwimlaneUseCaseInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/workflow/create/CreateWorkflowUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoftwareArchitecture.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/Stage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Stage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/Workflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/aggregate/workflow/Workflow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CardRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/card/create/CreateCardUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCaseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/card/create/CreateCardUseCaseInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCaseOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/card/create/CreateCardUseCaseOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/stage/create/CreateStageUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/workflow/create/CreateWorkflowUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/StageUseCaseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/stage/create/CreateStageUseCaseInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/StageUseCaseOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/stage/create/CreateStageUseCaseOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/WorkflowRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/WorkflowUseCaseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/workflow/create/CreateWorkflowUseCaseInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/WorkflowUseCaseOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/workflow/create/CreateWorkflowUseCaseOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/CreateCardUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/card/create/CreateCardUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/CreateStageUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/stage/create/CreateStageUseCaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/CreateWorkflowUseCaseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/entity/Card.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/entity/Stage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/entity/Workflow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CardRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCaseInput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCaseOutput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageUseCase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowUseCase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/StageUseCaseInput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/StageUseCaseOutput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/WorkflowRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/WorkflowUseCaseInput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/WorkflowUseCaseOutput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/CreateCardUseCaseTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/CreateStageUseCaseTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/CreateWorkflowUseCaseTest.class" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sa@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sa@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="package-info" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -22,35 +98,63 @@
     </option>
   </component>
   <component name="ProjectId" id="1aKuH7Fx3z9yitmXm9F26jKNI8v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/../../SoftwareArchitecture" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/domain/adapter/repository/card" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SoftwareArchitecture" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="domain" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="domain.usecase" />
-      <recent name="domain.entity" />
-      <recent name="UseCase" />
-      <recent name="Domain" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Kyle\Desktop\SoftwareArchitecture\src\main\java\domain" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="domain.usecase.workflow.create" />
+      <recent name="domain.usecase.stage.create" />
+      <recent name="domain.usecase.card.create" />
+      <recent name="domain" />
+      <recent name="domain.usecase" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="domain.usecase.workflow.repository" />
+      <recent name="domain.usecase.card.repository" />
+      <recent name="domain.usecase.board.repository" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="domain.aggregate.board" />
+      <recent name="domain.usecase.board.create" />
+      <recent name="domain.usecase.board.repository" />
+      <recent name="domain.aggregate.card" />
+      <recent name="domain.usecase.task.create" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="JUnit.All in SoftwareArchitecture">
     <configuration name="All in SoftwareArchitecture" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -61,43 +165,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateStageUseCaseTest.StageUseCaseInputTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateCardUseCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoftwareArchitecture" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.*" />
+          <option name="PATTERN" value="domain.usecase.card.create.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="domain" />
-      <option name="MAIN_CLASS_NAME" value="domain.CreateStageUseCaseTest" />
-      <option name="METHOD_NAME" value="StageUseCaseInputTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CreateStageUseCaseTest.StageUseCaseOutputTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SoftwareArchitecture" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain" />
-      <option name="MAIN_CLASS_NAME" value="domain.CreateStageUseCaseTest" />
-      <option name="METHOD_NAME" value="StageUseCaseOutputTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CreateWorkflowUseCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SoftwareArchitecture" />
-      <option name="PACKAGE_NAME" value="domain" />
-      <option name="MAIN_CLASS_NAME" value="domain.CreateWorkflowUseCaseTest" />
+      <option name="PACKAGE_NAME" value="domain.usecase.card.create" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.card.create.CreateCardUseCaseTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateCardUseCaseTest.CreateCardUseCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SoftwareArchitecture" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.card.create.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase.card.create" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.card.create.CreateCardUseCaseTest" />
+      <option name="METHOD_NAME" value="CreateCardUseCaseTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateWorkflowUseCaseTest.createWorkflowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SoftwareArchitecture" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.workflow.create.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase.workflow.create" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.workflow.create.CreateWorkflowUseCaseTest" />
+      <option name="METHOD_NAME" value="createWorkflowTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -106,7 +216,7 @@
       <module name="SoftwareArchitecture" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.*" />
+          <option name="PATTERN" value="domain.usecase.stage.create.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,23 +229,26 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in SoftwareArchitecture" />
+        <item itemvalue="JUnit.CreateCardUseCaseTest" />
+        <item itemvalue="JUnit.CreateCardUseCaseTest.CreateCardUseCaseTest" />
+        <item itemvalue="JUnit.CreateWorkflowUseCaseTest.createWorkflowTest" />
         <item itemvalue="JUnit.domain in SoftwareArchitecture" />
-        <item itemvalue="JUnit.CreateStageUseCaseTest.StageUseCaseOutputTest" />
-        <item itemvalue="JUnit.CreateStageUseCaseTest.StageUseCaseInputTest" />
-        <item itemvalue="JUnit.CreateWorkflowUseCaseTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@dc22d92" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -153,11 +266,26 @@
       <workItem from="1586758431310" duration="8053000" />
       <workItem from="1586773084481" duration="1449000" />
       <workItem from="1586830257127" duration="5114000" />
+      <workItem from="1587019987993" duration="675000" />
+      <workItem from="1587130668854" duration="39998000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1586832390746">

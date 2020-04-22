@@ -89,8 +89,10 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Kyle\Desktop\SoftwareArchitecture\src\main\java\domain" />
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="domain.usecase.workflow.repository" />
+      <recent name="domain.usecase.card.repository" />
+      <recent name="domain.usecase.board.repository" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="domain.usecase.workflow.create" />
@@ -99,10 +101,8 @@
       <recent name="domain" />
       <recent name="domain.usecase" />
     </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="domain.usecase.workflow.repository" />
-      <recent name="domain.usecase.card.repository" />
-      <recent name="domain.usecase.board.repository" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kyle\Desktop\SoftwareArchitecture\src\main\java\domain" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="domain.aggregate.board" />
@@ -164,23 +164,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateWorkflowUseCaseTest.createWorkflowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SoftwareArchitecture" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.usecase.workflow.create.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.usecase.workflow.create" />
-      <option name="MAIN_CLASS_NAME" value="domain.usecase.workflow.create.CreateWorkflowUseCaseTest" />
-      <option name="METHOD_NAME" value="createWorkflowTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="domain in SoftwareArchitecture" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateStageUseCaseTest.CreateStageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SoftwareArchitecture" />
       <extension name="coverage">
         <pattern>
@@ -188,8 +172,26 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="domain" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="domain.usecase.stage.create" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.stage.create.CreateStageUseCaseTest" />
+      <option name="METHOD_NAME" value="CreateStageTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateSwimlaneUseCaseTest.CreateSwimlaneUseCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SoftwareArchitecture" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.swimlane.create.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase.swimlane.create" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.swimlane.create.CreateSwimlaneUseCaseTest" />
+      <option name="METHOD_NAME" value="CreateSwimlaneUseCase" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -197,10 +199,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in SoftwareArchitecture" />
-        <item itemvalue="JUnit.CreateCardUseCaseTest" />
+        <item itemvalue="JUnit.CreateSwimlaneUseCaseTest.CreateSwimlaneUseCase" />
+        <item itemvalue="JUnit.CreateStageUseCaseTest.CreateStageTest" />
         <item itemvalue="JUnit.CreateCardUseCaseTest.CreateCardUseCaseTest" />
-        <item itemvalue="JUnit.CreateWorkflowUseCaseTest.createWorkflowTest" />
-        <item itemvalue="JUnit.domain in SoftwareArchitecture" />
+        <item itemvalue="JUnit.CreateCardUseCaseTest" />
       </list>
     </recent_temporary>
   </component>

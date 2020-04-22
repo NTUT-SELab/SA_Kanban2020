@@ -1,10 +1,12 @@
 package domain.usecase;
 
 import domain.controller.CreateStageInputImpl;
-import domain.controller.CreateStageInputInterface;
 import domain.controller.CreateStageOutputImpl;
-import domain.controller.CreateStageOutputInterface;
-import domain.entity.StageRepository;
+import domain.entity.Workflow;
+import domain.usecase.stage.create.CreateStageInput;
+import domain.usecase.stage.create.CreateStageOutput;
+import domain.usecase.stage.create.CreateStageUseCase;
+import domain.adapter.WorkflowRepositoryImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
@@ -12,15 +14,21 @@ import static org.junit.Assert.assertNotNull;
 public class CreateStageTest {
     @Test
     public void createStage() {
-        CreateStageUseCase createStage = new CreateStageUseCase() ;
-        CreateStageInputInterface createStageInput = new CreateStageInputImpl() ;
-        CreateStageOutputInterface createStageOutput = new CreateStageOutputImpl() ;
 
-        createStageInput.setStageName("stage1");
+        WorkflowRepositoryImpl workflowRepository = new WorkflowRepositoryImpl();
+        Workflow workflow = new Workflow();
+        workflow.setName("workflow1");
+        workflowRepository.save(workflow);
+
+        CreateStageUseCase createStage = new CreateStageUseCase(workflowRepository) ;
+        CreateStageInput createStageInput = new CreateStageInputImpl() ;
+        CreateStageOutput createStageOutput = new CreateStageOutputImpl() ;
+
+        createStageInput.setStageName("backlog");
+        createStageInput.setWorkflowId(workflow.getId());
+
         createStage.execute( createStageInput, createStageOutput ) ;
 
-        StageRepository stageRepository = StageRepository.getInstance();
-
-        assertNotNull(stageRepository.get(createStageOutput.getStageId()));
+        assertNotNull(createStageOutput.getStageId());
     }
 }

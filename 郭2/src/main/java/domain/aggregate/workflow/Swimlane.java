@@ -48,4 +48,5 @@ public class Swimlane {
     public List<String> getCardIds() {
         return cardIds;
     }
+
 }

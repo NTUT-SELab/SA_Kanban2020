@@ -4,13 +4,16 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import phd.sa.csie.ntut.edu.tw.domain.Card;
+import phd.sa.csie.ntut.edu.tw.domain.model.card.Card;
+import phd.sa.csie.ntut.edu.tw.usecase.repository.CardRepository;
+import phd.sa.csie.ntut.edu.tw.controller.repository.memory.MemoryCardRepository;
+
 
 public class CardRepositoryTest {
 
   @Test
   public void createCard() {
-    CardRepository cardRepository = new CardRepository();
+    CardRepository cardRepository = new MemoryCardRepository();
     Card card = new Card("test card");
     cardRepository.add(card);
     Card resultCard = cardRepository.findCardByUUID(card.getUUID());

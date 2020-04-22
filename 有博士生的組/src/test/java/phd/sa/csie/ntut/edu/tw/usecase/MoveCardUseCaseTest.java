@@ -7,8 +7,14 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
-import phd.sa.csie.ntut.edu.tw.domain.Board;
-import phd.sa.csie.ntut.edu.tw.domain.Card;
+import phd.sa.csie.ntut.edu.tw.controller.repository.memory.MemoryBoardRepository;
+import phd.sa.csie.ntut.edu.tw.controller.repository.memory.MemoryCardRepository;
+import phd.sa.csie.ntut.edu.tw.domain.model.board.Board;
+import phd.sa.csie.ntut.edu.tw.domain.model.card.Card;
+import phd.sa.csie.ntut.edu.tw.usecase.repository.*;
+import phd.sa.csie.ntut.edu.tw.usecase.board.column.create.*;
+import phd.sa.csie.ntut.edu.tw.usecase.card.create.*;
+import phd.sa.csie.ntut.edu.tw.usecase.card.move.*;
 
 public class MoveCardUseCaseTest {
 
@@ -17,14 +23,14 @@ public class MoveCardUseCaseTest {
   private CreateCardUseCase createCardUseCase;
   private CreateColumnUseCase createColumnUseCase;
   private Card card;
-  private String fromColumnTitle;
-  private String toColumnTitle;
+  private String fromColumnId;
+  private String toColumnId;
   private UUID boardId;
 
   @Before
   public void initialize() {
-    cardRepository = new CardRepository();
-    boardRepository = new BoardRepository();
+    cardRepository = new MemoryCardRepository();
+    boardRepository = new MemoryBoardRepository();
     createCardUseCase = new CreateCardUseCase(cardRepository);
     createColumnUseCase = new CreateColumnUseCase(boardRepository);
 
@@ -43,13 +49,13 @@ public class MoveCardUseCaseTest {
     createColumnUseCaseInput.setBoardId(boardId);
     createColumnUseCaseInput.setTitle("develop column");
     createColumnUseCase.execute(createColumnUseCaseInput, createColumnUseCaseOutput);
-    fromColumnTitle = createColumnUseCaseOutput.getTitle();
+    fromColumnId = createColumnUseCaseOutput.getId();
     createColumnUseCaseInput.setBoardId(boardId);
     createColumnUseCaseInput.setTitle("test column");
     createColumnUseCase.execute(createColumnUseCaseInput, createColumnUseCaseOutput);
-    toColumnTitle = createColumnUseCaseOutput.getTitle();
+    toColumnId = createColumnUseCaseOutput.getId();
 
-    board.addCardToColumn(card.getUUID(), fromColumnTitle);
+    board.addCardToColumn(card.getUUID(), UUID.fromString(fromColumnId));
   }
 
   @Test
@@ -59,12 +65,12 @@ public class MoveCardUseCaseTest {
     MoveCardUseCaseOutput moveCardUseCaseOutput = new MoveCardUseCaseOutput();
     moveCardUseCaseInput.setBoardId(boardId);
     moveCardUseCaseInput.setCardId(card.getUUID());
-    moveCardUseCaseInput.setFromColumnTitle(fromColumnTitle);
-    moveCardUseCaseInput.setToColumnTitle(toColumnTitle);
+    moveCardUseCaseInput.setFromColumnId(UUID.fromString(fromColumnId));
+    moveCardUseCaseInput.setToColumnId(UUID.fromString(toColumnId));
     moveCardUseCase.execute(moveCardUseCaseInput, moveCardUseCaseOutput);
     assertEquals(card.getUUID().toString(), moveCardUseCaseOutput.getCardId());
-    assertEquals(fromColumnTitle, moveCardUseCaseOutput.getOldColumnTitle());
-    assertEquals(toColumnTitle, moveCardUseCaseOutput.getNewColumnTitle());
+    assertEquals(fromColumnId, moveCardUseCaseOutput.getOldColumnId());
+    assertEquals(toColumnId, moveCardUseCaseOutput.getNewColumnId());
   }
 
 }

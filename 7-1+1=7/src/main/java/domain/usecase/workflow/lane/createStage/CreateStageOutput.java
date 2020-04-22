@@ -1,4 +1,4 @@
-package domain.usecase.stage.createStage;
+package domain.usecase.workflow.lane.createStage;
 
 public class CreateStageOutput {
     private String stageId;

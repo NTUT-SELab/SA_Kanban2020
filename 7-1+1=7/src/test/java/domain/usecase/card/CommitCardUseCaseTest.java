@@ -1,28 +1,28 @@
-package domain.usecase.card.createCard;
+package domain.usecase.card;
 
 import domain.adapter.board.BoardRepository;
-import domain.adapter.card.CardRepository;
 import domain.adapter.workflow.WorkflowRepository;
 import domain.usecase.board.createBoard.CreateBoardInput;
 import domain.usecase.board.createBoard.CreateBoardOutput;
 import domain.usecase.board.createBoard.CreateBoardUseCase;
+import domain.usecase.card.commitCard.CommitCardInput;
+import domain.usecase.card.commitCard.CommitCardOutput;
+import domain.usecase.card.commitCard.CommitCardUseCase;
 import domain.usecase.repository.IWorkflowRepository;
-import domain.usecase.stage.createStage.CreateStageInput;
-import domain.usecase.stage.createStage.CreateStageOutput;
-import domain.usecase.stage.createStage.CreateStageUseCase;
+import domain.usecase.workflow.lane.createStage.CreateStageInput;
+import domain.usecase.workflow.lane.createStage.CreateStageOutput;
+import domain.usecase.workflow.lane.createStage.CreateStageUseCase;
 import domain.usecase.workflow.createWorkflow.CreateWorkflowInput;
 import domain.usecase.workflow.createWorkflow.CreateWorkflowOutput;
 import domain.usecase.workflow.createWorkflow.CreateWorkflowUseCase;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class CreateCardUseCaseTest {
-
+public class CommitCardUseCaseTest {
     private BoardRepository boardRepository;
     private IWorkflowRepository workflowRepository;
-    private CardRepository cardRepository;
     private String workflowId;
     private String laneId;
 
@@ -31,28 +31,26 @@ public class CreateCardUseCaseTest {
     public void setup() {
         boardRepository = new BoardRepository();
         workflowRepository = new WorkflowRepository();
-        cardRepository = new CardRepository();
-
         String boardId = createBoard("kanban777", "kanban");
         workflowId = createWorkflow(boardId, "defaultWorkflow");
         laneId = createStage(workflowId, "developing");
     }
 
     @Test
-    public void createCard() {
-        CreateCardUseCase createCardUseCase = new CreateCardUseCase(
-                workflowRepository,
-                cardRepository);
+    public void commitCard() {
+        String cardId = "C012345678";
+        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(
+                workflowRepository);
 
-        CreateCardInput input = new CreateCardInput();
-        CreateCardOutput output = new CreateCardOutput();
+        CommitCardInput input = new CommitCardInput();
+        CommitCardOutput output = new CommitCardOutput();
 
-        input.setCardName("firstEvent");
         input.setWorkflowId(workflowId);
         input.setLaneId(laneId);
+        input.setCardId(cardId);
 
-        createCardUseCase.execute(input, output);
-        assertEquals('C', cardRepository.findById(output.getCardId()).getCardId().charAt(0));
+        commitCardUseCase.execute(input, output);
+        assertEquals(laneId, workflowRepository.findById(workflowId).findLaneByCardId(cardId).getLaneId());
     }
 
     private String createWorkflow(String boardId, String workflowName) {
@@ -68,9 +66,8 @@ public class CreateCardUseCaseTest {
 
     }
 
-
     private String createStage(String workflowId, String stageName) {
-        CreateStageUseCase createStageUseCase = new CreateStageUseCase(workflowRepository);
+        CreateStageUseCase createStageUseCase = new CreateStageUseCase(workflowRepository, boardRepository);
         CreateStageInput input = new CreateStageInput();
         CreateStageOutput output = new CreateStageOutput();
 

@@ -67,7 +67,7 @@ public class MySqlBoardRepository implements IBoardRepository {
                 board = new Board();
                 board.setBoardId(_boardId);
                 board.setBoardName(name);
-                board.setWorkflowIds(getBoardWorkflowById(boardId));
+                board.setWorkflowIds(getWorkflowIdsByBoardId(boardId));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,7 +119,7 @@ public class MySqlBoardRepository implements IBoardRepository {
         sqlDatabaseHelper.closePreparedStatement(preparedStatement);
     }
 
-    private List<String> getBoardWorkflowById(String boardId) {
+    private List<String> getWorkflowIdsByBoardId(String boardId) {
         ResultSet resultSet = null;
         List<String> workflowIds = new ArrayList<>();
         try {

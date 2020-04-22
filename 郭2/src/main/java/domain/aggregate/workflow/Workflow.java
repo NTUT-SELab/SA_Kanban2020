@@ -69,4 +69,7 @@ public class Workflow {
         swimlaneList.add(swimlane);
     }
 
+    public List<Swimlane> getSwimlaneList() {
+        return swimlaneList;
+    }
 }

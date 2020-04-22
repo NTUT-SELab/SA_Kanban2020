@@ -1,5 +1,6 @@
 package phd.sa.csie.ntut.edu.tw.usecase.repository;
 
+import java.sql.SQLException;
 import java.util.UUID;
 
 import phd.sa.csie.ntut.edu.tw.domain.model.card.Card;

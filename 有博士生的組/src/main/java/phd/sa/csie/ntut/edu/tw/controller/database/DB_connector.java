@@ -3,7 +3,7 @@ package phd.sa.csie.ntut.edu.tw.controller.database;
 import java.sql.*;
 
 public class DB_connector {
-  private final static String url = "jdbc:mysql://ois-mysql.hsiang.me:3306/SA";
+  private final static String url = "jdbc:mysql://140.124.181.94:3306/SA";
   private final static String user = "SA";
   private final static String password = "sa";
 

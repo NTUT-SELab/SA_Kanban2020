@@ -20,16 +20,16 @@ public class CreateCardUseCaseTest {
     @Test
     public void testCreateCardUseCase(){
         String cardName = "TestCard";
-        String cardDescriptino = "CardDescription";
+        String cardDescription = "CardDescription";
 
         CreateCardUseCase createCardUseCase = new CreateCardUseCase(cardRepository);
-        CreateCardInput createCardInput = new CreateCardInput(cardName, cardDescriptino);
+        CreateCardInput createCardInput = new CreateCardInput(cardName, cardDescription);
         CreateCardOutput createCardOutput = new CreateCardOutput();
 
         createCardUseCase.execute(createCardInput, createCardOutput);
 
         assertEquals(cardName, createCardOutput.getCardName());
-        assertEquals(cardDescriptino, createCardOutput.getCardDescription());
+        assertEquals(cardDescription, createCardOutput.getCardDescription());
 
     }
 

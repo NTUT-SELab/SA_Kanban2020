@@ -1,13 +1,20 @@
 package domain.controller;
 
-public class CreateStageInputImpl implements CreateStageInputInterface {
-    private String _name ;
+import domain.usecase.stage.create.CreateStageInput;
+
+public class CreateStageInputImpl implements CreateStageInput {
+    private String stageName ;
+    private String workFlowId;
 
     public void setStageName(String name) {
-        this._name = name;
+        this.stageName = name;
     }
 
     public String getStageName() {
-        return this._name ;
+        return this.stageName ;
     }
+
+    public void setWorkflowId(String id){ this.workFlowId = id;}
+
+    public String getWorkflowId(){ return this.workFlowId;}
 }

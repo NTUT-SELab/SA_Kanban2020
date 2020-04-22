@@ -2,24 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="becc22e7-3450-45f6-95ab-dd2854e53baa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/subtask/create/CreateSubtaskInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/subtask/create/CreateSubtaskOutput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/usecase/subtask/create/CreateSubtaskUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateSubtaskTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardInputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardInputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardInputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardOutputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardOutputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateCardOutputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageInputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageOutputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageOutputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateStageOutputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateWorkflowInputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controller/CreateWorkflowOutputInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/CardRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/StageRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entity/WorkflowRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateCardUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateStageUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/usecase/CreateWorkflowUseCase.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateCardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateStageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateStageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateWorkFlowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/usecase/CreateWorkFlowTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/kanban.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/郭1.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateCardInputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateCardOutputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateStageInputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateStageOutputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateWorkflowInputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/controller/CreateWorkflowOutputInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/entity/CardRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/usecase/CreateCardUseCase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageUseCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/usecase/CreateStageUseCase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowUseCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/usecase/CreateWorkflowUseCase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateCardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateStageTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateStageTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateWorkFlowTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/domain/usecase/CreateWorkFlowTest.class" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -48,12 +62,22 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="domain.adapter" />
+      <recent name="domain.usecase.board" />
+      <recent name="domain.usecase.card" />
+      <recent name="domain.usecase.workflow" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="domain.usecase" />
+      <recent name="domain.usecase.card" />
+      <recent name="domain.usecase.board" />
+      <recent name="domain.adapter" />
+      <recent name="domain.entity" />
+      <recent name="domain.entity.workflowAggregate" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="domain.entity" />
       <recent name="domain.controller" />
+      <recent name="domain.entity" />
       <recent name="domain.usecase" />
     </key>
   </component>
@@ -69,49 +93,19 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CreateWorkFlowTest.createWorkflow">
-    <configuration name="CreateCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="kanban" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.entity.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.usecase" />
-      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateCardTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CreateCardTest.CreateCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CreateSwimlaneTest.createSwimlane">
+    <configuration name="CreateBoardTest.createBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="郭1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.entity.*" />
+          <option name="PATTERN" value="domain.usecase.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="domain.usecase" />
-      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateCardTest" />
-      <option name="METHOD_NAME" value="CreateCard" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateBoardTest" />
+      <option name="METHOD_NAME" value="createBoard" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CreateStageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="kanban" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.entity.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.usecase" />
-      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateStageTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,7 +126,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateWorkFlowTest.createWorkflow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateSwimlaneTest.createSwimlane" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="郭1" />
       <extension name="coverage">
         <pattern>
@@ -141,8 +135,39 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="domain.usecase" />
-      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateWorkFlowTest" />
-      <option name="METHOD_NAME" value="createWorkflow" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateSwimlaneTest" />
+      <option name="METHOD_NAME" value="createSwimlane" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateTaskTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="郭1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateTaskTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateTaskTest.CreateTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="郭1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.usecase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.usecase" />
+      <option name="MAIN_CLASS_NAME" value="domain.usecase.CreateTaskTest" />
+      <option name="METHOD_NAME" value="CreateTask" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -150,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CreateWorkFlowTest.createWorkflow" />
+        <item itemvalue="JUnit.CreateSwimlaneTest.createSwimlane" />
+        <item itemvalue="JUnit.CreateTaskTest.CreateTask" />
+        <item itemvalue="JUnit.CreateTaskTest" />
+        <item itemvalue="JUnit.CreateBoardTest.createBoard" />
         <item itemvalue="JUnit.CreateStageTest.createStage" />
-        <item itemvalue="JUnit.CreateCardTest.CreateCard" />
-        <item itemvalue="JUnit.CreateCardTest" />
-        <item itemvalue="JUnit.CreateStageTest" />
       </list>
     </recent_temporary>
   </component>
@@ -172,6 +197,11 @@
       <workItem from="1586933975306" duration="1925000" />
       <workItem from="1586965519563" duration="3388000" />
       <workItem from="1586994124296" duration="3704000" />
+      <workItem from="1586998342343" duration="1402000" />
+      <workItem from="1587092067431" duration="32000" />
+      <workItem from="1587092192662" duration="5243000" />
+      <workItem from="1587190245739" duration="987000" />
+      <workItem from="1587520918898" duration="7813000" />
     </task>
     <servers />
   </component>

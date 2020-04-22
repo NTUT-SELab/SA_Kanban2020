@@ -19,7 +19,6 @@ public class Card {
         return cardId;
     }
 
-
     public String getCardName() {
         return cardName;
     }

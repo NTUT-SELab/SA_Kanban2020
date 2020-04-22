@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Workflow {
+    private String boardId;
     private String workflowId;
     private String workflowName;
     private List<Stage> stageList;
@@ -34,8 +35,41 @@ public class Workflow {
         return workflowId;
     }
 
+    public void setWorkflowName(String workflowName) {
+        this.workflowName = workflowName;
+    }
+
     public String getWorkflowName() {
         return workflowName;
+    }
+
+    public void setStageList(List<Stage> stageList) {
+        this.stageList = stageList;
+    }
+
+    public List<Stage> getStageList() {
+        return stageList;
+    }
+
+    public void setBoardId(String boardId) {
+        this.boardId = boardId;
+    }
+
+    public String getBoardId() {
+        return boardId;
+    }
+
+    public void setSwimlaneList(List<Swimlane> swimlaneList) {
+        this.swimlaneList = swimlaneList;
+    }
+
+    public List<Swimlane> getSwimlaneList() {
+        return swimlaneList;
+    }
+
+    public Swimlane createSwimlane(String swimlanName) {
+        Swimlane swimlane = new Swimlane(workflowId, swimlanName);
+        return swimlane;
     }
 
     public void addStage(Stage stage) {
@@ -52,21 +86,7 @@ public class Workflow {
         stage.addCardId(cardId);
     }
 
-    public List<Stage> getStageList() {
-        return stageList;
-    }
-
-    public void setStageList(List<Stage> stageList) {
-        this.stageList = stageList;
-    }
-
-    public Swimlane createSwimlane(String swimlanName) {
-        Swimlane swimlane = new Swimlane(workflowId, swimlanName);
-        return swimlane;
-    }
-
     public void addSwimlane(Swimlane swimlane) {
         swimlaneList.add(swimlane);
     }
-
 }

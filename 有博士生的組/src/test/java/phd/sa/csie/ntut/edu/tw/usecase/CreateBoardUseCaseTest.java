@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import phd.sa.csie.ntut.edu.tw.usecase.repository.BoardRepository;
+import phd.sa.csie.ntut.edu.tw.controller.repository.memory.MemoryBoardRepository;
 import phd.sa.csie.ntut.edu.tw.usecase.board.create.*;
 
 public class CreateBoardUseCaseTest {
@@ -14,7 +15,7 @@ public class CreateBoardUseCaseTest {
 
   @Before
   public void init() {
-    boardRepository = new BoardRepository();
+    boardRepository = new MemoryBoardRepository();
   }
 
   @Test

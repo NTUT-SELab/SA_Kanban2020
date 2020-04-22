@@ -1,16 +1,18 @@
 package phd.sa.csie.ntut.edu.tw.usecase.board.column.setwip;
 
+import java.util.UUID;
+
 public class SetColumnWIPUseCaseOutput {
 
-  private String columnTitle;
+  private String  columnId;
   private int columnWIP;
 
-  public void setColumnTitle(String title) {
-    this.columnTitle = title;
+  public void setColumnId(String id) {
+    this.columnId = id;
   }
 
-  public String getColumnTitle() {
-    return this.columnTitle;
+  public String  getColumnId() {
+    return this.columnId;
   }
 
   public void setColumnWIP(int wip) {

@@ -24,36 +24,36 @@ public class Board {
     return this.name;
   }
 
-  public String createColumn(String columnTitle) {
+  public UUID createColumn(String columnTitle) {
     Column column = new Column(columnTitle);
     this.columns.add(column);
-    return column.getTitle();
+    return column.getId();
   }
 
-  public void addCardToColumn(UUID cardId, String columnTitle) {
-    Column column = this.getColumnByTitle(columnTitle);
+  public void addCardToColumn(UUID cardId, UUID columnId) {
+    Column column = this.getColumnById(columnId);
     column.addCard(cardId);
   }
 
-  public void setColumnWIP(String columnTitle, int wip) {
+  public void setColumnWIP(UUID columnId, int wip) {
     if(wip < 0) {
       throw new IllegalArgumentException( "WIP should not be negative");
     }
-    Column column = this.getColumnByTitle(columnTitle);
+    Column column = this.getColumnById(columnId);
     column.setWIP(wip);
   }
 
-  public String moveCard(UUID cardId, String fromColumnTitle, String toColumnTitle) {
-    Column from = this.getColumnByTitle(fromColumnTitle);
-    Column to = this.getColumnByTitle(toColumnTitle);
+  public String moveCard(UUID cardId, UUID fromColumnId, UUID toColumnId) {
+    Column from = this.getColumnById(fromColumnId);
+    Column to = this.getColumnById(toColumnId);
     from.removeCard(cardId);
     to.addCard(cardId);
     return to.getTitle();
   }
 
-  private Column getColumnByTitle(String title) {
+  private Column getColumnById(UUID id) {
     for (Column column : columns) {
-      if(column.getTitle().equals(title)) {
+      if(column.getId().equals(id)) {
         return column;
       }
     }

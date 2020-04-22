@@ -5,14 +5,20 @@ import java.util.UUID;
 
 public class Column {
 
+  private UUID id;
   private String title;
   private int wip;
   private ArrayList<UUID> cardIds;
 
   public Column(String title) {
+    this.id = UUID.randomUUID();
     this.title = title;
     this.wip = 0;
     this.cardIds = new ArrayList<>();
+  }
+
+  public UUID getId() {
+    return this.id;
   }
 
   public String getTitle() {

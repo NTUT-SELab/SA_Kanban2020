@@ -1,6 +1,7 @@
 package phd.sa.csie.ntut.edu.tw.usecase;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import phd.sa.csie.ntut.edu.tw.controller.repository.memory.MemoryBoardRepository;
 import phd.sa.csie.ntut.edu.tw.domain.model.board.Board;
 import phd.sa.csie.ntut.edu.tw.usecase.repository.BoardRepository;
 import phd.sa.csie.ntut.edu.tw.usecase.board.column.create.*;
@@ -19,11 +21,11 @@ public class SetColumnWIPTest {
 
   private BoardRepository boardRepository;
   private Board board;
-  private String columnTitle;
+  private String columnId;
 
   @Before
   public void init() {
-    boardRepository = new BoardRepository();
+    boardRepository = new MemoryBoardRepository();
     CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository);
     CreateBoardUseCaseInput createBoardUseCaseInput = new CreateBoardUseCaseInput();
     CreateBoardUseCaseOutput createBoardUseCaseOutput = new CreateBoardUseCaseOutput();
@@ -37,7 +39,7 @@ public class SetColumnWIPTest {
     createColumnUseCaseInput.setBoardId(board.getUUID());
     createColumnUseCaseInput.setTitle("develop");
     createColumnUseCase.execute(createColumnUseCaseInput, createColumnUseCaseOutput);
-    columnTitle = createColumnUseCaseOutput.getTitle();
+    columnId = createColumnUseCaseOutput.getId();
   }
 
   @Test
@@ -46,10 +48,10 @@ public class SetColumnWIPTest {
     SetColumnWIPUseCaseInput setColumnWIPUseCaseInput = new SetColumnWIPUseCaseInput();
     SetColumnWIPUseCaseOutput setColumnWIPUseCaseOutput = new SetColumnWIPUseCaseOutput();
     setColumnWIPUseCaseInput.setBoardId(board.getUUID());
-    setColumnWIPUseCaseInput.setColumnTitle(columnTitle);
+    setColumnWIPUseCaseInput.setColumnId(UUID.fromString(columnId));
     setColumnWIPUseCaseInput.setColumnWIP(3);
     setColumnWIPUseCase.execute(setColumnWIPUseCaseInput, setColumnWIPUseCaseOutput);
-    assertEquals("develop", setColumnWIPUseCaseOutput.getColumnTitle());
+    assertNotNull(setColumnWIPUseCaseOutput.getColumnId());
     assertEquals(3, setColumnWIPUseCaseOutput.getColumnWIP());
   }
 
@@ -62,7 +64,7 @@ public class SetColumnWIPTest {
     SetColumnWIPUseCaseInput setColumnWIPUseCaseInput = new SetColumnWIPUseCaseInput();
     SetColumnWIPUseCaseOutput setColumnWIPUseCaseOutput = new SetColumnWIPUseCaseOutput();
     setColumnWIPUseCaseInput.setBoardId(board.getUUID());
-    setColumnWIPUseCaseInput.setColumnTitle(columnTitle);
+    setColumnWIPUseCaseInput.setColumnId(UUID.fromString(columnId));
     setColumnWIPUseCaseInput.setColumnWIP(-1);
     setColumnWIPUseCase.execute(setColumnWIPUseCaseInput, setColumnWIPUseCaseOutput);
   }

@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
+import phd.sa.csie.ntut.edu.tw.controller.repository.memory.MemoryCardRepository;
 import phd.sa.csie.ntut.edu.tw.domain.model.card.Card;
 import phd.sa.csie.ntut.edu.tw.usecase.repository.CardRepository;
 import phd.sa.csie.ntut.edu.tw.usecase.card.create.*;
@@ -21,7 +22,7 @@ public class EditCardUseCaseTest {
 
   @Before
   public void init() {
-    cardRepository = new CardRepository();
+    cardRepository = new MemoryCardRepository();
     createCardUseCase = new CreateCardUseCase(cardRepository);
 
     CreateCardUseCaseInput createCardUseCaseInput = new CreateCardUseCaseInput();

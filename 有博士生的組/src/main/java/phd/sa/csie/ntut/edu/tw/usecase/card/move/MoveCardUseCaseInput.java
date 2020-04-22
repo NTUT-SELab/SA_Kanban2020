@@ -7,8 +7,8 @@ public class MoveCardUseCaseInput {
 
   private UUID boardId;
   private UUID cardId;
-  private String fromColumnTitle;
-  private String toColumnTitle;
+  private UUID fromColumnId;
+  private UUID toColumnId;
 
   public void setBoardId(UUID boardId) {
     this.boardId = boardId;
@@ -26,20 +26,20 @@ public class MoveCardUseCaseInput {
     return this.cardId;
   }
 
-  public void setFromColumnTitle(String title) {
-    this.fromColumnTitle = title;
+  public void setFromColumnId(UUID id) {
+    this.fromColumnId = id;
   }
 
-  public String getFromColumnTitle() {
-    return this.fromColumnTitle;
+  public UUID getFromColumnId() {
+    return this.fromColumnId;
   }
 
-  public void setToColumnTitle(String title) {
-    this.toColumnTitle = title;
+  public void setToColumnId(UUID id) {
+    this.toColumnId = id;
   }
 
-  public String getToColumnTitle() {
-    return this.toColumnTitle;
+  public UUID getToColumnId() {
+    return this.toColumnId;
   }
 
 }

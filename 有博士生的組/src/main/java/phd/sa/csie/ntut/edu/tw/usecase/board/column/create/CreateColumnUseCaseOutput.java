@@ -2,14 +2,14 @@ package phd.sa.csie.ntut.edu.tw.usecase.board.column.create;
 
 public class CreateColumnUseCaseOutput {
 
-  private String title;
+  private String id;
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public String getTitle() {
-    return this.title;
+  public String getId() {
+    return this.id;
   }
 
 }

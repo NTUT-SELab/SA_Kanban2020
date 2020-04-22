@@ -15,12 +15,12 @@ public class SetColumnWIPUseCase {
 
   public void execute(SetColumnWIPUseCaseInput input, SetColumnWIPUseCaseOutput output) {
     UUID boardId = input.getBoardId();
-    String columnTitle = input.getColumnTitle();
+    UUID columnId = input.getColumnId();
     int wip = input.getColumnWIP();
     Board board = boardRepository.findBoardByUUID(boardId);
-    board.setColumnWIP(columnTitle, wip);
+    board.setColumnWIP(columnId, wip);
     boardRepository.add(board);
-    output.setColumnTitle(columnTitle);
+    output.setColumnId(columnId.toString());
     output.setColumnWIP(wip);
   }
 

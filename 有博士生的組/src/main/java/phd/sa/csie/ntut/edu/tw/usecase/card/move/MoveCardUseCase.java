@@ -17,12 +17,12 @@ public class MoveCardUseCase {
                       MoveCardUseCaseOutput moveCardUseCaseOutput) {
     Board board = boardRepository.findBoardByUUID(moveCardUseCaseInput.getBoardId());
     UUID cardId = moveCardUseCaseInput.getCardId();
-    String fromColumnTitle = moveCardUseCaseInput.getFromColumnTitle();
-    String toColumnTitle = moveCardUseCaseInput.getToColumnTitle();
-    String newColumnTitle = board.moveCard(cardId, fromColumnTitle, toColumnTitle);
+    UUID fromColumnId = moveCardUseCaseInput.getFromColumnId();
+    UUID toColumnId = moveCardUseCaseInput.getToColumnId();
+    String newColumnId = board.moveCard(cardId, fromColumnId, toColumnId);
     moveCardUseCaseOutput.setCardId(cardId);
-    moveCardUseCaseOutput.setOldColumnTitle(fromColumnTitle);
-    moveCardUseCaseOutput.setNewColumnTitle(newColumnTitle);
+    moveCardUseCaseOutput.setOldColumnId(fromColumnId.toString());
+    moveCardUseCaseOutput.setNewColumnId(toColumnId.toString());
   }
 
 }

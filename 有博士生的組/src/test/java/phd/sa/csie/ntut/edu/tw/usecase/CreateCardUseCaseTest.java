@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import phd.sa.csie.ntut.edu.tw.usecase.repository.CardRepository;
+import phd.sa.csie.ntut.edu.tw.controller.repository.memory.MemoryCardRepository;
 import phd.sa.csie.ntut.edu.tw.usecase.card.create.*;
 
 public class CreateCardUseCaseTest {
@@ -16,7 +17,7 @@ public class CreateCardUseCaseTest {
 
   @Before
   public void initialize() {
-    cardRepository = new CardRepository();
+    cardRepository = new MemoryCardRepository();
   }
 
   @Test

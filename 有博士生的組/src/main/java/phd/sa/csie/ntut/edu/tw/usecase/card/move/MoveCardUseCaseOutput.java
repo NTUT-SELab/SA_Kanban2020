@@ -6,8 +6,8 @@ import java.util.UUID;
 public class MoveCardUseCaseOutput {
 
   private String cardId;
-  private String oldColumnTitle;
-  private String newColumnTitle;
+  private String oldColumnId;
+  private String newColumnId;
 
   public void setCardId(UUID cardId) {
     this.cardId = cardId.toString();
@@ -17,19 +17,19 @@ public class MoveCardUseCaseOutput {
     return this.cardId;
   }
 
-  public void setOldColumnTitle(String title) {
-    this.oldColumnTitle = title;
+  public void setOldColumnId(String id) {
+    this.oldColumnId = id;
   }
 
-  public String getOldColumnTitle() {
-    return this.oldColumnTitle;
+  public String getOldColumnId() {
+    return this.oldColumnId;
   }
 
-  public void setNewColumnTitle(String title) {
-    this.newColumnTitle = title;
+  public void setNewColumnId(String id) {
+    this.newColumnId = id;
   }
 
-  public String getNewColumnTitle() {
-    return this.newColumnTitle;
+  public String getNewColumnId() {
+    return this.newColumnId;
   }
 }

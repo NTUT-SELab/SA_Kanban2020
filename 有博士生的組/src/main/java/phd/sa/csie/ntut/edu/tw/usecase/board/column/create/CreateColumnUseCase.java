@@ -18,9 +18,9 @@ public class CreateColumnUseCase {
     String title = createColumnUseCaseInput.getTitle();
     UUID boardId = createColumnUseCaseInput.getBoardId();
     Board board = this.boardRepository.findBoardByUUID(boardId);
-    String columnTitle = board.createColumn(title);
+    UUID columnId = board.createColumn(title);
     this.boardRepository.add(board);
-    createColumnUseCaseOutput.setTitle(columnTitle);
+    createColumnUseCaseOutput.setId(columnId.toString());
   }
 
 }

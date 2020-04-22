@@ -4,9 +4,17 @@ import java.util.UUID;
 
 public class SetColumnWIPUseCaseInput {
 
-  private String columnTitle;
+  private UUID columnId;
   private int columnWIP;
   private UUID boardId;
+
+  public void setColumnId(UUID id) {
+    this.columnId = id;
+  }
+
+  public UUID getColumnId() {
+    return this.columnId;
+  }
 
   public void setBoardId(UUID id) {
     this.boardId = id;
@@ -14,14 +22,6 @@ public class SetColumnWIPUseCaseInput {
 
   public UUID getBoardId() {
     return this.boardId;
-  }
-
-  public void setColumnTitle(String title) {
-    this.columnTitle = title;
-  }
-
-  public String getColumnTitle() {
-    return this.columnTitle;
   }
 
   public void setColumnWIP(int wip) {

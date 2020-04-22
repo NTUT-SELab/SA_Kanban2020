@@ -1,24 +1,26 @@
 package ddd.kanban.domain.usecase;
 
-import ddd.kanban.domain.entity.Column;
-import ddd.kanban.domain.entity.Workflow;
+import ddd.kanban.domain.model.workflow.Column;
+import ddd.kanban.domain.model.workflow.Workflow;
+import ddd.kanban.domain.usecase.inputdata.CreateColumnInput;
+import ddd.kanban.domain.usecase.outputdata.CreateColumnOutput;
+import ddd.kanban.domain.usecase.repository.WorkflowRepository;
 
 import java.util.Optional;
 
 public class CreateColumnUseCase {
-    private WorkflowRepository workflowRepository = new WorkflowRepository();
+    private WorkflowRepository workflowRepository;
 
-    public CreateColumnUseCase(){
-
+    public CreateColumnUseCase(WorkflowRepository workflowRepository){
+        this.workflowRepository = workflowRepository;
     }
 
     public void execute(CreateColumnInput createColumnInput, CreateColumnOutput createColumnOutput) {
-        Workflow workflow = workflowRepository.findById(createColumnInput.getWorkflowId());
-        workflow.createColumn(createColumnInput.getColumnName());
-
-        Optional<Column> column = workflow.findColumnById("001");
-        column.ifPresent(c -> {
-            createColumnOutput.setColumnId(c.getColumnId());
+        Optional<Workflow> workflow = workflowRepository.findById(createColumnInput.getWorkflowId());
+        workflow.ifPresent(w -> {
+            String columnName = w.createColumn(createColumnInput.getColumnName(), createColumnInput.getWorkflowId());
+            createColumnOutput.setColumnName(columnName);
+            workflowRepository.save(w);
         });
     }
 }

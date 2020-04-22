@@ -1,6 +1,7 @@
 package kanban.domain.adapter.repository.workflow;
 
 import kanban.domain.adapter.database.MySqlDatabaseHelper;
+import kanban.domain.adapter.database.StageCardTable;
 import kanban.domain.adapter.database.StageTable;
 import kanban.domain.adapter.database.WorkflowTable;
 import kanban.domain.model.aggregate.workflow.Stage;
@@ -117,6 +118,11 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
 
 
     private void addStage(Stage stage) throws SQLException {
+
+        for(String cardId: stage.getCardIds()) {
+            addCard(cardId, stage.getStageId());
+        }
+
         String sql = String.format("Insert Into %s Values ( ?, ?, ?) On Duplicate Key Update %s=?",
                 StageTable.tableName, StageTable.name);
         PreparedStatement preparedStatement = sqlDatabaseHelper.getPreparedStatement(sql);
@@ -145,7 +151,7 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
                 stage.setWorkflowId(workflowId);
                 stage.setStageId(stageId);
                 stage.setName(name);
-//                stage.setCardIds(new ArrayList<>());
+                stage.setCardIds(getCardIdsByStageId(stageId));
                 stages.add(stage);
             }
             resultSet.close();
@@ -155,6 +161,41 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
             sqlDatabaseHelper.closeResultSet(resultSet);
         }
         return stages;
+    }
+
+    private void addCard(String cardId, String stageId) throws SQLException {
+        String sql = String.format("Insert Into %s Values ( ?, ?)",
+                StageCardTable.tableName);
+        PreparedStatement preparedStatement = sqlDatabaseHelper.getPreparedStatement(sql);
+        preparedStatement.setString(1, cardId);
+        preparedStatement.setString(2, stageId);
+
+        preparedStatement.executeUpdate();
+        sqlDatabaseHelper.closePreparedStatement(preparedStatement);
+    }
+
+    private List<String> getCardIdsByStageId(String stageId) {
+        ResultSet resultSet = null;
+        List<String> cardIds = new ArrayList<>();
+        try {
+            String query = String.format("Select * From %s Where %s = '%s'",
+                    StageCardTable.tableName,
+                    StageCardTable.stageId,
+                    stageId);
+            resultSet = sqlDatabaseHelper.getResultSet(query);
+
+            while (resultSet.next()) {
+                String _cardId = resultSet.getString(StageCardTable.cardId);
+                cardIds.add(_cardId);
+            }
+
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            sqlDatabaseHelper.closeResultSet(resultSet);
+        }
+        return cardIds;
     }
 
 }

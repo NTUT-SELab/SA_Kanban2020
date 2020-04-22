@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
+import phd.sa.csie.ntut.edu.tw.domain.model.card.Card;
+
 public class CardTest {
 
   @Test

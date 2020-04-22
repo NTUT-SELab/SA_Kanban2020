@@ -2,8 +2,12 @@ package kanban.domain.usecase;
 
 import kanban.domain.Utility;
 import kanban.domain.adapter.repository.board.InMemoryBoardRepository;
+import kanban.domain.adapter.repository.board.MySqlBoardRepository;
 import kanban.domain.adapter.repository.card.InMemoryCardRepository;
+import kanban.domain.adapter.repository.card.MySqlCardRepository;
 import kanban.domain.adapter.repository.workflow.InMemoryWorkflowRepository;
+import kanban.domain.adapter.repository.workflow.MySqlWorkflowRepository;
+import kanban.domain.model.aggregate.card.Card;
 import kanban.domain.model.aggregate.workflow.Workflow;
 import kanban.domain.usecase.board.repository.IBoardRepository;
 import kanban.domain.usecase.card.create.CreateCardInput;
@@ -23,14 +27,17 @@ public class CreateCardTest {
     private String workflowId;
     private String stageId;
     private IBoardRepository boardRepository;
-    private IWorkflowRepository workflowRepository = new InMemoryWorkflowRepository();
-    private ICardRepository cardRepository = new InMemoryCardRepository();
+    private IWorkflowRepository workflowRepository;
+    private ICardRepository cardRepository;
     private Utility utility;
 
     @Before
     public void setup() {
-        boardRepository = new InMemoryBoardRepository();
-        workflowRepository = new InMemoryWorkflowRepository();
+//        boardRepository = new InMemoryBoardRepository();
+//        workflowRepository = new InMemoryWorkflowRepository();
+        boardRepository = new MySqlBoardRepository();
+        workflowRepository = new MySqlWorkflowRepository();
+        cardRepository = new MySqlCardRepository();
         utility = new Utility(boardRepository, workflowRepository);
         boardId = utility.createBoard("test automation");
         workflowId = utility.createWorkflow(boardId,"workflowName");
@@ -45,14 +52,20 @@ public class CreateCardTest {
         CreateCardUseCase createCardUseCase = new CreateCardUseCase(workflowRepository, cardRepository);
         CreateCardInput input = new CreateCardInput();
         input.setCardName("card");
+        input.setDescription("description");
+        input.setType("general");
+        input.setSize("xxl");
         input.setWorkflowId(workflowId);
         input.setStageId(stageId);
         CreateCardOutput output = new CreateCardOutput();
 
         createCardUseCase.execute(input, output);
 
-        assertEquals("card", output.getCardName());
-        assertNotNull(output.getCardId());
+        Card card = cardRepository.getCardById(output.getCardId());
+        assertEquals(output.getCardName(), card.getName());
+        assertEquals("description", card.getDescription());
+        assertEquals("general", card.getType());
+        assertEquals("xxl", card.getSize());
 
         workflow = workflowRepository.getWorkflowById(workflowId);
         assertEquals(1, workflow.getStageCloneById(stageId).getCardIds().size());

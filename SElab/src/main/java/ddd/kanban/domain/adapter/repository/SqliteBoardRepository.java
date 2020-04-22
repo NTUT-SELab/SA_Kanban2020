@@ -27,13 +27,21 @@ public class SqliteBoardRepository implements BoardRepository {
 
     @Override
     public void add(Board board) {
+        if (isExist(board))
+            throw new RuntimeException("Board exist");
         boards.add(board);
+    }
+
+    private boolean isExist(Board board) {
+        return boards.stream()
+                .map(Board::getId)
+                .anyMatch(id -> board.getId().equals(id));
     }
 
     @Override
     public Optional<Board> findById(String boardId) {
         return boards.stream()
-                .filter(findBoardById(boardId))
+                .filter(board -> board.getId().equals(boardId))
                 .findFirst();
     }
 
@@ -48,9 +56,7 @@ public class SqliteBoardRepository implements BoardRepository {
 
     @Override
     public void save() {
-        for (Board board : boards) {
-            saveToDatabase(board);
-        }
+        boards.forEach(this::saveToDatabase);
     }
 
     private void saveToDatabase(Board board){

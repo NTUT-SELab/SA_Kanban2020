@@ -22,11 +22,12 @@ public class MySqlDatabaseHelper {
 
         createKanbanDatabase();
         createBoardTable();
-
-        createWorkflowTable();
         createBoardWorkflowTable();
 
+        createWorkflowTable();
         createStageTable();
+        createStageCardTable();
+
         createCardTable();
     }
 
@@ -110,13 +111,35 @@ public class MySqlDatabaseHelper {
         }
     }
 
+    private void createStageCardTable() {
+        connectToDatabase();
+        Statement statement = null;
+        String sql = "Create Table If Not Exists " + StageCardTable.tableName + " ("
+                + StageCardTable.cardId + " Varchar(50) Not Null, "
+                + StageCardTable.stageId + " Varchar(50) Not Null, "
+                + "Primary Key (" + StageCardTable.cardId + ")"
+                + ")";
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeStatement(statement);
+            closeConnection();
+        }
+    }
+
     private void createCardTable() {
         connectToDatabase();
         Statement statement = null;
         String sql = "Create Table If Not Exists " + CardTable.tableName + " ("
                 + CardTable.cardId + " Varchar(50) Not Null, "
-                + CardTable.stageId + " Varchar(50) Not Null, "
                 + CardTable.name + " Varchar(256) Not Null, "
+                + CardTable.description + " Varchar(256) Not Null, "
+                + CardTable.type + " Varchar(50) Not Null, "
+                + CardTable.size + " Varchar(50) Not Null, "
                 + "Primary Key (" + CardTable.cardId + ") "
                 + ")";
         try {

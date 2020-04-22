@@ -1,6 +1,8 @@
 package domain.controller;
 
-public class CreateStageOutputImpl implements CreateStageOutputInterface {
+import domain.usecase.stage.create.CreateStageOutput;
+
+public class CreateStageOutputImpl implements CreateStageOutput {
     private String _id ;
 
     public void setStageId( String id ) {

@@ -15,6 +15,14 @@ public class Board {
         this.boardName = boardName;
     }
 
+    public void setBoardId(String boardId) {
+        this.boardId = boardId;
+    }
+
+    public void setBoardName(String boardName) {
+        this.boardName = boardName;
+    }
+
     public String getBoardName() {
         return boardName;
     }
@@ -25,5 +33,13 @@ public class Board {
 
     public void addWorkflowId(String workflowId) {
         workflowIds.add(workflowId);
+    }
+
+    public void setWorkflowIds(List<String> workflowIds) {
+        this.workflowIds = workflowIds;
+    }
+
+    public List<String> getWorkflowIds() {
+        return workflowIds;
     }
 }

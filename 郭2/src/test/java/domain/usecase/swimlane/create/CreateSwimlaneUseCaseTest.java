@@ -1,4 +1,5 @@
 package domain.usecase.swimlane.create;
+import domain.adapter.repository.workflow.MySqlWorkflowRepository;
 import domain.usecase.board.create.CreateBoardUseCase;
 import domain.usecase.board.create.CreateBoardUseCaseInput;
 import domain.usecase.board.create.CreateBoardUseCaseOutput;
@@ -27,7 +28,8 @@ public class CreateSwimlaneUseCaseTest {
         createBoardUseCaseInput.setBoardName("Kanban of KanbanDevelopment");
         createBoardUseCase.execute(createBoardUseCaseInput, createBoardUseCaseOutput);
 
-        workflowRepository = new InMemoryWorkflowRepository();
+//        workflowRepository = new InMemoryWorkflowRepository();
+        workflowRepository = new MySqlWorkflowRepository();
         createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, boardRepository);
         CreateWorkflowUseCaseInput input = new CreateWorkflowUseCaseInput();
         workflowOutput = new CreateWorkflowUseCaseOutput();

@@ -17,15 +17,19 @@ plugins {
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
     jcenter()
 }
+
 
 dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.2-jre'
 
     // Use JUnit test framework
+    compile "com.oracle.ojdbc:ojdbc8:19.3.0.0"
     testImplementation 'junit:junit:4.12'
+    compile "mysql:mysql-connector-java:5.1.6"
 }
 
 application {

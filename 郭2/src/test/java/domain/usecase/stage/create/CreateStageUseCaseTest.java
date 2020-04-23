@@ -1,5 +1,6 @@
 package domain.usecase.stage.create;
 
+import domain.adapter.repository.workflow.MySqlWorkflowRepository;
 import domain.usecase.board.create.CreateBoardUseCase;
 import domain.usecase.board.create.CreateBoardUseCaseInput;
 import domain.usecase.board.create.CreateBoardUseCaseOutput;
@@ -31,7 +32,8 @@ public class CreateStageUseCaseTest {
         createBoardUseCaseInput.setBoardName("Kanban of KanbanDevelopment");
         createBoardUseCase.execute(createBoardUseCaseInput, createBoardUseCaseOutput);
 
-        workflowRepository = new InMemoryWorkflowRepository();
+//        workflowRepository = new InMemoryWorkflowRepository();
+        workflowRepository = new MySqlWorkflowRepository();
         createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, boardRepository);
         CreateWorkflowUseCaseInput input = new CreateWorkflowUseCaseInput();
         workflowOutput = new CreateWorkflowUseCaseOutput();
@@ -47,12 +49,12 @@ public class CreateStageUseCaseTest {
         CreateStageUseCaseInput input = new CreateStageUseCaseInput();
         CreateStageUseCaseOutput output = new CreateStageUseCaseOutput();
         input.setWorkflowId(workflowOutput.getWorkflowId());
-        input.setStageName("ToDo");
+        input.setStageName("Doing");
 
         createStageUseCase.execute(input,output);
 
         assertEquals(workflowOutput.getWorkflowId(), output.getWorkflowId());
         assertNotNull(output.getStageId());
-        assertEquals("ToDo", output.getStageName());
+        assertEquals("Doing", output.getStageName());
     }
 }

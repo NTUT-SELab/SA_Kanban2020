@@ -2,6 +2,7 @@ package domain.adapter.repository.workflow;
 
 import domain.adapter.database.DbConn;
 import domain.aggregate.workflow.Stage;
+import domain.aggregate.workflow.Swimlane;
 import domain.aggregate.workflow.Workflow;
 import domain.usecase.workflow.repository.IWorkflowRepository;
 
@@ -26,7 +27,9 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
             for(Stage stage : workflow.getStageList()) {
                 addStage(stage);
             }
-
+            for(Swimlane swimlane : workflow.getSwimlaneList()){
+                addSwimlane(swimlane);
+            }
             ps = conn.prepareStatement(sql);
             ps.setString(1,workflow.getWorkflowId());
             ps.setString(2,workflow.getWorkflowName());
@@ -56,6 +59,7 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
                 workflow = new Workflow(rset.getString("workflow_name"));
                 workflow.setWorkflowId(workflowId);
                 workflow.setStageList(getStagesByWorkflowId(workflowId));
+                workflow.setSwimlaneList(getSwimlanesByWorkflowId(workflowId));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,6 +89,9 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
 
             for(Stage stage : workflow.getStageList()) {
                 addStage(stage);
+            }
+            for(Swimlane swimlane : workflow.getSwimlaneList()) {
+                addSwimlane(swimlane);
             }
 
             ps = conn.prepareStatement(sql);
@@ -160,5 +167,62 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
             }
         }
         return stageList;
+    }
+
+    private void addSwimlane(Swimlane swimlane) throws SQLException {
+        String sql = "Insert Into kanban.swimlane Values (?, ?, ?) On Duplicate Key Update swimlane_name= ?";
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, swimlane.getSwimlaneId());
+            ps.setString(2, swimlane.getWorkflowId());
+            ps.setString(3, swimlane.getSwimlaneName());
+            ps.setString(4, swimlane.getSwimlaneName());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private List<Swimlane> getSwimlanesByWorkflowId(String workflowId) {
+        List<Swimlane> swimlaneList = new ArrayList<Swimlane>();
+        String sql = "SELECT * FROM kanban.swimlane WHERE workflow_id = '" + workflowId + "'";
+        PreparedStatement ps = null;
+        ResultSet rset = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            rset = ps.executeQuery();
+            while (rset.next()) {
+                Swimlane swimlane = new Swimlane(workflowId, rset.getString("swimlane_name"));
+                swimlane.setSwimlaneId(rset.getString("swimlane_id"));
+                swimlaneList.add(swimlane);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return swimlaneList;
     }
 }

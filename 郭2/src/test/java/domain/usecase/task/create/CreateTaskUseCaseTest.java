@@ -1,5 +1,6 @@
 package domain.usecase.task.create;
 
+import domain.adapter.repository.workflow.MySqlWorkflowRepository;
 import domain.usecase.board.create.CreateBoardUseCase;
 import domain.usecase.board.create.CreateBoardUseCaseInput;
 import domain.usecase.board.create.CreateBoardUseCaseOutput;
@@ -37,7 +38,8 @@ public class CreateTaskUseCaseTest {
 
     @Before
     public void SetUp(){
-        workflowRepository = new InMemoryWorkflowRepository();
+//        workflowRepository = new InMemoryWorkflowRepository();
+        workflowRepository = new MySqlWorkflowRepository();
         cardRepository = new InMemoryCardRepository();
         boardRepository = new InMemoryBoardRepository();
 

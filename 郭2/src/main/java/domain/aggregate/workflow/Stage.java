@@ -17,12 +17,24 @@ public class Stage {
         this.workflowId = workflowId;
     }
 
+    public void setStageId(String stage_id) {
+        this.stageId = stage_id;
+    }
+
     public String getStageId() {
         return stageId;
     }
 
+    public void setStageName(String stageName) {
+        this.stageName = stageName;
+    }
+
     public String getStageName() {
         return stageName;
+    }
+
+    public void setWorkflowId(String workflowId) {
+        this.workflowId = workflowId;
     }
 
     public String getWorkflowId() {
@@ -33,7 +45,5 @@ public class Stage {
         cardIds.add(cardId);
     }
 
-    public void setStageId(String stage_id) {
-        this.stageId = stage_id;
-    }
+
 }

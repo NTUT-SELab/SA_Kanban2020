@@ -27,7 +27,9 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
             for(Stage stage : workflow.getStageList()) {
                 addStage(stage);
             }
-
+            for(Swimlane swimlane : workflow.getSwimlaneList()){
+                addSwimlane(swimlane);
+            }
             ps = conn.prepareStatement(sql);
             ps.setString(1,workflow.getWorkflowId());
             ps.setString(2,workflow.getWorkflowName());
@@ -57,6 +59,7 @@ public class MySqlWorkflowRepository implements IWorkflowRepository {
                 workflow = new Workflow(rset.getString("workflow_name"));
                 workflow.setWorkflowId(workflowId);
                 workflow.setStageList(getStagesByWorkflowId(workflowId));
+                workflow.setSwimlaneList(getSwimlanesByWorkflowId(workflowId));
             }
         } catch (SQLException e) {
             e.printStackTrace();

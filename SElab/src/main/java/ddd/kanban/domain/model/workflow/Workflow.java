@@ -1,11 +1,13 @@
 package ddd.kanban.domain.model.workflow;
 
+import ddd.kanban.domain.model.AggregateRoot;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-public class Workflow {
+public class Workflow extends AggregateRoot {
     private List<Column> columns = new ArrayList<Column>();
     private String id;
     private String title;

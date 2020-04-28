@@ -1,12 +1,14 @@
 package ddd.kanban.domain.model.card;
 
+import ddd.kanban.domain.model.AggregateRoot;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-public class Card {
+public class Card extends AggregateRoot {
     private final List<Task> tasks;
     private String id;
 

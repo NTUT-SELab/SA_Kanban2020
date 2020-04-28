@@ -1,4 +1,4 @@
-package ddd.kanban.domain.model.Board;
+package ddd.kanban.domain.model.board;
 
 
 

@@ -8,6 +8,7 @@ import java.util.UUID;
 import java.util.function.Predicate;
 
 public class Workflow extends AggregateRoot {
+
     private List<Column> columns = new ArrayList<Column>();
     private String id;
     private String title;
@@ -16,6 +17,7 @@ public class Workflow extends AggregateRoot {
         this.id = id;
         this.title = title;
         this.boardid = boardid;
+
     }
 
     public String createColumn(String columnName, String workflowId){

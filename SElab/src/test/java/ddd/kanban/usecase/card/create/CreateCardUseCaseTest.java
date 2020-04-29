@@ -6,8 +6,9 @@ import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.card.Card;
 import ddd.kanban.domain.model.workflow.Column;
+import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.domain.model.workflow.Workflow;
-import ddd.kanban.usecase.Create;
+import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.DomainEventHandler;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.CardRepository;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CreateCardUseCaseTest {
     private CardRepository cardRepository;
-    private Create create;
+    private HierarchyInitial hierarchyInitial;
     private String boardId;
     private String workflowId;
     private String columnId;
@@ -33,10 +34,10 @@ public class CreateCardUseCaseTest {
 
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.boardRepository = new InMemoryBoardRepository();
-        create = new Create(boardRepository, workflowRepository);
-        this.boardId = create.CreateBoard();
-        this.workflowId = create.CreateWorkflow(this.boardId);
-        this.columnId = create.CreateColumn(this.workflowId);
+        hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository);
+        this.boardId = hierarchyInitial.CreateBoard();
+        this.workflowId = hierarchyInitial.CreateWorkflow(this.boardId);
+        this.columnId = hierarchyInitial.CreateColumn(this.workflowId);
         this.domainEventBus = new DomainEventBus();
         domainEventBus.register(new DomainEventHandler(this.workflowRepository));
     }
@@ -56,7 +57,7 @@ public class CreateCardUseCaseTest {
         assertEquals(card.getTitle(), createCardOutput.getCardTitle());
 
         Workflow workflow = workflowRepository.findById(this.workflowId);
-        Column column = workflow.findColumnById(this.columnId);
+        Lane column = workflow.findColumnById(this.columnId);
 
         assertEquals(1, column.getCommittedCards().size());
 

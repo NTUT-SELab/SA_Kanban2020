@@ -14,7 +14,7 @@ public class CreateCardUseCase {
 
 
     public void execute(CreateCardInput createCardInput, CreateCardOutput createCardOutput) {
-        Card card = new Card(new UUID.randomUUID().toString(), createCardInput.getCardTitle(), createCardInput.getBoardId(), createCardInput.getWorkflowId());
+        Card card = new Card(UUID.randomUUID().toString(), createCardInput.getCardTitle(), createCardInput.getBoardId(), createCardInput.getWorkflowId());
 
         cardRepository.add(card);
 

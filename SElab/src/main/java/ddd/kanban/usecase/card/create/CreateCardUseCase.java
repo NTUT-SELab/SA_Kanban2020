@@ -14,29 +14,11 @@ public class CreateCardUseCase {
 
 
     public void execute(CreateCardInput createCardInput, CreateCardOutput createCardOutput) {
-        Card card = new Card(UUID.randomUUID().toString(),
-                            createCardInput.getCardTitle(),
-                            createCardInput.getCardDescription(),
-                            createCardInput.getCardCardType(),
-                            createCardInput.getCardTags(),
-                            createCardInput.getCardAssignUsers(),
-                            createCardInput.getCardPlannedStartDate(),
-                            createCardInput.getCardPlannedFinishDate(),
-                            createCardInput.getCardPriority());
+        Card card = new Card(new UUID.randomUUID().toString(), createCardInput.getCardTitle(), createCardInput.getBoardId(), createCardInput.getWorkflowId());
 
         cardRepository.add(card);
-        cardRepository.save(card);
 
-        Card outputCard = cardRepository.findById(card.getId());
-
-        createCardOutput.setCardId(outputCard.getId());
-        createCardOutput.setCardTitle(outputCard.getTitle());
-        createCardOutput.setCardDescription(outputCard.getDescription());
-        createCardOutput.setCardCardType(outputCard.getCardType());
-        createCardOutput.setCardTags(outputCard.getTags());
-        createCardOutput.setCardAssignUsers(outputCard.getAssignUsers());
-        createCardOutput.setCardPlannedStartDate(outputCard.getPlannedStartDate());
-        createCardOutput.setCardPlannedFinishDate(outputCard.getPlannedFinishDate());
-        createCardOutput.setCardPriority(outputCard.getPriority());
+        createCardOutput.setCardId(card.getId());
+        createCardOutput.setCardTitle(card.getTitle());
     }
 }

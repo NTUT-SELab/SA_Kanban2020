@@ -11,7 +11,8 @@ import java.util.function.Predicate;
 public class Card extends AggregateRoot {
     private final List<Task> tasks;
     private String id;
-
+    private String boardId;
+    private String workflowId;
     private String title;
     private String description;
     private CardType cardType;
@@ -21,10 +22,12 @@ public class Card extends AggregateRoot {
     private Date plannedFinishDate;
     private int priority;
 
-    public Card(String id, String title)
+    public Card(String id, String title, String boardId, String workflowId)
     {
         this.id = id;
         this.title = title;
+        this.boardId = boardId;
+        this.workflowId = workflowId;
 
         tasks = new ArrayList<Task>();
     }

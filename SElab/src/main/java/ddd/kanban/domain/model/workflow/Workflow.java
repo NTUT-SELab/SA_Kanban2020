@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 public class Workflow extends AggregateRoot {
 
-    private List<Column> columns;
+    private List<Lane> columns;
     private String id;
     private String title;
     private String boardId;
@@ -18,23 +18,23 @@ public class Workflow extends AggregateRoot {
         this.id = id;
         this.title = title;
         this.boardId = boardId;
-        columns = new ArrayList<Column>();
+        columns = new ArrayList<Lane>();
     }
 
     public String createColumn(String columnName, String workflowId){
-        Column column = new Column(columnName, UUID.randomUUID().toString(), workflowId);
+        Lane column = new Column(columnName, UUID.randomUUID().toString(), workflowId);
         columns.add(column);
         return column.getId();
     }
 
-    public Column findColumnById(String columnId){
+    public Lane findColumnById(String columnId){
         return columns.stream()
                 .filter(judgeColumnId(columnId))
                 .findFirst()
                 .orElseThrow(RuntimeException::new);
     }
 
-    public static Predicate<Column> judgeColumnId(String columnId){
+    public static Predicate<Lane> judgeColumnId(String columnId){
         return column -> column.getId().equals(columnId);
     }
 
@@ -49,7 +49,7 @@ public class Workflow extends AggregateRoot {
     public String getBoardId(){return boardId;}
 
     public String commitCard(String cardId, String laneId) {
-        Column column = this.findColumnById(laneId);
+        Lane column = this.findColumnById(laneId);
         return column.commitCard(cardId, this.id);
     }
 }

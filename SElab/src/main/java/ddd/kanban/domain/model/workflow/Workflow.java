@@ -1,19 +1,24 @@
 package ddd.kanban.domain.model.workflow;
 
+import ddd.kanban.domain.model.AggregateRoot;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-public class Workflow {
-    private List<Column> columns = new ArrayList<Column>();
+public class Workflow extends AggregateRoot {
+
+    private List<Column> columns;
     private String id;
     private String title;
-    private String boardid;
-    public Workflow(String id, String title,String boardid){
+    private String boardId;
+
+    public Workflow(String id, String title,String boardId){
         this.id = id;
         this.title = title;
-        this.boardid = boardid;
+        this.boardId = boardId;
+        columns = new ArrayList<Column>();
     }
 
     public String createColumn(String columnName, String workflowId){
@@ -41,6 +46,6 @@ public class Workflow {
     public String getTitle() {
         return title;
     }
-    public String getBoardId(){return boardid;}
+    public String getBoardId(){return boardId;}
 
 }

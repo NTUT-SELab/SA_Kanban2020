@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.UUID;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 public class CreateColumnUseCaseTest {
     private WorkflowRepository inMemoryWorkflowRepository;
@@ -35,6 +36,6 @@ public class CreateColumnUseCaseTest {
 
         createColumnUseCase.execute(createColumnInput, createColumnOutput);
 
-        assertEquals("column", createColumnOutput.getColumnTitle());
+        assertNotNull(createColumnOutput.getColumnId());
     }
 }

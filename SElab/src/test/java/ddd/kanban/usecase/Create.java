@@ -14,9 +14,9 @@ import java.util.UUID;
 public class Create {
     private BoardRepository boardRepository;
     private WorkflowRepository workflowRepository;
-    public Create(){
-        boardRepository = new InMemoryBoardRepository();
-        workflowRepository = new InMemoryWorkflowRepository();
+    public Create(BoardRepository boardRepository, WorkflowRepository workflowRepository){
+        this.boardRepository = boardRepository;
+        this.workflowRepository = workflowRepository;
     }
 
 

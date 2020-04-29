@@ -24,7 +24,7 @@ public class Workflow extends AggregateRoot {
     public String createColumn(String columnName, String workflowId){
         Column column = new Column(columnName, UUID.randomUUID().toString(), workflowId);
         columns.add(column);
-        return column.getTitle();
+        return column.getId();
     }
 
     public Column findColumnById(String columnId){
@@ -44,8 +44,12 @@ public class Workflow extends AggregateRoot {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
     public String getBoardId(){return boardId;}
 
+    public String commitCard(String cardId, String laneId) {
+        Column column = this.findColumnById(laneId);
+        return column.commitCard(cardId, this.id);
+    }
 }

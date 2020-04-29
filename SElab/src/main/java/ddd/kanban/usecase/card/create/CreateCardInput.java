@@ -10,11 +10,13 @@ public class CreateCardInput {
     private String cardTitle;
     private String boardId;
     private String workflowId;
+    private String laneId;
 
-    public CreateCardInput(String cardTitle, String boardId, String workflowId){
+    public CreateCardInput(String cardTitle, String boardId, String workflowId, String laneId){
         this.cardTitle = cardTitle;
         this.boardId = boardId;
         this.workflowId = workflowId;
+        this.laneId = laneId;
     }
 
     public String getCardTitle() {
@@ -28,6 +30,10 @@ public class CreateCardInput {
 
     public String getWorkflowId() {
         return workflowId;
+    }
+
+    public String getLaneId(){
+        return laneId;
     }
 
 }

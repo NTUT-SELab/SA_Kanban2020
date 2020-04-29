@@ -28,7 +28,7 @@ public class CreateBoardUseCaseTest {
     @Test
     public void testCreateBoardUseCase(){
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(inMemoryBoardRepository);
-        CreateBoardInput createBoardInput = new CreateBoardInput(boardId,"TestBoard","This is board that save in memory");
+        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard","This is board that save in memory");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
         assertEquals("TestBoard", createBoardOutput.getBoardName());
@@ -38,7 +38,7 @@ public class CreateBoardUseCaseTest {
     @Test
     public void testCreateBoardUseCaseWithSQLite(){
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(sqliteBoardRepository);
-        CreateBoardInput createBoardInput = new CreateBoardInput(boardId,"TestBoard2", "This is board that save in sqlite");
+        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard2", "This is board that save in sqlite");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
         assertEquals("TestBoard2", createBoardOutput.getBoardName());

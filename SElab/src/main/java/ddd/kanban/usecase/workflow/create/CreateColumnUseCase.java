@@ -12,8 +12,8 @@ public class CreateColumnUseCase {
 
     public void execute(CreateColumnInput createColumnInput, CreateColumnOutput createColumnOutput) {
         Workflow workflow = workflowRepository.findById(createColumnInput.getWorkflowId());
-        String columnId = workflow.createColumn(createColumnInput.getColumnTitle(), createColumnInput.getWorkflowId());
-        createColumnOutput.setColumnId(columnId);
+        String laneId = workflow.createColumn(createColumnInput.getColumnTitle(), createColumnInput.getWorkflowId());
+        createColumnOutput.setColumnId(laneId);
         workflowRepository.add(workflow);
     }
 }

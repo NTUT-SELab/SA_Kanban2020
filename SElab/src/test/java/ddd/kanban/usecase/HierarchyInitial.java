@@ -11,10 +11,10 @@ import ddd.kanban.usecase.workflow.create.*;
 
 import java.util.UUID;
 
-public class Create {
+public class HierarchyInitial {
     private BoardRepository boardRepository;
     private WorkflowRepository workflowRepository;
-    public Create(BoardRepository boardRepository, WorkflowRepository workflowRepository){
+    public HierarchyInitial(BoardRepository boardRepository, WorkflowRepository workflowRepository){
         this.boardRepository = boardRepository;
         this.workflowRepository = workflowRepository;
     }
@@ -22,7 +22,7 @@ public class Create {
 
     public String CreateBoard(){
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository);
-        CreateBoardInput createBoardInput = new CreateBoardInput(UUID.randomUUID().toString(), "Board1", "New Board");
+        CreateBoardInput createBoardInput = new CreateBoardInput("Board1", "New Board");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
 
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
@@ -32,7 +32,7 @@ public class Create {
 
     public String CreateWorkflow(String boardId){
         CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository);
-        CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput(UUID.randomUUID().toString(), "Workflow1", boardId);
+        CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput( "Workflow1", boardId);
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);

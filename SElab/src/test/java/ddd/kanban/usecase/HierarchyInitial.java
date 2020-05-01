@@ -19,7 +19,7 @@ public class HierarchyInitial {
     public HierarchyInitial(BoardRepository boardRepository, WorkflowRepository workflowRepository, DomainEventBus domainEventBus){
         this.boardRepository = boardRepository;
         this.workflowRepository = workflowRepository;
-        this.domainEventBus = new DomainEventBus();
+        this.domainEventBus = domainEventBus;
     }
 
 

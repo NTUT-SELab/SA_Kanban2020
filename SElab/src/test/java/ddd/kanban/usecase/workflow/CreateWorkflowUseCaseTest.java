@@ -2,6 +2,7 @@ package ddd.kanban.usecase.workflow;
 
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
+import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.workflow.create.CreateWorkflowInput;
@@ -21,11 +22,14 @@ public class CreateWorkflowUseCaseTest {
     private BoardRepository boardRepository;
     private HierarchyInitial hierarchyInitial;
     private String boardId;
+    private DomainEventBus domainEventBus;
+
     @Before
     public void setUp(){
         workflowRepository = new InMemoryWorkflowRepository();
         boardRepository = new InMemoryBoardRepository();
-        hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository);
+        this.domainEventBus = new DomainEventBus();
+        hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
         this.boardId = hierarchyInitial.CreateBoard();
 
     }

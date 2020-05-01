@@ -2,6 +2,7 @@ package ddd.kanban.domain.model.board;
 
 
 import ddd.kanban.domain.model.AggregateRoot;
+import ddd.kanban.domain.model.board.event.BoardCreated;
 
 public class Board extends AggregateRoot {
 
@@ -13,6 +14,7 @@ public class Board extends AggregateRoot {
         this.id = id;
         this.name = name;
         this.description = description;
+        addDomainEvent(new BoardCreated(this.id));
     }
 
     public String getId() {

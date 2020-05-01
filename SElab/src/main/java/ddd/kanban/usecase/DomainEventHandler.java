@@ -8,6 +8,9 @@ import ddd.kanban.usecase.repository.WorkflowRepository;
 import ddd.kanban.usecase.workflow.commit.CommitCardInput;
 import ddd.kanban.usecase.workflow.commit.CommitCardOutput;
 import ddd.kanban.usecase.workflow.commit.CommitCardUseCase;
+import ddd.kanban.usecase.workflow.create.CreateWorkflowInput;
+import ddd.kanban.usecase.workflow.create.CreateWorkflowOutput;
+import ddd.kanban.usecase.workflow.create.CreateWorkflowUseCase;
 
 public class DomainEventHandler {
 
@@ -20,7 +23,12 @@ public class DomainEventHandler {
 
     @Subscribe
     public void handleDomainEvent(BoardCreated boardCreated){
-        //TODO
+        final String DEFAULT_WORKFLOW_TITLE = "default workflow";
+        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository);
+        CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput(DEFAULT_WORKFLOW_TITLE, boardCreated.getBoardId());
+        CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
+
+        createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
     }
 
     @Subscribe

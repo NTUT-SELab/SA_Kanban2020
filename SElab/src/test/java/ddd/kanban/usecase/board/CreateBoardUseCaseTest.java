@@ -32,6 +32,7 @@ public class CreateBoardUseCaseTest {
         sqliteBoardRepository = new SqliteBoardRepository();
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.domainEventBus = new DomainEventBus();
+        this.domainEventBus.register(new DomainEventHandler(workflowRepository));
     }
 
     @Test
@@ -43,6 +44,18 @@ public class CreateBoardUseCaseTest {
         assertEquals("TestBoard", createBoardOutput.getBoardName());
         assertEquals("This is board that save in memory", createBoardOutput.getBoardDescription());
 
+    }
+
+    @Test
+    public void testCreateBoardShouldCreateDefaultWorkflow(){
+        CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
+        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard","This is board that save in memory");
+        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        createBoardUseCase.execute(createBoardInput, createBoardOutput);
+        assertEquals("TestBoard", createBoardOutput.getBoardName());
+        assertEquals("This is board that save in memory", createBoardOutput.getBoardDescription());
+
+        assertEquals(1, workflowRepository.findAll().size());
     }
 
 //    @Test

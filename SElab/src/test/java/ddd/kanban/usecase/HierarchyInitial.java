@@ -34,7 +34,7 @@ public class HierarchyInitial {
     }
 
     public String CreateWorkflow(String boardId){
-        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository);
+        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput( "Workflow1", boardId);
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 

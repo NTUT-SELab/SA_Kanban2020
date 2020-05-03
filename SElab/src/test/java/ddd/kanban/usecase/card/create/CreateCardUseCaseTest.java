@@ -39,7 +39,7 @@ public class CreateCardUseCaseTest {
         this.boardId = hierarchyInitial.CreateBoard();
         this.workflowId = hierarchyInitial.CreateWorkflow(this.boardId);
         this.columnId = hierarchyInitial.CreateColumn(this.workflowId);
-        domainEventBus.register(new DomainEventHandler(this.workflowRepository));
+        domainEventBus.register(new DomainEventHandler(this.workflowRepository, boardRepository, domainEventBus));
     }
 
     @Test

@@ -1,6 +1,7 @@
 package ddd.kanban.domain.model.workflow;
 
 import ddd.kanban.domain.model.AggregateRoot;
+import ddd.kanban.domain.model.workflow.event.WorkflowCreated;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,12 @@ public class Workflow extends AggregateRoot {
     private String title;
     private String boardId;
 
-    public Workflow(String id, String title,String boardId){
+    public Workflow(String id, String title, String boardId){
         this.id = id;
         this.title = title;
         this.boardId = boardId;
         columns = new ArrayList<Lane>();
+        addDomainEvent(new WorkflowCreated(id, boardId));
     }
 
     public String createColumn(String columnName, String workflowId){

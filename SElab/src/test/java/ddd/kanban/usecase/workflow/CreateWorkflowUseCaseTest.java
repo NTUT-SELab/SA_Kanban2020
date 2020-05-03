@@ -35,7 +35,7 @@ public class CreateWorkflowUseCaseTest {
     }
     @Test
     public void testCreateWorkflow() {
-        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository);
+        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
 
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow 1", boardId);
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();

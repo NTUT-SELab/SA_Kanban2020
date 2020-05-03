@@ -1,8 +1,13 @@
 package ddd.kanban.usecase;
 
 import com.google.common.eventbus.Subscribe;
+import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.event.BoardCreated;
 import ddd.kanban.domain.model.card.event.CardCreated;
+import ddd.kanban.domain.model.workflow.event.WorkflowCreated;
+import ddd.kanban.usecase.board.commit.CommitWorkflowInput;
+import ddd.kanban.usecase.board.commit.CommitWorkflowOutput;
+import ddd.kanban.usecase.board.commit.CommitWorkflowUseCase;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
 import ddd.kanban.usecase.workflow.commit.CommitCardInput;
@@ -16,15 +21,27 @@ public class DomainEventHandler {
 
     private WorkflowRepository workflowRepository;
     private BoardRepository boardRepository;
+    private DomainEventBus domainEventBus;
 
-    public DomainEventHandler(WorkflowRepository workflowRepository){
+    public DomainEventHandler(WorkflowRepository workflowRepository, BoardRepository boardRepository, DomainEventBus domainEventBus){
         this.workflowRepository = workflowRepository;
+        this.boardRepository = boardRepository;
+        this.domainEventBus = domainEventBus;
+    }
+
+    @Subscribe
+    public void handleDomainEvent(WorkflowCreated workflowCreated){
+        CommitWorkflowUseCase commitWorkflowUseCase = new CommitWorkflowUseCase(boardRepository);
+        CommitWorkflowInput commitWorkflowInput = new CommitWorkflowInput(workflowCreated.getBoardId(), workflowCreated.getWorkflowId());
+        CommitWorkflowOutput commitWorkflowOutput = new CommitWorkflowOutput();
+
+        commitWorkflowUseCase.execute(commitWorkflowInput, commitWorkflowOutput);
     }
 
     @Subscribe
     public void handleDomainEvent(BoardCreated boardCreated){
         final String DEFAULT_WORKFLOW_TITLE = "default workflow";
-        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository);
+        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput(DEFAULT_WORKFLOW_TITLE, boardCreated.getBoardId());
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 

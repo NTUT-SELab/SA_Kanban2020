@@ -32,7 +32,7 @@ public class CreateBoardUseCaseTest {
         sqliteBoardRepository = new SqliteBoardRepository();
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.domainEventBus = new DomainEventBus();
-        this.domainEventBus.register(new DomainEventHandler(workflowRepository));
+        this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
     }
 
     @Test

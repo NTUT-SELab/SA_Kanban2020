@@ -5,13 +5,13 @@ import java.util.List;
 
 public class BoardDTO {
     private final String id;
-    private String name;
+    private String title;
     private String description;
     private List<String> workflowIds;
 
-    public BoardDTO(String id, String name, String description){
+    public BoardDTO(String id, String title, String description){
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.workflowIds = new ArrayList<>();
     }
@@ -20,8 +20,8 @@ public class BoardDTO {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {

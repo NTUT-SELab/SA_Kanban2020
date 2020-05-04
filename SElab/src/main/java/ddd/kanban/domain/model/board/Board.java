@@ -9,25 +9,14 @@ import java.util.List;
 
 public class Board extends AggregateRoot {
 
-    private final String id;
-    private String name;
     private String description;
     private List<String> workflowIds;
 
-    public Board(String id, String  name, String description){
-        this.id = id;
-        this.name = name;
+    public Board(final String id, String title, String description) {
+        super(id, title);
         this.description = description;
         this.workflowIds = new ArrayList<>();
         addDomainEvent(new BoardCreated(this.id));
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getDescription() {
@@ -37,7 +26,6 @@ public class Board extends AggregateRoot {
     public List<String> getWorkflowIds() {
         return this.workflowIds;
     }
-
 
     public void setWorkflowIds(List<String> workflowIds) {
         this.workflowIds = workflowIds;
@@ -50,7 +38,7 @@ public class Board extends AggregateRoot {
         return workflowId;
     }
 
-    private boolean isWorkflowExist(String workflowId){
+    private boolean isWorkflowExist(String workflowId) {
         return this.workflowIds.stream()
                 .anyMatch(id -> id.equals(workflowId));
     }

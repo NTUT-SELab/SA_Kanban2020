@@ -23,7 +23,7 @@ public class CreateBoardUseCase {
 
 
     public void execute(CreateBoardInput createBoardInput, CreateBoardOutput createBoardOutput) {
-        Board board = new Board(UUID.randomUUID().toString(), createBoardInput.getBoardName(), createBoardInput.getBoardDescription());
+        Board board = new Board(UUID.randomUUID().toString(), createBoardInput.getBoardTitle(), createBoardInput.getBoardDescription());
         BoardDTO boardDTO = dtoMapper.mappingBoardDTOFrom(board);
         boardRepository.add(boardDTO);
         boardRepository.save();
@@ -31,7 +31,7 @@ public class CreateBoardUseCase {
         domainEventBus.postAll(board);
 
         createBoardOutput.setBoardId(board.getId());
-        createBoardOutput.setBoardName(board.getName());
+        createBoardOutput.setBoardName(board.getTitle());
         createBoardOutput.setBoardDescription(board.getDescription());
     }
 }

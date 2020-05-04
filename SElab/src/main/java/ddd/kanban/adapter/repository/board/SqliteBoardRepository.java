@@ -66,9 +66,9 @@ public class SqliteBoardRepository implements BoardRepository {
             connection.setAutoCommit(false);
             PreparedStatement preparedStatement = connection.prepareStatement(saveCommand);
             preparedStatement.setString(1, boardDTO.getId());
-            preparedStatement.setString(2, boardDTO.getName());
+            preparedStatement.setString(2, boardDTO.getTitle());
             preparedStatement.setString(3, boardDTO.getDescription());
-            preparedStatement.setString(4, boardDTO.getName());
+            preparedStatement.setString(4, boardDTO.getTitle());
             boolean resultInformation = preparedStatement.execute();
             connection.commit();
         } catch (SQLException e) {

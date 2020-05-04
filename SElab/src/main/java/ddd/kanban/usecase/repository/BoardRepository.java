@@ -1,8 +1,5 @@
 package ddd.kanban.usecase.repository;
 
-
-
-import ddd.kanban.domain.model.board.Board;
 import ddd.kanban.usecase.DTO.BoardDTO;
 
 import java.util.List;

@@ -5,7 +5,7 @@ import ddd.kanban.usecase.DTO.BoardDTO;
 
 public class EntityMapper {
     public Board mappingBoardEntityFrom(BoardDTO boardDTO){
-        Board board = new Board(boardDTO.getId(), boardDTO.getName(), boardDTO.getDescription());
+        Board board = new Board(boardDTO.getId(), boardDTO.getTitle(), boardDTO.getDescription());
         board.setWorkflowIds(boardDTO.getWorkflowIds());
         return  board;
     }

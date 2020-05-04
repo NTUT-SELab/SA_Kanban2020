@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Board extends AggregateRoot {
 
-    private String name;
     private final String id;
+    private String name;
     private String description;
     private List<String> workflowIds;
 
@@ -36,6 +36,11 @@ public class Board extends AggregateRoot {
 
     public List<String> getWorkflowIds() {
         return this.workflowIds;
+    }
+
+
+    public void setWorkflowIds(List<String> workflowIds) {
+        this.workflowIds = workflowIds;
     }
 
     public String commitWorkflow(String workflowId) {

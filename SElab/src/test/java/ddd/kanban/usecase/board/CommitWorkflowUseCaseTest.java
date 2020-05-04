@@ -5,6 +5,7 @@ import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;
 import ddd.kanban.usecase.DomainEventHandler;
+import ddd.kanban.usecase.EntityMapper;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.board.commit.CommitWorkflowInput;
 import ddd.kanban.usecase.board.commit.CommitWorkflowOutput;
@@ -31,6 +32,7 @@ public class CommitWorkflowUseCaseTest {
     private String boardId;
     private DomainEventBus domainEventBus;
     private HierarchyInitial hierarchyInitial;
+    private EntityMapper entityMapper;
 
     @Before
     public void setUp(){
@@ -40,6 +42,7 @@ public class CommitWorkflowUseCaseTest {
         this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, domainEventBus));
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
         boardId = hierarchyInitial.CreateBoard();
+        this.entityMapper = new EntityMapper();
     }
 
     @Test
@@ -50,7 +53,7 @@ public class CommitWorkflowUseCaseTest {
 
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
 
-        Board board = boardRepository.findById(createBoardOutput.getBoardId());
+        Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(createBoardOutput.getBoardId()));
         assertEquals(1, board.getWorkflowIds().size());
     }
 
@@ -62,7 +65,7 @@ public class CommitWorkflowUseCaseTest {
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
 
-        Board board = boardRepository.findById(boardId);
+        Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(boardId));
         assertEquals(2, board.getWorkflowIds().size());
     }
 
@@ -74,7 +77,7 @@ public class CommitWorkflowUseCaseTest {
 
         commitWorkflowUseCase.execute(commitWorkflowInput, commitWorkflowOutput);
 
-        Board board = boardRepository.findById(boardId);
+        Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(boardId));
         assertEquals(2, board.getWorkflowIds().size());
     }
 }

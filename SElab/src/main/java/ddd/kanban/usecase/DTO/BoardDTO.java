@@ -1,5 +1,6 @@
 package ddd.kanban.usecase.DTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDTO {
@@ -8,11 +9,11 @@ public class BoardDTO {
     private String description;
     private List<String> workflowIds;
 
-    public BoardDTO(String id, String name, String description, List<String> workflowIds){
+    public BoardDTO(String id, String name, String description){
         this.id = id;
         this.name = name;
         this.description = description;
-        this.workflowIds = workflowIds;
+        this.workflowIds = new ArrayList<>();
     }
 
     public String getId() {
@@ -29,5 +30,9 @@ public class BoardDTO {
 
     public List<String> getWorkflowIds() {
         return workflowIds;
+    }
+
+    public void setWorkflowIds(List<String> workflowIds) {
+        this.workflowIds = workflowIds;
     }
 }

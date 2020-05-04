@@ -2,6 +2,7 @@ package ddd.kanban.adapter.repository.board;
 
 import ddd.kanban.adapter.database.DataBaseUtility;
 import ddd.kanban.domain.model.board.Board;
+import ddd.kanban.usecase.DTO.BoardDTO;
 import ddd.kanban.usecase.repository.BoardRepository;
 
 import java.sql.*;
@@ -13,7 +14,7 @@ public class SqliteBoardRepository implements BoardRepository {
 
     private DataBaseUtility dataBaseUtility;
 
-    private List<Board> boards;
+    private List<BoardDTO> boards;
 
     public SqliteBoardRepository(){
         dataBaseUtility = new DataBaseUtility();
@@ -22,20 +23,20 @@ public class SqliteBoardRepository implements BoardRepository {
     }
 
     @Override
-    public void add(Board board) {
-        if (isExist(board))
+    public void add(BoardDTO boardDTO) {
+        if (isExist(boardDTO))
             throw new RuntimeException("Board exist");
-        boards.add(board);
+        boards.add(boardDTO);
     }
 
-    private boolean isExist(Board board) {
+    private boolean isExist(BoardDTO boardDTO) {
         return boards.stream()
-                .map(Board::getId)
-                .anyMatch(id -> board.getId().equals(id));
+                .map(BoardDTO::getId)
+                .anyMatch(id -> boardDTO.getId().equals(id));
     }
 
     @Override
-    public Board findById(String boardId) {
+    public BoardDTO findById(String boardId) {
         return boards.stream()
                 .filter(board -> board.getId().equals(boardId))
                 .findFirst()
@@ -47,7 +48,7 @@ public class SqliteBoardRepository implements BoardRepository {
     }
 
     @Override
-    public List<Board> findAll() {
+    public List<BoardDTO> findAll() {
         return boards;
     }
 
@@ -56,7 +57,7 @@ public class SqliteBoardRepository implements BoardRepository {
         boards.forEach(this::saveToDatabase);
     }
 
-    private void saveToDatabase(Board board){
+    private void saveToDatabase(BoardDTO boardDTO){
         Connection connection = dataBaseUtility.getConnection();
         String saveCommand = String.format("INSERT INTO Board (id, name, description) VALUES (?, ?, ?)" +
                 "ON CONFLICT(id) DO UPDATE SET name = ?");
@@ -64,10 +65,10 @@ public class SqliteBoardRepository implements BoardRepository {
         try {
             connection.setAutoCommit(false);
             PreparedStatement preparedStatement = connection.prepareStatement(saveCommand);
-            preparedStatement.setString(1, board.getId());
-            preparedStatement.setString(2, board.getName());
-            preparedStatement.setString(3, board.getDescription());
-            preparedStatement.setString(4, board.getName());
+            preparedStatement.setString(1, boardDTO.getId());
+            preparedStatement.setString(2, boardDTO.getName());
+            preparedStatement.setString(3, boardDTO.getDescription());
+            preparedStatement.setString(4, boardDTO.getName());
             boolean resultInformation = preparedStatement.execute();
             connection.commit();
         } catch (SQLException e) {
@@ -77,18 +78,20 @@ public class SqliteBoardRepository implements BoardRepository {
         }
     }
 
-    private List<Board> findAllBoardFromDatabase(){
+    private List<BoardDTO> findAllBoardFromDatabase(){
+        //TODO : How to get workflowIds
+        //      by execute SQL command 2 times?
         Connection connection = dataBaseUtility.getConnection();
         String queryCommand = String.format("SELECT * FROM Board");
-        List<Board> resultBoards = new ArrayList<>();
+        List<BoardDTO> resultBoards = new ArrayList<>();
 
         try{
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(queryCommand);
 
             while (resultSet.next()){
-                Board board = new Board(resultSet.getString("id"), resultSet.getString("name"),resultSet.getString("description"));
-                resultBoards.add(board);
+                BoardDTO boardDTO = new BoardDTO(resultSet.getString("id"), resultSet.getString("name"),resultSet.getString("description"));
+                resultBoards.add(boardDTO);
             }
             resultSet.close();
         } catch (SQLException e) {

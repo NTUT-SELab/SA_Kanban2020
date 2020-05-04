@@ -5,7 +5,9 @@ import ddd.kanban.usecase.DTO.BoardDTO;
 
 public class DTOMapper {
 
-    public BoardDTO mappingFrom(Board board){
-        return new BoardDTO(board.getId(), board.getName(), board.getDescription(), board.getWorkflowIds());
+    public BoardDTO mappingBoardDTOFrom(Board board){
+        BoardDTO boardDTO = new BoardDTO(board.getId(), board.getName(), board.getDescription());
+        boardDTO.setWorkflowIds(board.getWorkflowIds());
+        return boardDTO;
     }
 }

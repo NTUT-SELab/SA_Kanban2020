@@ -3,6 +3,7 @@ package ddd.kanban.usecase.workflow;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
+import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.workflow.create.CreateWorkflowInput;
@@ -33,6 +34,7 @@ public class CreateWorkflowUseCaseTest {
         this.boardId = hierarchyInitial.CreateBoard();
 
     }
+
     @Test
     public void testCreateWorkflow() {
         CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
@@ -44,5 +46,22 @@ public class CreateWorkflowUseCaseTest {
 
         assertEquals("Workflow 1", createWorkflowOutput.getWorkflowTitle());
         assertNotNull(createWorkflowOutput.getWorkflowId());
+    }
+
+    @Test
+    public void testCreateWorkflowShouldCreateDefaultColumn(){
+        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
+
+        CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow 1", boardId);
+        CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
+
+        createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
+
+        assertEquals("Workflow 1", createWorkflowOutput.getWorkflowTitle());
+        assertNotNull(createWorkflowOutput.getWorkflowId());
+        assertNotNull(createWorkflowOutput.getDefaultColumnId());
+
+        Workflow workflow = workflowRepository.findById(createWorkflowOutput.getWorkflowId());
+        assertEquals("Default Column", workflow.findColumnById(createWorkflowOutput.getDefaultColumnId()).getTitle());
     }
 }

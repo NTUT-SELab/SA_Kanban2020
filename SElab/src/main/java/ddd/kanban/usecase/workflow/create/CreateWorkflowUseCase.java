@@ -16,7 +16,9 @@ public class CreateWorkflowUseCase {
     }
 
     public void execute(CreateWorkflowInput createWorkflowInput, CreateWorkflowOutput createWorkflowOutput) {
+        final String DEFAULT_COLUMN_NAME = "Default Column";
         Workflow workflow = new Workflow(UUID.randomUUID().toString(), createWorkflowInput.getWorkflowTitle(), createWorkflowInput.getBoardId());
+        String defaultColumnId = workflow.createColumn(DEFAULT_COLUMN_NAME, workflow.getId());
 
         workflowRepository.add(workflow);
         workflowRepository.save();
@@ -25,7 +27,6 @@ public class CreateWorkflowUseCase {
 
         createWorkflowOutput.setWorkflowId(workflow.getId());
         createWorkflowOutput.setWorkflowTitle(workflow.getTitle());
-
+        createWorkflowOutput.setDefaultColumnId(defaultColumnId);
     }
-
 }

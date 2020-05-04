@@ -24,7 +24,7 @@ public class Workflow extends AggregateRoot {
     }
 
     public String createColumn(String columnName, String workflowId){
-        Lane column = new Column(columnName, UUID.randomUUID().toString(), workflowId);
+        Lane column = new Column(UUID.randomUUID().toString(), columnName, workflowId);
         columns.add(column);
         return column.getId();
     }

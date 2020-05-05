@@ -35,8 +35,11 @@ public class InMemoryBoardRepository implements BoardRepository {
     }
 
     @Override
-    public void save() {
-
+    public void save(BoardDTO boardDTO) {
+        for (int i = 0; i < boards.size(); i++ ){
+            if (boards.get(i).getId().equals(boardDTO.getId()))
+                boards.set(i, boardDTO);
+        }
     }
 
     @Override

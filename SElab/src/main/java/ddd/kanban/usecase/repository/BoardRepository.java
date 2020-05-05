@@ -10,7 +10,7 @@ public interface BoardRepository {
 
     BoardDTO findById(String boardId);
 
-    void save();
+    void save(BoardDTO boardDTO);
 
     List<BoardDTO> findAll();
 }

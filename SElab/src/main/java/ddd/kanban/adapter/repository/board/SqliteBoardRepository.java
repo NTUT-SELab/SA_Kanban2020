@@ -53,7 +53,7 @@ public class SqliteBoardRepository implements BoardRepository {
     }
 
     @Override
-    public void save() {
+    public void save(BoardDTO boardDTO) {
         boards.forEach(this::saveToDatabase);
     }
 

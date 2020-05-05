@@ -26,7 +26,7 @@ public class CreateBoardUseCase {
         Board board = new Board(UUID.randomUUID().toString(), createBoardInput.getBoardTitle(), createBoardInput.getBoardDescription());
         BoardDTO boardDTO = dtoMapper.mappingBoardDTOFrom(board);
         boardRepository.add(boardDTO);
-        boardRepository.save();
+        boardRepository.save(boardDTO);
 
         domainEventBus.postAll(board);
 

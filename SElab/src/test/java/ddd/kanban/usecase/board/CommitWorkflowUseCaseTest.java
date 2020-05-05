@@ -46,7 +46,7 @@ public class CommitWorkflowUseCaseTest {
     }
 
     @Test
-    public void testCreateBoardShouldCreateWorkflowAndCommitBackToBoard(){
+    public void testCreateBoardShouldCreateWorkflowAndCommitToBoard(){
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("board", "Test");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
@@ -55,17 +55,6 @@ public class CommitWorkflowUseCaseTest {
 
         Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(createBoardOutput.getBoardId()));
         assertEquals(1, board.getWorkflowIds().size());
-
-        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
-        CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow2", createBoardOutput.getBoardId());
-        CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
-
-
-        createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
-
-
-        assertEquals(2, board.getWorkflowIds().size());
-
     }
 
     @Test
@@ -75,18 +64,6 @@ public class CommitWorkflowUseCaseTest {
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
-
-        Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(boardId));
-        assertEquals(2, board.getWorkflowIds().size());
-    }
-
-    @Test
-    public void testCommitWorkflow(){
-        CommitWorkflowUseCase commitWorkflowUseCase = new CommitWorkflowUseCase(boardRepository);
-        CommitWorkflowInput commitWorkflowInput = new CommitWorkflowInput(boardId, UUID.randomUUID().toString());
-        CommitWorkflowOutput commitWorkflowOutput = new CommitWorkflowOutput();
-
-        commitWorkflowUseCase.execute(commitWorkflowInput, commitWorkflowOutput);
 
         Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(boardId));
         assertEquals(2, board.getWorkflowIds().size());

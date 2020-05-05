@@ -54,6 +54,11 @@ public class SqliteBoardRepository implements BoardRepository {
 
     @Override
     public void save(BoardDTO boardDTO) {
+        for (BoardDTO board : boards){
+            if (board.getId().equals(boardDTO.getId())){
+                boards.set(boards.indexOf(board), boardDTO);
+            }
+        }
         boards.forEach(this::saveToDatabase);
     }
 
@@ -79,10 +84,16 @@ public class SqliteBoardRepository implements BoardRepository {
     }
 
     private List<BoardDTO> findAllBoardFromDatabase(){
-        //TODO : How to get workflowIds
-        //      by execute SQL command 2 times?
+        List<BoardDTO> boardDTOs = findAllBoard();
+        for (BoardDTO each : boardDTOs){
+            each.setWorkflowIds(findWorkflowOnBoard(each.getId()));
+        }
+        return boardDTOs;
+    }
+
+    private List<BoardDTO> findAllBoard(){
         Connection connection = dataBaseUtility.getConnection();
-        String queryCommand = String.format("SELECT * FROM Board");
+        String queryCommand = String.format("SELECT id, name, description FROM Board");
         List<BoardDTO> resultBoards = new ArrayList<>();
 
         try{
@@ -97,8 +108,33 @@ public class SqliteBoardRepository implements BoardRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         } finally {
-           dataBaseUtility.close(connection);
+            dataBaseUtility.close(connection);
         }
         return resultBoards;
+    }
+
+    private List<String> findWorkflowOnBoard(String boardId){
+        Connection connection = dataBaseUtility.getConnection();
+        String queryCommand = String.format("SELECT id \n" +
+                "FROM Workflow\n" +
+                "WHERE boardId = ?");
+        List<String> result = new ArrayList<>();
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(queryCommand);
+            preparedStatement.setString(1, boardId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                result.add(resultSet.getString("id"));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            dataBaseUtility.close(connection);
+        }
+        return result;
     }
 }

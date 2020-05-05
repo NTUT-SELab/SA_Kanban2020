@@ -4,7 +4,9 @@ import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.board.SqliteBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
+import ddd.kanban.domain.model.board.Board;
 import ddd.kanban.usecase.DomainEventHandler;
+import ddd.kanban.usecase.EntityMapper;
 import ddd.kanban.usecase.board.create.CreateBoardInput;
 import ddd.kanban.usecase.board.create.CreateBoardOutput;
 import ddd.kanban.usecase.board.create.CreateBoardUseCase;
@@ -52,6 +54,7 @@ public class CreateBoardUseCaseTest {
         CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard","This is board that save in memory");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
+
         assertEquals("TestBoard", createBoardOutput.getBoardName());
         assertEquals("This is board that save in memory", createBoardOutput.getBoardDescription());
 
@@ -67,4 +70,12 @@ public class CreateBoardUseCaseTest {
 //        assertEquals("TestBoard2", createBoardOutput.getBoardName());
 //        assertEquals("This is board that save in sqlite", createBoardOutput.getBoardDescription());
 //    }
+
+    @Test
+    public void testFindAllBoards(){
+        EntityMapper entityMapper = new EntityMapper();
+        assertEquals(2, sqliteBoardRepository.findAll().size());
+        Board board = entityMapper.mappingBoardEntityFrom(sqliteBoardRepository.findById("40b0ff60-beb6-4838-a07b-de47bba04626"));
+        assertEquals(2, board.getWorkflowIds().size());
+    }
 }

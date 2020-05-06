@@ -33,6 +33,10 @@ public class Workflow extends AggregateRoot {
                 .orElseThrow(RuntimeException::new);
     }
 
+    public List<Lane> getColums(){
+        return columns;
+    }
+
     public static Predicate<Lane> judgeColumnId(String columnId){
         return column -> column.getId().equals(columnId);
     }

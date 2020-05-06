@@ -4,6 +4,7 @@ import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;
+import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.DomainEventHandler;
 import ddd.kanban.usecase.EntityMapper;
 import ddd.kanban.usecase.HierarchyInitial;
@@ -35,7 +36,7 @@ public class CommitWorkflowUseCaseTest {
     private EntityMapper entityMapper;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         boardRepository = new InMemoryBoardRepository();
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.domainEventBus = new DomainEventBus();
@@ -46,7 +47,7 @@ public class CommitWorkflowUseCaseTest {
     }
 
     @Test
-    public void testCreateBoardShouldCreateWorkflowAndCommitToBoard(){
+    public void testCreateBoardShouldCreateWorkflowAndCommitToBoard() {
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("board", "Test");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
@@ -58,7 +59,7 @@ public class CommitWorkflowUseCaseTest {
     }
 
     @Test
-    public void testCreateWorkflowShouldCommitToBoard(){
+    public void testCreateWorkflowShouldCommitToBoard() {
         CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow2", boardId);
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
@@ -67,5 +68,23 @@ public class CommitWorkflowUseCaseTest {
 
         Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(boardId));
         assertEquals(2, board.getWorkflowIds().size());
+    }
+
+    @Test
+    public void testCreateCommitWorkflowUseCase() {
+        Workflow workflow = new Workflow(UUID.randomUUID().toString(),"Test Commit Workflow to It's Board", this.boardId);
+        workflow.clearDomainEvents();
+
+        CommitWorkflowInput commitWorkflowInput = new CommitWorkflowInput(this.boardId, workflow.getId());
+        CommitWorkflowOutput commitWorkflowOutput = new CommitWorkflowOutput();
+        CommitWorkflowUseCase commitWorkflowUseCase = new CommitWorkflowUseCase(this.boardRepository);
+
+        commitWorkflowUseCase.execute(commitWorkflowInput, commitWorkflowOutput);
+
+        Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(boardId));
+        assertEquals(2, board.getWorkflowIds().size());
+        //
+        assertEquals(workflow.getId(), commitWorkflowOutput.getWorkflowId());
+        assertEquals(board.getId(), commitWorkflowOutput.getBoardId());
     }
 }

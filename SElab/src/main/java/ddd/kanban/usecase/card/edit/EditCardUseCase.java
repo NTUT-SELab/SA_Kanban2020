@@ -19,7 +19,6 @@ public class EditCardUseCase {
         card.setPlannedFinishDate(editCardUseCaseInput.getCardPlannedFinishDate());
         card.setPriority(editCardUseCaseInput.getCardPriority());
 
-        cardRepository.update(card);
         cardRepository.save(card);
 
         editCardUseCaseOutput.setCardId(card.getId());

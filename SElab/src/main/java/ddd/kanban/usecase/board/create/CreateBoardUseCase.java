@@ -26,12 +26,11 @@ public class CreateBoardUseCase {
         Board board = new Board(UUID.randomUUID().toString(), createBoardInput.getBoardTitle(), createBoardInput.getBoardDescription());
         BoardDTO boardDTO = dtoMapper.mappingBoardDTOFrom(board);
         boardRepository.add(boardDTO);
-        boardRepository.save(boardDTO);
 
         domainEventBus.postAll(board);
 
         createBoardOutput.setBoardId(board.getId());
-        createBoardOutput.setBoardName(board.getTitle());
+        createBoardOutput.setBoardTitle(board.getTitle());
         createBoardOutput.setBoardDescription(board.getDescription());
     }
 }

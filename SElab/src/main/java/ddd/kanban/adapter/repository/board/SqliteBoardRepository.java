@@ -27,6 +27,7 @@ public class SqliteBoardRepository implements BoardRepository {
         if (isExist(boardDTO))
             throw new RuntimeException("Board exist");
         boards.add(boardDTO);
+        saveToDatabase(boardDTO);
     }
 
     private boolean isExist(BoardDTO boardDTO) {

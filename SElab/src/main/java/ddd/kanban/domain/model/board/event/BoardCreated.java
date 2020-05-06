@@ -16,7 +16,7 @@ public class BoardCreated implements DomainEvent {
 
     @Override
     public Date occurredOn() {
-        return null;
+        return occurredOn;
     }
 
     public String getBoardId() {

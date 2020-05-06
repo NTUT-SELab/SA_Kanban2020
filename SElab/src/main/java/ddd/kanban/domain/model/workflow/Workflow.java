@@ -33,7 +33,7 @@ public class Workflow extends AggregateRoot {
                 .orElseThrow(RuntimeException::new);
     }
 
-    public List<Lane> getColums(){
+    public List<Lane> getColumns(){
         return columns;
     }
 

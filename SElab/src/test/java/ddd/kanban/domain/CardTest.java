@@ -14,7 +14,7 @@ public class CardTest {
         String boardId = UUID.randomUUID().toString();
         String workflowId = UUID.randomUUID().toString();
         Card card = new Card(cardId, "CardName", "Card Description", boardId, workflowId);
-
+        
         assertEquals(1, card.getDomainEvents().size());
         card.clearDomainEvents();
     }

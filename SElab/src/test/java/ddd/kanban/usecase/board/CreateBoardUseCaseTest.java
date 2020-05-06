@@ -1,10 +1,10 @@
 package ddd.kanban.usecase.board;
 
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
-import ddd.kanban.adapter.repository.board.SqliteBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;
+import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.DomainEventHandler;
 import ddd.kanban.usecase.EntityMapper;
 import ddd.kanban.usecase.board.create.CreateBoardInput;
@@ -22,60 +22,63 @@ import static org.junit.Assert.assertTrue;
 
 public class CreateBoardUseCaseTest {
     private BoardRepository boardRepository;
-    private BoardRepository sqliteBoardRepository;
     private WorkflowRepository workflowRepository;
     private String boardId;
     private DomainEventBus domainEventBus;
+    private EntityMapper entityMapper;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         boardId = UUID.randomUUID().toString();
         boardRepository = new InMemoryBoardRepository();
-        sqliteBoardRepository = new SqliteBoardRepository();
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.domainEventBus = new DomainEventBus();
         this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
+        this.entityMapper = new EntityMapper();
     }
 
     @Test
-    public void testCreateBoardUseCase(){
+    public void testCreateBoardUseCase() {
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
-        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard","This is board that save in memory");
+        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard", "This is board that save in memory");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
-        assertEquals("TestBoard", createBoardOutput.getBoardName());
+        assertEquals("TestBoard", createBoardOutput.getBoardTitle());
         assertEquals("This is board that save in memory", createBoardOutput.getBoardDescription());
 
     }
 
     @Test
-    public void testCreateBoardShouldCreateDefaultWorkflow(){
+    public void testCreateBoardShouldCreateDefaultWorkflow() {
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
-        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard","This is board that save in memory");
+        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard", "This is board that save in memory");
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
 
-        assertEquals("TestBoard", createBoardOutput.getBoardName());
+        assertEquals("TestBoard", createBoardOutput.getBoardTitle());
         assertEquals("This is board that save in memory", createBoardOutput.getBoardDescription());
 
         assertEquals(1, workflowRepository.findAll().size());
     }
 
-//    @Test
-//    public void testCreateBoardUseCaseWithSQLite(){
-//        CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(sqliteBoardRepository, domainEventBus);
-//        CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard2", "This is board that save in sqlite");
-//        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
-//        createBoardUseCase.execute(createBoardInput, createBoardOutput);
-//        assertEquals("TestBoard2", createBoardOutput.getBoardName());
-//        assertEquals("This is board that save in sqlite", createBoardOutput.getBoardDescription());
-//    }
-
     @Test
-    public void testFindAllBoards(){
-        EntityMapper entityMapper = new EntityMapper();
-        assertEquals(2, sqliteBoardRepository.findAll().size());
-        Board board = entityMapper.mappingBoardEntityFrom(sqliteBoardRepository.findById("40b0ff60-beb6-4838-a07b-de47bba04626"));
-        assertEquals(2, board.getWorkflowIds().size());
+    public void testCreateBoardShouldCreateDefaultWorkflowAndThenWorkflowShouldCreateDefaultLane() {
+        CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
+        CreateBoardInput createBoardInput = new CreateBoardInput("IntegrationTestBoard", "This is board that save in memory");
+        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        createBoardUseCase.execute(createBoardInput, createBoardOutput);
+
+        assertEquals("IntegrationTestBoard", createBoardOutput.getBoardTitle());
+        assertEquals("This is board that save in memory", createBoardOutput.getBoardDescription());
+
+        assertEquals(1, boardRepository.findAll().size());
+
+        Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(createBoardOutput.getBoardId()));
+        assertEquals(1, board.getWorkflowIds().size());
+
+        Workflow workflow = workflowRepository.findById(board.getWorkflowIds().get(0));
+        assertEquals(createBoardOutput.getBoardId(), workflow.getBoardId());
+
+        assertEquals(1, workflow.getColumns().size());
     }
 }

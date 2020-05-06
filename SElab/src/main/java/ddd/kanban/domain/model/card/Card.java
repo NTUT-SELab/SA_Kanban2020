@@ -44,13 +44,10 @@ public class Card extends AggregateRoot {
         tasks = new ArrayList<Task>();
     }
 
-    public String createTask(Task task) {
-        String taskId = UUID.randomUUID().toString();
-        Task newTask = new Task(taskId, task.getTitle(), task.getDescription(), task.getTaskType(), task.getTags(), task.getAssignUsers(), task.getPlannedStartDate(), task.getPlannedFinishDate(), task.getHeader(), task.getPriority(), task.getExternalLink());
-
-        tasks.add(newTask);
-
-        return taskId;
+    public String createTask(String taskTitle, String cardId) {
+        Task task = new Task(UUID.randomUUID().toString(), taskTitle);
+        tasks.add(task);
+        return task.getId();
     }
 
     public Task findTaskById(String taskId) {

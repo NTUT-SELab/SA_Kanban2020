@@ -71,7 +71,7 @@ public class CommitWorkflowUseCaseTest {
     }
 
     @Test
-    public void testCreateCommitWorkflowUseCase() {
+    public void testCommitWorkflowUseCase() {
         Workflow workflow = new Workflow(UUID.randomUUID().toString(),"Test Commit Workflow to It's Board", this.boardId);
         workflow.clearDomainEvents();
 
@@ -83,7 +83,7 @@ public class CommitWorkflowUseCaseTest {
 
         Board board = entityMapper.mappingBoardEntityFrom(boardRepository.findById(boardId));
         assertEquals(2, board.getWorkflowIds().size());
-        //
+
         assertEquals(workflow.getId(), commitWorkflowOutput.getWorkflowId());
         assertEquals(board.getId(), commitWorkflowOutput.getBoardId());
     }

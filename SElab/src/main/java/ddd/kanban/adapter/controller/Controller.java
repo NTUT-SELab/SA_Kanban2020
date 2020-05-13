@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
@@ -19,6 +21,7 @@ public class Controller {
     private WorkflowRepository workflowRepository;
     private DomainEventBus domainEventBus;
     private EntityMapper entityMapper;
+
     public Controller(){
         boardRepository = new InMemoryBoardRepository();
         this.workflowRepository = new InMemoryWorkflowRepository();
@@ -27,13 +30,14 @@ public class Controller {
         this.entityMapper = new EntityMapper();
     }
 
-    public void createBoard() {
+    public void createBoard(JsonObject jsonObject) {
+        String title = jsonObject.get("title").getAsString();
+        String description = jsonObject.get("description").getAsString();
 
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput(title, description);
         CreateBoardOutput createBoardOutput = new CreateBoardOutput();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
     }
-
 
 }

@@ -2,18 +2,21 @@
   <div id="app">
     <navBar/>
     <BoardNav/>
+    <BoardCard/>
   </div>
 </template>
 
 <script>
 import navBar from './components/navBar.vue'
 import BoardNav from './components/BoardNav.vue'
+import BoardCard from './components/BoardCard.vue'
 
 export default {
   name: 'App',
   components: {
     navBar,
-    BoardNav
+    BoardNav,
+    BoardCard
   }
 }
 </script>
@@ -26,5 +29,4 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
 </style>

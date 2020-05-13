@@ -1,6 +1,7 @@
 package ddd.kanban.spring.controller;
 
 
+import ddd.kanban.usecase.DTO.BoardDTO;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpringBoardController {
 
     @PostMapping
-    public ResponseEntity<String> createBoard(@RequestBody String request) {
+    public ResponseEntity<BoardDTO> createBoard(@RequestBody BoardDTO request) {
         return ResponseEntity.ok().body(request);
     }
 }

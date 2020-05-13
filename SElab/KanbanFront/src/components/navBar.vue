@@ -78,7 +78,7 @@ export default {
   }
 
   #navbarPlusIcon{
-    color: white;
+    fill: white;
   }
 
   #modalLegend{

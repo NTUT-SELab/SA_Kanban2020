@@ -2,7 +2,7 @@
 <div>
   <vk-navbar id="boardNav">
     <vk-navbar-nav slot="left">
-      <vk-iconnav-item href="#" icon="home"></vk-iconnav-item>
+      <vk-button type="primary" id="navHomeButton"><img src="https://i.imgur.com/lohmYuW.png"></vk-button>
     </vk-navbar-nav>
 
     <vk-navbar-logo id="nvaLogo" slot="center">Kanban</vk-navbar-logo>
@@ -29,33 +29,47 @@
                     <textarea class="uk-textarea" rows="5" placeholder="Board Description"></textarea>
                 </div>
                 <p v-vk-margin>
-                    <vk-button type="primary" id="modalCreateButton" @click.prevent="show = false">Create</vk-button>
+                    <vk-button type="primary" id="modalCreateButton" @click="createBoard">Create</vk-button>
                 </p>
             </fieldset>
         </form>
     </div>
   </vk-modal>
 
+  <vk-notification status="primary" :messages.sync="messages"></vk-notification>
+
 </div>
 
 </template>
 
 <script>
+
 export default {
   data(){
     return{
       show: false,
+      messages: []
     }
   },
   methods:{
-    openBoardModal: function () {
-      this.boardModalOpen = !this.boardModalOpen;
+    createBoard: function(){
+      this.show = false;
+      this.messages.push({ message: 'Success', status: 'success' });
+      this.messages.push({ message: 'Fail', status: 'danger' });
     }
   }
 }
 </script>>
 
 <style scoped>
+
+  #navInput{
+    background-color: transparent;
+  }
+
+  #navHomeButton{
+    background-color: transparent;
+  }
 
   #navAvatarButton{
     background-color: transparent;
@@ -67,6 +81,7 @@ export default {
 
   #boardNav{
     background-color: #23a8fa !important;
+    height: 80px;
   }
 
   #modalCreateButton{

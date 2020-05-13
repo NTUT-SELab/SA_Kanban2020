@@ -10,8 +10,10 @@
   "dependencies": {
     "@vuikit/icons": "^0.8.1",
     "@vuikit/theme": "^0.8.1",
+    "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
+    "vuex": "^3.4.0",
     "vuikit": "^0.8.10"
   },
   "devDependencies": {

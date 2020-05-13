@@ -3,24 +3,20 @@ package ddd.kanban.adapter;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import ddd.kanban.adapter.controller.JsonBoard;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.usecase.DomainEventHandler;
 import ddd.kanban.usecase.EntityMapper;
-import ddd.kanban.usecase.board.create.CreateBoardInput;
-import ddd.kanban.usecase.board.create.CreateBoardOutput;
-import ddd.kanban.usecase.board.create.CreateBoardUseCase;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
 import org.junit.Before;
 import org.junit.Test;
-import ddd.kanban.adapter.controller.Controller;
+import ddd.kanban.adapter.controller.BoardController;
 
 import static org.junit.Assert.assertEquals;
 
-public class ControllerTest {
+public class BoardControllerTest {
     private BoardRepository boardRepository;
     private WorkflowRepository workflowRepository;
     private DomainEventBus domainEventBus;
@@ -44,7 +40,7 @@ public class ControllerTest {
         JsonObject jo = (JsonObject)jsonParser.parse(json_Board);
 
 
-        Controller c=new Controller(boardRepository,domainEventBus);
+        BoardController c=new BoardController(boardRepository,domainEventBus);
         c.createBoard(jo);
 
         assertEquals(1,boardRepository.findAll().size());

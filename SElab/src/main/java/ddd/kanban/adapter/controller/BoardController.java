@@ -1,12 +1,8 @@
 package ddd.kanban.adapter.controller;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
-import ddd.kanban.domain.model.DomainEvent;
 import ddd.kanban.domain.model.DomainEventBus;
-import ddd.kanban.usecase.DomainEventHandler;
 import ddd.kanban.usecase.EntityMapper;
 import ddd.kanban.usecase.board.create.CreateBoardInput;
 import ddd.kanban.usecase.board.create.CreateBoardOutput;
@@ -14,16 +10,15 @@ import ddd.kanban.usecase.board.create.CreateBoardUseCase;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
 
-import java.util.UUID;
 
 
-public class Controller {
+public class BoardController {
     private BoardRepository boardRepository;
     private WorkflowRepository workflowRepository;
     private DomainEventBus domainEventBus;
     private EntityMapper entityMapper;
 
-    public Controller(BoardRepository boardRepository, DomainEventBus domainEventBus){
+    public BoardController(BoardRepository boardRepository, DomainEventBus domainEventBus){
         this.boardRepository = boardRepository;
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.domainEventBus = domainEventBus;

@@ -43,7 +43,6 @@
 <script>
 export default {
     data(){
-        this.axios.get("http://140.124.183.93:8080/products").then(data=>{console.log(data)}).catch(data=>{console.log(data)});
         return{
             show: false,
             messages: [],
@@ -60,20 +59,20 @@ export default {
 
         },
         createBoard: function(){
-            // axios.post('/api',{
-            //     boardTitle: this.boardTitle,
-            //     boardDescription: this.boardDescription
-            // }).then(function (response) {
-            //     this.boards.push({boardTitle: response.boardTitle})
-            //     this.messages.push({ message: 'Success', status: 'success' });
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            //     this.messages.push({ message: 'Fail', status: 'Danger' });
-            // });
+            this.axios.post('http://140.124.183.93:8080/baord',{
+                boardTitle: this.boardTitle,
+                boardDescription: this.boardDescription
+            }).then(function (response) {
+                this.boards.push({boardTitle: response.boardTitle})
+                this.messages.push({ message: 'Success', status: 'success' });
+            })
+            .catch(function (error) {
+                console.log(error);
+                this.messages.push({ message: 'Fail', status: 'Danger' });
+            });
 
-            this.messages.push({ message: 'Success', status: 'success' });
-            this.boards.push({boardTitle: this.boardTitle})
+            // this.messages.push({ message: 'Success', status: 'success' });
+            // this.boards.push({boardTitle: this.boardTitle})
             this.clearModalForm();
         }
     }

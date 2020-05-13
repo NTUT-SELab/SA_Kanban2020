@@ -8,8 +8,8 @@
     <vk-navbar-logo id="nvaLogo" slot="center">Kanban</vk-navbar-logo>
 
     <vk-navbar-nav slot="right">
-      <vk-iconnav-item id="navbarPlusIcon" icon="plus" @click="show = true"></vk-iconnav-item>
-      <vk-button id="navbarCreate" @click="show = true">New</vk-button>
+      <vk-button type="primary" id="navImageButton" @click="show = true"><img src="https://i.imgur.com/T50ORBG.png"></vk-button>
+      <vk-button type="primary" id="navAvatarButton"><img src="https://i.imgur.com/lojmoSO.png"></vk-button>
     </vk-navbar-nav>
 
   </vk-navbar>
@@ -56,14 +56,17 @@ export default {
 </script>>
 
 <style scoped>
-  #boardNav{
-    background-color: #23a8fa !important;
+
+  #navAvatarButton{
+    background-color: transparent;
   }
 
-  #navbarCreate{
+  #navImageButton{
     background-color: transparent;
-    color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #boardNav{
+    background-color: #23a8fa !important;
   }
 
   #modalCreateButton{
@@ -75,10 +78,6 @@ export default {
     color: white;
     font-size: 40px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  #navbarPlusIcon{
-    fill: white;
   }
 
   #modalLegend{

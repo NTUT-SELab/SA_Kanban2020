@@ -43,7 +43,7 @@
 <script>
 export default {
     data(){
-        this.axios.get("http://localhost:8080/").then(data=>{console.log(data)}).catch(data=>{console.log(data)});
+        this.axios.get("http://140.124.183.93:8080/products").then(data=>{console.log(data)}).catch(data=>{console.log(data)});
         return{
             show: false,
             messages: [],

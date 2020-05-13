@@ -1,11 +1,11 @@
 package ddd.kanban.spring.controller;
 
 
+
 import ddd.kanban.adapter.DTO.BoardDTO;
 import ddd.kanban.adapter.controller.BoardController;
 import ddd.kanban.adapter.repository.board.SqliteBoardRepository;
 import ddd.kanban.domain.model.DomainEventBus;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -5,7 +5,7 @@
     </div>
     <div id="grid">
         <vk-grid gutter="medium" class="uk-child-width-1-5@m uk-text-center">
-            <div  v-for="(board) in boards" :key = board >
+            <div  v-for="(board, i) in boards" :key = "i" >
                 <vk-card id="boardCard" padding="large" hover>
                 <vk-card-title id="cardTitle">{{ board.boardTitle }}</vk-card-title>
                 </vk-card>
@@ -43,6 +43,7 @@
 <script>
 export default {
     data(){
+        this.axios.get("http://localhost:8080/").then(data=>{console.log(data)}).catch(data=>{console.log(data)});
         return{
             show: false,
             messages: [],
@@ -55,6 +56,8 @@ export default {
         clearModalForm: function(){
             this.boardTitle = "";
             this.boardDescription = "";
+            this.show = false;
+
         },
         createBoard: function(){
             // axios.post('/api',{
@@ -68,7 +71,7 @@ export default {
             //     console.log(error);
             //     this.messages.push({ message: 'Fail', status: 'Danger' });
             // });
-            this.show = false;
+
             this.messages.push({ message: 'Success', status: 'success' });
             this.boards.push({boardTitle: this.boardTitle})
             this.clearModalForm();

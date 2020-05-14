@@ -1,13 +1,13 @@
 package ddd.kanban.usecase.board;
 
 import ddd.kanban.domain.model.board.Board;
-import ddd.kanban.usecase.board.DTO.BoardEntity;
+import ddd.kanban.usecase.board.DTO.BoardDTO;
 
 public class BoardDTOMapper {
 
-    public BoardEntity mappingBoardDTOFrom(Board board){
-        BoardEntity boardEntity = new BoardEntity(board.getId(), board.getTitle(), board.getDescription());
-        boardEntity.setWorkflowIds(board.getWorkflowIds());
-        return boardEntity;
+    public BoardDTO mappingBoardDTOFrom(Board board){
+        BoardDTO boardDTO = new BoardDTO(board.getId(), board.getTitle(), board.getDescription());
+        boardDTO.setWorkflowIds(board.getWorkflowIds());
+        return boardDTO;
     }
 }

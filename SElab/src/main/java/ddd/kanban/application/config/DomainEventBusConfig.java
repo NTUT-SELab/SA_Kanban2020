@@ -1,4 +1,4 @@
-package ddd.kanban.spring.config;
+package ddd.kanban.application.config;
 
 import ddd.kanban.domain.model.DomainEventBus;
 import org.springframework.context.annotation.Bean;

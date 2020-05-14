@@ -1,4 +1,4 @@
-package ddd.kanban.spring.config;
+package ddd.kanban.application.config;
 
 import ddd.kanban.adapter.repository.board.SqliteBoardRepository;
 import ddd.kanban.usecase.repository.BoardRepository;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class RepositoryConfig {
 
     @Bean
-    public BoardRepository BoardRepositoryFactory() {
+    public BoardRepository createBoardRepository() {
         return new SqliteBoardRepository();
     }
 }

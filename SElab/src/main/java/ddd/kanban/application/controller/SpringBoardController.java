@@ -1,7 +1,7 @@
-package ddd.kanban.spring.controller;
+package ddd.kanban.application.controller;
 
 import ddd.kanban.adapter.DTO.BoardDTO;
-import ddd.kanban.adapter.controller.BoardController;
+import ddd.kanban.adapter.controller.RESTBoardAdapter;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/board", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SpringBoardController {
 
-
-
-    private  BoardController boardController;
+    private RESTBoardAdapter RESTBoardAdapter;
 
     @PostMapping
     public ResponseEntity<BoardDTO> createBoard(@RequestBody BoardDTO request) {
-        BoardDTO output = boardController.createBoard(request);
+        BoardDTO output = RESTBoardAdapter.createBoard(request);
         return ResponseEntity.ok().body(output);
     }
 }

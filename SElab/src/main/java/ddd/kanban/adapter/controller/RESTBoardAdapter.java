@@ -8,11 +8,11 @@ import ddd.kanban.usecase.board.create.CreateBoardUseCase;
 import ddd.kanban.usecase.repository.BoardRepository;
 
 
-public class BoardController {
+public class RESTBoardAdapter {
     private BoardRepository boardRepository;
     private DomainEventBus domainEventBus;
 
-    public BoardController(BoardRepository boardRepository, DomainEventBus domainEventBus){
+    public RESTBoardAdapter(BoardRepository boardRepository, DomainEventBus domainEventBus){
         this.boardRepository = boardRepository;
         this.domainEventBus = domainEventBus;
     }

@@ -11,8 +11,8 @@ public class BoardEntityMapper {
     }
 
     public static BoardEntity mappingBoardEntityFrom(Board board){
-        BoardEntity boardDTO = new BoardEntity(board.getId(), board.getTitle(), board.getDescription());
-        boardDTO.setWorkflowIds(board.getWorkflowIds());
-        return boardDTO;
+        BoardEntity boardEntity = new BoardEntity(board.getId(), board.getTitle(), board.getDescription());
+        boardEntity.setWorkflowIds(board.getWorkflowIds());
+        return boardEntity;
     }
 }

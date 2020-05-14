@@ -2,8 +2,6 @@ package ddd.kanban.spring.controller;
 
 import ddd.kanban.adapter.DTO.BoardDTO;
 import ddd.kanban.adapter.controller.BoardController;
-import ddd.kanban.adapter.repository.board.SqliteBoardRepository;
-import ddd.kanban.domain.model.DomainEventBus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpringBoardController {
 
 
-    private final  BoardController boardController = new BoardController(new SqliteBoardRepository(), new DomainEventBus());
+
+    private  BoardController boardController;
 
     @PostMapping
     public ResponseEntity<BoardDTO> createBoard(@RequestBody BoardDTO request) {

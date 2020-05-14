@@ -1,13 +1,9 @@
 package ddd.kanban.adapter.DTO;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BoardDTO {
     private String id;
     private String title;
     private String description;
-    private List<String> workflowIds = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -31,13 +27,5 @@ public class BoardDTO {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<String> getWorkflowIds() {
-        return workflowIds;
-    }
-
-    public void setWorkflowIds(List<String> workflowIds) {
-        this.workflowIds = workflowIds;
     }
 }

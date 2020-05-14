@@ -1,7 +1,5 @@
 package ddd.kanban.spring.controller;
 
-
-
 import ddd.kanban.adapter.DTO.BoardDTO;
 import ddd.kanban.adapter.controller.BoardController;
 import ddd.kanban.adapter.repository.board.SqliteBoardRepository;

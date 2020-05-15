@@ -1,5 +1,6 @@
 package ddd.kanban.usecase.board;
 
+import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
@@ -33,7 +34,7 @@ public class CreateBoardUseCaseTest {
     public void testCreateBoardUseCase() {
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard", "This is board that save in memory");
-        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        CreateBoardOutput createBoardOutput = new CreateBoardPresenter();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
         assertEquals("TestBoard", createBoardOutput.getBoardTitle());
         assertEquals("This is board that save in memory", createBoardOutput.getBoardDescription());
@@ -44,7 +45,7 @@ public class CreateBoardUseCaseTest {
     public void testCreateBoardShouldCreateDefaultWorkflow() {
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard", "This is board that save in memory");
-        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        CreateBoardOutput createBoardOutput = new CreateBoardPresenter();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
 
         assertEquals("TestBoard", createBoardOutput.getBoardTitle());
@@ -57,7 +58,7 @@ public class CreateBoardUseCaseTest {
     public void testCreateBoardShouldCreateDefaultWorkflowAndThenWorkflowShouldCreateDefaultLane() {
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("IntegrationTestBoard", "This is board that save in memory");
-        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        CreateBoardOutput createBoardOutput = new CreateBoardPresenter();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
 
         assertEquals("IntegrationTestBoard", createBoardOutput.getBoardTitle());

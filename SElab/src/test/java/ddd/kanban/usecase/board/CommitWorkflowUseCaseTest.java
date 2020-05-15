@@ -1,5 +1,6 @@
 package ddd.kanban.usecase.board;
 
+import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
@@ -47,7 +48,7 @@ public class CommitWorkflowUseCaseTest {
     public void testCreateBoardShouldCreateWorkflowAndCommitToBoard() {
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("board", "Test");
-        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        CreateBoardOutput createBoardOutput = new CreateBoardPresenter();
 
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
 

@@ -1,9 +1,10 @@
 package ddd.kanban.adapter.controller;
 
 import ddd.kanban.adapter.DTO.BoardDTO;
+import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
+import ddd.kanban.adapter.presenter.board.viewmodel.CreateBoardViewModel;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.usecase.board.create.CreateBoardInput;
-import ddd.kanban.usecase.board.create.CreateBoardOutput;
 import ddd.kanban.usecase.board.create.CreateBoardUseCase;
 import ddd.kanban.usecase.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,33 +15,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@RestController
+@RequestMapping(value = "/board", produces = MediaType.APPLICATION_JSON_VALUE)
 public class RESTBoardAdapter {
-    private BoardRepository boardRepository;
     private DomainEventBus domainEventBus;
+    private BoardRepository boardRepository;
 
     @Autowired
-    public RESTBoardAdapter(BoardRepository boardRepository, DomainEventBus domainEventBus){
-        this.boardRepository = boardRepository;
+    public RESTBoardAdapter(DomainEventBus domainEventBus, BoardRepository boardRepository) {
         this.domainEventBus = domainEventBus;
+        this.boardRepository = boardRepository;
     }
 
-    @RestController
-    @RequestMapping(value = "/board", produces = MediaType.APPLICATION_JSON_VALUE)
-    public class SpringBoardController {
+    @PostMapping
+    public ResponseEntity<CreateBoardViewModel> createBoard(@RequestBody BoardDTO createBoardInputBody) {
 
-        @PostMapping
-        public ResponseEntity<BoardDTO> createBoard(@RequestBody BoardDTO createBoardInputBody) {
+        CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
+        CreateBoardInput createBoardInput = new CreateBoardInput(createBoardInputBody.getTitle(), createBoardInputBody.getDescription());
+        CreateBoardPresenter createBoardOutput = new CreateBoardPresenter();
 
-            CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
-            CreateBoardInput createBoardInput = new CreateBoardInput(createBoardInputBody.getTitle(), createBoardInputBody.getDescription());
-            CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        createBoardUseCase.execute(createBoardInput, createBoardOutput);
 
-            createBoardUseCase.execute(createBoardInput, createBoardOutput);
-
-            BoardDTO boardDTO = new BoardDTO();
-
-            return ResponseEntity.ok().body(boardDTO);
-        }
+        return ResponseEntity.ok().body(createBoardOutput.buildCreateBoardViewModel());
     }
+
 }

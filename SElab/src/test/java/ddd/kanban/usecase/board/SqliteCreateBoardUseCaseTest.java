@@ -1,5 +1,6 @@
 package ddd.kanban.usecase.board;
 
+import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.SqliteBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
@@ -37,7 +38,7 @@ public class SqliteCreateBoardUseCaseTest {
     public void testCreateBoardUseCaseWithSQLite(){
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(sqliteBoardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard2", "This is board that save in sqlite");
-        CreateBoardOutput createBoardOutput = new CreateBoardOutput();
+        CreateBoardOutput createBoardOutput = new CreateBoardPresenter();
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
 
         Board board = BoardEntityMapper.mappingBoardFrom(sqliteBoardRepository.findById(createBoardOutput.getBoardId()));

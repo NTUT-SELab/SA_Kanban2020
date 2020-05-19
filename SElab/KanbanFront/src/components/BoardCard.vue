@@ -7,7 +7,7 @@
         <vk-grid gutter="medium" class="uk-child-width-1-5@m uk-text-center">
             <div  v-for="(board, i) in boards" :key = "i" >
                 <vk-card id="boardCard" padding="large" hover>
-                <vk-card-title id="cardTitle">{{ board.title }}</vk-card-title>
+                <vk-card-title id="cardTitle">{{ board.boardTitle }}</vk-card-title>
                 </vk-card>
             </div>
         </vk-grid>
@@ -42,6 +42,13 @@
 
 <script>
 export default {
+    created (){
+        this.axios.get('http://140.124.183.93:8080/board')
+        .then(data => data)
+        .then(({data}) => {
+            this.boards = data;
+        })
+    },
     data(){
         return{
             show: false,
@@ -65,7 +72,7 @@ export default {
             }).then(data => data)
             .then(({data}) => {
                 console.log(data);
-                this.boards.push({title: data.boardTitle, id: data.boardId});
+                this.boards.push({boardTitle: data.boardTitle, boardId: data.boardId});
                 console.log(this.boards);
                 this.messages.push({ message: 'Create Board Success', status: 'success' });
             })

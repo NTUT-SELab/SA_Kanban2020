@@ -40,11 +40,11 @@
                     <legend id="modalLegend" class="uk-legend">Create Board</legend>
 
                     <div class="uk-margin">
-                        <input id="modalBoardTitle" class="uk-input" type="text" placeholder="Board Title" v-model="title">
+                        <input id="modalBoardTitle" class="uk-input" type="text" placeholder="Board Title" v-model="boardTitle">
                     </div>
 
                     <div class="uk-margin">
-                        <textarea class="uk-textarea" rows="5" placeholder="Board Description" v-model="description"></textarea>
+                        <textarea class="uk-textarea" rows="5" placeholder="Board Description" v-model="boardDescription"></textarea>
                     </div>
                     <p v-vk-margin>
                         <vk-button type="primary" id="modalCreateButton" @click="createBoard">Create</vk-button>
@@ -64,6 +64,7 @@ export default {
         this.axios.get('http://140.124.183.93:8080/board')
         .then(data => data)
         .then(({data}) => {
+            console.log(data);
             this.boards = data;
         })
     },
@@ -72,27 +73,28 @@ export default {
             show: false,
             messages: [],
             boards: [],
-            title: "",
-            description: ""
+            boardTitle: "",
+            boardDescription: ""
         }
     },
     methods:{
         subString: function(string){
+            if (string == null) return "";
             if (string.length > 5)
                 string = string.substr(0, 5) + "..."
                 
             return string;
         },
         clearModalForm: function(){
-            this.title = "";
-            this.description = "";
+            this.boardTitle = "";
+            this.boardDescription = "";
             this.show = false;
 
         },
         createBoard: function(){
             this.axios.post('http://140.124.183.93:8080/board',{
-                title: this.title,
-                description: this.description
+                boardTitle: this.boardTitle,
+                boardDescription: this.boardDescription
             }).then(data => data)
             .then(({data}) => {
                 console.log(data);

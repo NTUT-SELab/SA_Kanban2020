@@ -65,7 +65,8 @@ export default {
             }).then(data => data)
             .then(({data}) => {
                 console.log(data);
-                this.boards.push({title: data.title});
+                this.boards.push({title: data.boardTitle, id: data.boardId});
+                console.log(this.boards);
                 this.messages.push({ message: 'Create Board Success', status: 'success' });
             })
             .catch(data => {

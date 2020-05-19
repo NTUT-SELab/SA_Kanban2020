@@ -1,14 +1,32 @@
 <template>
 <div class="board-view">
-    <div id="createBoardButton">
-        <vk-button type="primary" id="navImageButton" @click="show = true"><img src="https://i.imgur.com/T50ORBG.png"></vk-button>
+    <div id="uk-child-width-expand@s">
+        <vk-grid>
+            <div id="navTitle" class="uk-width-1-2@m uk-text-left" >
+                <span>Boards</span>
+            </div>
+            <div id="createBoardButton" class="uk-width-1-2@m uk-text-right">
+                <vk-button type="primary" id="navImageButton" @click="show = true"><img src="https://i.imgur.com/T50ORBG.png"></vk-button>
+            </div>
+        </vk-grid>
     </div>
+    
     <div id="grid">
-        <vk-grid gutter="medium" class="uk-child-width-1-5@m uk-text-center">
+        <vk-grid gutter="large" class="uk-child-width-1-5@m uk-text-center">
             <div  v-for="(board, i) in boards" :key = "i" >
-                <vk-card id="boardCard" padding="large" hover>
-                <vk-card-title id="cardTitle">{{ board.boardTitle }}</vk-card-title>
+                <vk-card id="boardCard" padding="small" hover>
+                    <div slot="header">
+                        <vk-card-title id="cardTitle">{{ board.boardTitle }}</vk-card-title>
+                    </div>
+                    <!-- <div>
+                        <p>{{ board.boardDescription }}</p>
+                    </div> -->
+                    <div slot="footer">
+                        <vk-button-link type="text" href="#">more</vk-button-link>
+                    </div>
+                
                 </vk-card>
+                
             </div>
         </vk-grid>
     </div>
@@ -72,7 +90,7 @@ export default {
             }).then(data => data)
             .then(({data}) => {
                 console.log(data);
-                this.boards.push({boardTitle: data.boardTitle, boardId: data.boardId});
+                this.boards.push({boardTitle: data.boardTitle, boardId: data.boardId, boardDescription: data.boardDescription});
                 console.log(this.boards);
                 this.messages.push({ message: 'Create Board Success', status: 'success' });
             })
@@ -98,16 +116,22 @@ export default {
     }
 
     #boardCard{
-        background-color: rgba(45, 88, 227, 0.7);
+        background-color: rgba(145, 160, 255, 0.3);
+        /* background-color: rgba(45, 88, 227, 0.7); */
     }
 
     #cardTitle{
-        color: white;
+        color: black;
+        font-family:'Microsoft JhengHei', bold;
+        font-weight:bold;
+    }
+
+    #navTitle{
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, bold;
+        font-size: 36px;
     }
 
     #createBoardButton{
-        padding-left: 95%;
     }
 
     #modalLegend{
@@ -117,5 +141,21 @@ export default {
     #modalCreateButton{
         color: white;
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    #navImageButton{
+        margin-top: 8px;
+    }
+
+    .uk-card-default .uk-card-header {
+        border-bottom: 1px solid #ffffff;
+    }
+
+    .uk-card-default .uk-card-footer {
+        border-top: 1px solid #ffffff;
     }
 </style>

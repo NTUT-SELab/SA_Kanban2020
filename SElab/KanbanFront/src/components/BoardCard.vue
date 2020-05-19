@@ -16,7 +16,7 @@
             <div  v-for="(board, i) in boards" :key = "i" >
                 <vk-card id="boardCard" padding="small" hover>
                     <div slot="header">
-                        <vk-card-title id="cardTitle">{{ board.boardTitle }}</vk-card-title>
+                        <vk-card-title id="cardTitle">{{ subString(board.boardTitle) }}</vk-card-title>
                     </div>
                     <!-- <div>
                         <p>{{ board.boardDescription }}</p>
@@ -77,6 +77,12 @@ export default {
         }
     },
     methods:{
+        subString: function(string){
+            if (string.length > 5)
+                string = string.substr(0, 5) + "..."
+                
+            return string;
+        },
         clearModalForm: function(){
             this.title = "";
             this.description = "";

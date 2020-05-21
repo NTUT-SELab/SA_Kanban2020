@@ -40,7 +40,7 @@ public class DomainEventHandler {
 
     @Subscribe
     public void handleDomainEvent(BoardCreated boardCreated){
-        final String DEFAULT_WORKFLOW_TITLE = "default workflow";
+        final String DEFAULT_WORKFLOW_TITLE = "Default workflow";
         CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput(DEFAULT_WORKFLOW_TITLE, boardCreated.getBoardId());
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();

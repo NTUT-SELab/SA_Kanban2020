@@ -5,6 +5,7 @@ import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;
+import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.DomainEventHandler;
 import ddd.kanban.usecase.HierarchyInitial;
@@ -18,6 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CreateBoardUseCaseTest {
     private BoardRepository boardRepository;
@@ -64,13 +66,16 @@ public class CreateBoardUseCaseTest {
 
         Workflow workflow = workflowRepository.findAll().get(0);
         assertEquals(1, workflowRepository.findAll().size());
-        assertEquals("default workflow", workflow.getTitle());
+        assertEquals("Default workflow", workflow.getTitle());
     }
 
     @Test
     public void testCreateBoardShouldCreateDefaultWorkflowAndThenWorkflowShouldCreateDefaultLane() {
         Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(this.boardId));
 
-        assertEquals(1, board.getWorkflowIds().size());
+        Workflow workflow = workflowRepository.findAll().get(0);
+        Lane column = workflow.getColumns().get(0);
+        assertEquals("Default Column", column.getTitle());
+        assertEquals(1, workflow.getColumns().size());
     }
 }

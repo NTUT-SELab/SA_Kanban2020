@@ -9,7 +9,6 @@ import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.DomainEventHandler;
 import ddd.kanban.usecase.HierarchyInitial;
-import ddd.kanban.usecase.board.DTO.BoardDTO;
 import ddd.kanban.usecase.board.create.CreateBoardInput;
 import ddd.kanban.usecase.board.create.CreateBoardOutput;
 import ddd.kanban.usecase.board.create.CreateBoardUseCase;
@@ -19,7 +18,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class CreateBoardUseCaseTest {
     private BoardRepository boardRepository;

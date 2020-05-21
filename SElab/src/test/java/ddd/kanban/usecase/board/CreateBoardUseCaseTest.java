@@ -42,6 +42,7 @@ public class CreateBoardUseCaseTest {
 
     @Test
     public void testCreateBoardUseCase() {
+        assertEquals(1, boardRepository.findAll().size());
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard", "This is board that save in memory");
         CreateBoardOutput createBoardOutput = new CreateBoardPresenter();

@@ -5,13 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(basePackages = {
-        "ddd.kanban.adapter.controller"
+        "ddd.kanban.application.config",
+        "ddd.kanban.adapter.rest.board"
 })
 
 @SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(ddd.kanban.Application.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }

@@ -1,4 +1,4 @@
-package ddd.kanban.adapter.controller;
+package ddd.kanban.adapter.rest.board;
 
 import ddd.kanban.adapter.DTO.BoardDTO;
 import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;

@@ -12,7 +12,7 @@ import ddd.kanban.usecase.handler.DomainEventHandler;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.CardRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
+import ddd.kanban.usecase.workflow.mapper.WorkflowEntityMapper;
 import org.junit.Before;
 import org.junit.Test;
 

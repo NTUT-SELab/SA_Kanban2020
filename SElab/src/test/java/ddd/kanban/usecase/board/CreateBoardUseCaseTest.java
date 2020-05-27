@@ -7,6 +7,7 @@ import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;
 import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.domain.model.workflow.Workflow;
+import ddd.kanban.usecase.board.mapper.BoardEntityMapper;
 import ddd.kanban.usecase.handler.DomainEventHandler;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.board.create.CreateBoardInput;
@@ -14,7 +15,7 @@ import ddd.kanban.usecase.board.create.CreateBoardOutput;
 import ddd.kanban.usecase.board.create.CreateBoardUseCase;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
+import ddd.kanban.usecase.workflow.mapper.WorkflowEntityMapper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -73,8 +74,8 @@ public class CreateBoardUseCaseTest {
         Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(this.boardId));
 
         Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));
-        Lane column = workflow.getLanes().get(0);
+        Lane column = workflow.getColumns().get(0);
         assertEquals("Default Column", column.getTitle());
-        assertEquals(1, workflow.getLanes().size());
+        assertEquals(1, workflow.getColumns().size());
     }
 }

@@ -11,7 +11,6 @@ import java.util.function.Predicate;
 public class InMemoryWorkflowRepository implements WorkflowRepository {
     private List<WorkflowEntity> workflowEntities;
 
-
     public InMemoryWorkflowRepository(){
         workflowEntities = new ArrayList<WorkflowEntity>();
     }

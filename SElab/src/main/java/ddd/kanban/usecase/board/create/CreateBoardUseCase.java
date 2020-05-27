@@ -3,7 +3,7 @@ package ddd.kanban.usecase.board.create;
 
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;
-import ddd.kanban.usecase.board.BoardEntityMapper;
+import ddd.kanban.usecase.board.mapper.BoardEntityMapper;
 import ddd.kanban.usecase.board.entity.BoardEntity;
 import ddd.kanban.usecase.repository.BoardRepository;
 

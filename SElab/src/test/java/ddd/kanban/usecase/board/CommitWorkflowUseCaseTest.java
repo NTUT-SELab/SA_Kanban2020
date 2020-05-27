@@ -6,6 +6,7 @@ import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;
 import ddd.kanban.domain.model.workflow.Workflow;
+import ddd.kanban.usecase.board.mapper.BoardEntityMapper;
 import ddd.kanban.usecase.handler.DomainEventHandler;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.board.commit.CommitWorkflowInput;

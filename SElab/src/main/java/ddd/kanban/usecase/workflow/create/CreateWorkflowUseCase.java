@@ -1,10 +1,9 @@
 package ddd.kanban.usecase.workflow.create;
 
 import ddd.kanban.domain.model.DomainEventBus;
-import ddd.kanban.domain.model.workflow.Column;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
+import ddd.kanban.usecase.workflow.mapper.WorkflowEntityMapper;
 
 import java.util.UUID;
 

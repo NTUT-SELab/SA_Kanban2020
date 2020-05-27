@@ -12,37 +12,37 @@ import java.util.function.Predicate;
 
 public class Workflow extends AggregateRoot {
 
-    private List<Lane> lanes;
+    private List<Lane> columns;
     private String boardId;
 
     public Workflow(String id, String title, String boardId){
         super(id, title);
         this.boardId = boardId;
-        lanes = new ArrayList<Lane>();
+        columns = new ArrayList<Lane>();
         addDomainEvent(new WorkflowCreated(id, boardId, title, UUID.randomUUID().toString()));
     }
 
-    public Workflow(String id, String title, String boardId, List<Lane> lanes){
+    public Workflow(String id, String title, String boardId, List<Lane> columns){
         super(id, title);
         this.boardId = boardId;
-        this.lanes = lanes;
+        this.columns = columns;
     }
 
     public String createColumn(String columnName, String workflowId){
         Lane column = new Column(UUID.randomUUID().toString(), columnName, workflowId);
-        lanes.add(column);
+        columns.add(column);
         return column.getId();
     }
 
     public Lane findColumnById(String columnId){
-        return lanes.stream()
+        return columns.stream()
                 .filter(judgeColumnId(columnId))
                 .findFirst()
                 .orElseThrow(RuntimeException::new);
     }
 
-    public List<Lane> getLanes(){
-        return lanes;
+    public List<Lane> getColumns(){
+        return columns;
     }
 
     public static Predicate<Lane> judgeColumnId(String columnId){

@@ -2,7 +2,7 @@ package ddd.kanban.usecase.workflow.commit;
 
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
+import ddd.kanban.usecase.workflow.mapper.WorkflowEntityMapper;
 
 public class CommitCardUseCase {
     private WorkflowRepository workflowRepository;

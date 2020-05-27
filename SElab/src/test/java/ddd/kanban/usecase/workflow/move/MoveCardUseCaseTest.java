@@ -17,8 +17,7 @@ import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.CardRepository;
 import ddd.kanban.usecase.repository.FlowEventRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
-import ddd.kanban.usecase.workflow.entity.LaneEntity;
+import ddd.kanban.usecase.workflow.mapper.WorkflowEntityMapper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,7 +51,7 @@ public class MoveCardUseCaseTest {
         this.boardId = hierarchyInitial.CreateBoard();
         this.workflowId = hierarchyInitial.CreateWorkflow(this.boardId);
         this.columnId = hierarchyInitial.CreateColumn(this.workflowId);
-        this.defaultColumnId = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId)).getLanes().get(0).getId();
+        this.defaultColumnId = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId)).getColumns().get(0).getId();
     }
 
     @Test

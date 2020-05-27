@@ -8,8 +8,8 @@ import java.util.List;
 public abstract class Lane extends Entity {
 
     private String workflowId;
-
     private List<CommittedCard> committedCards;
+
     public Lane(final String id, String title, String workflowId){
         super(id, title);
         this.workflowId = workflowId;

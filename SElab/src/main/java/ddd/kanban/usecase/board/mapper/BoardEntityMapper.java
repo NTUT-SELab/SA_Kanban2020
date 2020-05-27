@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.board;
+package ddd.kanban.usecase.board.mapper;
 
 import ddd.kanban.domain.model.board.Board;
 import ddd.kanban.usecase.board.entity.BoardEntity;

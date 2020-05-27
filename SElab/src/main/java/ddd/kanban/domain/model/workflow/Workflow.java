@@ -22,6 +22,12 @@ public class Workflow extends AggregateRoot {
         addDomainEvent(new WorkflowCreated(id, boardId, title, UUID.randomUUID().toString()));
     }
 
+    public Workflow(String id, String title, String boardId, List<Lane> lanes){
+        super(id, title);
+        this.boardId = boardId;
+        this.lanes = lanes;
+    }
+
     public String createColumn(String columnName, String workflowId){
         Lane column = new Column(UUID.randomUUID().toString(), columnName, workflowId);
         lanes.add(column);
@@ -39,10 +45,6 @@ public class Workflow extends AggregateRoot {
         return lanes;
     }
 
-    public void setLanes(List<Lane> lanes){
-        this.lanes = lanes;
-    }
-
     public static Predicate<Lane> judgeColumnId(String columnId){
         return column -> column.getId().equals(columnId);
     }
@@ -54,7 +56,7 @@ public class Workflow extends AggregateRoot {
         return column.commitCard(cardId);
     }
 
-    public void moveCard(String cardId, String fromLaneId, String toLaneId) {
+    public String moveCard(String cardId, String fromLaneId, String toLaneId) {
         Lane fromLane = findColumnById(fromLaneId);
         Lane toLane = findColumnById(toLaneId);
 
@@ -63,5 +65,7 @@ public class Workflow extends AggregateRoot {
 
         addDomainEvent(new CardUnCommitted(cardId, this.id, fromLane.getId(), fromLane.getTitle(), UUID.randomUUID().toString()));
         addDomainEvent(new CardCommitted(cardId, this.id, toLane.getId(), toLane.getTitle(), UUID.randomUUID().toString()));
+
+        return cardId;
     }
 }

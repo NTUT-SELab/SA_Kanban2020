@@ -30,7 +30,11 @@ public class InMemoryWorkflowRepository implements WorkflowRepository {
     }
 
     @Override
-    public void save(WorkflowEntity workflow){
+    public void save(WorkflowEntity workflowEntity){
+        for(WorkflowEntity each : workflowEntities){
+            if (each.getId().equalsIgnoreCase(workflowEntity.getId()))
+                workflowEntities.set(workflowEntities.indexOf(each), workflowEntity);
+        }
     }
 
     @Override

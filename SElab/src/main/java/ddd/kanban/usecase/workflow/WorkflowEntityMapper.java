@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
 
 public class WorkflowEntityMapper {
     public static Workflow mappingWorkflowFrom(WorkflowEntity workflowEntity){
-        Workflow workflow = new Workflow(workflowEntity.getId(), workflowEntity.getTitle(), workflowEntity.getBoardId());
+
         List<Lane> lanes = workflowEntity.getLaneEntities()
                                     .stream()
                                     .map(laneEntity -> LaneEntityMapper.mappingColumnFrom(laneEntity))
                                     .collect(Collectors.toList());
-        workflow.setLanes(lanes);
+        Workflow workflow = new Workflow(workflowEntity.getId(), workflowEntity.getTitle(), workflowEntity.getBoardId(), lanes);
         return workflow;
     }
 

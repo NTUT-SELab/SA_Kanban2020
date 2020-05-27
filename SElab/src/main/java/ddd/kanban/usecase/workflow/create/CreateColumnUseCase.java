@@ -16,6 +16,6 @@ public class CreateColumnUseCase {
         String laneId = workflow.createColumn(createColumnInput.getColumnTitle(), createColumnInput.getWorkflowId());
         createColumnOutput.setColumnId(laneId);
 
-        workflowRepository.add(WorkflowEntityMapper.mappingWorkflowEntityFrom(workflow));
+        workflowRepository.save(WorkflowEntityMapper.mappingWorkflowEntityFrom(workflow));
     }
 }

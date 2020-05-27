@@ -7,7 +7,7 @@ public class BoardEntityMapper {
     public static Board mappingBoardFrom(BoardEntity boardEntity){
         Board board = new Board(boardEntity.getId(), boardEntity.getTitle(), boardEntity.getDescription());
         board.setWorkflowIds(boardEntity.getWorkflowIds());
-        return  board;
+        return board;
     }
 
     public static BoardEntity mappingBoardEntityFrom(Board board){

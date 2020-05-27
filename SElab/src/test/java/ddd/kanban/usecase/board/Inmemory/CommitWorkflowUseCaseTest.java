@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.board;
+package ddd.kanban.usecase.board.Inmemory;
 
 import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
@@ -26,6 +26,7 @@ import org.junit.Test;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class CommitWorkflowUseCaseTest {
 
@@ -59,13 +60,16 @@ public class CommitWorkflowUseCaseTest {
 
     @Test
     public void testCreateWorkflowShouldCommitToBoard() {
+        Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(boardId));
+
+        assertEquals(1, board.getWorkflowIds().size());
+
         CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow2", boardId);
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
 
-        Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(boardId));
         assertEquals(2, board.getWorkflowIds().size());
     }
 

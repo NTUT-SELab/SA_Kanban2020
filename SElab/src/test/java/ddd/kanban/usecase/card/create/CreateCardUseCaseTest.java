@@ -43,7 +43,7 @@ public class CreateCardUseCaseTest {
     }
 
     @Test
-    public void testCreateCardUseCase(){
+    public void testCreateCardShouldCommitToTheLane(){
         String cardTitle = "TestCard";
 
         CreateCardUseCase createCardUseCase = new CreateCardUseCase(cardRepository, domainEventBus);
@@ -54,15 +54,12 @@ public class CreateCardUseCaseTest {
 
         Card card = cardRepository.findById(createCardOutput.getCardId());
 
-        assertEquals(card.getTitle(), createCardOutput.getCardTitle());
+        assertEquals(cardTitle, card.getTitle());
+        assertEquals(createCardOutput.getCardId(), card.getId());
 
         Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId));
         Lane column = workflow.findColumnById(this.columnId);
 
         assertEquals(1, column.getCommittedCards().size());
-
     }
-
-
-
 }

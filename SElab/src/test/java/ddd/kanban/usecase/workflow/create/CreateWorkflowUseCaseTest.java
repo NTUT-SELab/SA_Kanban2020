@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.workflow;
+package ddd.kanban.usecase.workflow.create;
 
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
@@ -6,6 +6,7 @@ import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.repository.BoardRepository;
+import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
 import ddd.kanban.usecase.workflow.create.CreateWorkflowInput;
 import ddd.kanban.usecase.workflow.create.CreateWorkflowOutput;
 import ddd.kanban.usecase.repository.WorkflowRepository;
@@ -61,7 +62,7 @@ public class CreateWorkflowUseCaseTest {
         assertNotNull(createWorkflowOutput.getWorkflowId());
         assertNotNull(createWorkflowOutput.getDefaultColumnId());
 
-        Workflow workflow = workflowRepository.findById(createWorkflowOutput.getWorkflowId());
+        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(createWorkflowOutput.getWorkflowId()));
         assertEquals("Default Column", workflow.findColumnById(createWorkflowOutput.getDefaultColumnId()).getTitle());
     }
 }

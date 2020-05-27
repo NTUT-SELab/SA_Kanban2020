@@ -12,6 +12,7 @@ import ddd.kanban.usecase.handler.DomainEventHandler;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.CardRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
+import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -55,7 +56,7 @@ public class CreateCardUseCaseTest {
 
         assertEquals(card.getTitle(), createCardOutput.getCardTitle());
 
-        Workflow workflow = workflowRepository.findById(this.workflowId);
+        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId));
         Lane column = workflow.findColumnById(this.columnId);
 
         assertEquals(1, column.getCommittedCards().size());

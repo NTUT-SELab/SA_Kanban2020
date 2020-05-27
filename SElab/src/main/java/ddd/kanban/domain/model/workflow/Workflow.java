@@ -1,6 +1,8 @@
 package ddd.kanban.domain.model.workflow;
 
 import ddd.kanban.domain.model.AggregateRoot;
+import ddd.kanban.domain.model.card.event.CardCommitted;
+import ddd.kanban.domain.model.card.event.CardUnCommitted;
 import ddd.kanban.domain.model.workflow.event.WorkflowCreated;
 
 import java.util.ArrayList;
@@ -10,31 +12,35 @@ import java.util.function.Predicate;
 
 public class Workflow extends AggregateRoot {
 
-    private List<Lane> columns;
+    private List<Lane> lanes;
     private String boardId;
 
     public Workflow(String id, String title, String boardId){
         super(id, title);
         this.boardId = boardId;
-        columns = new ArrayList<Lane>();
+        lanes = new ArrayList<Lane>();
         addDomainEvent(new WorkflowCreated(id, boardId, title, UUID.randomUUID().toString()));
     }
 
     public String createColumn(String columnName, String workflowId){
         Lane column = new Column(UUID.randomUUID().toString(), columnName, workflowId);
-        columns.add(column);
+        lanes.add(column);
         return column.getId();
     }
 
     public Lane findColumnById(String columnId){
-        return columns.stream()
+        return lanes.stream()
                 .filter(judgeColumnId(columnId))
                 .findFirst()
                 .orElseThrow(RuntimeException::new);
     }
 
-    public List<Lane> getColumns(){
-        return columns;
+    public List<Lane> getLanes(){
+        return lanes;
+    }
+
+    public void setLanes(List<Lane> lanes){
+        this.lanes = lanes;
     }
 
     public static Predicate<Lane> judgeColumnId(String columnId){
@@ -45,6 +51,17 @@ public class Workflow extends AggregateRoot {
 
     public String commitCard(String cardId, String laneId) {
         Lane column = this.findColumnById(laneId);
-        return column.commitCard(cardId, this.id);
+        return column.commitCard(cardId);
+    }
+
+    public void moveCard(String cardId, String fromLaneId, String toLaneId) {
+        Lane fromLane = findColumnById(fromLaneId);
+        Lane toLane = findColumnById(toLaneId);
+
+        fromLane.unCommitCard(cardId);
+        toLane.commitCard(cardId);
+
+        addDomainEvent(new CardUnCommitted(cardId, this.id, fromLane.getId(), fromLane.getTitle(), UUID.randomUUID().toString()));
+        addDomainEvent(new CardCommitted(cardId, this.id, toLane.getId(), toLane.getTitle(), UUID.randomUUID().toString()));
     }
 }

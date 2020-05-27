@@ -1,7 +1,6 @@
 package ddd.kanban.usecase.repository;
 
 import ddd.kanban.domain.model.FlowEvent;
-import ddd.kanban.usecase.board.Entity.BoardEntity;
 
 import java.util.List;
 

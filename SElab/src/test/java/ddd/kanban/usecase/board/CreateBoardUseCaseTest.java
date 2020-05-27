@@ -14,6 +14,7 @@ import ddd.kanban.usecase.board.create.CreateBoardOutput;
 import ddd.kanban.usecase.board.create.CreateBoardUseCase;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
+import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -62,7 +63,7 @@ public class CreateBoardUseCaseTest {
         assertEquals("Board1", board.getTitle());
         assertEquals(1, boardRepository.findAll().size());
 
-        Workflow workflow = workflowRepository.findAll().get(0);
+        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));
         assertEquals(1, workflowRepository.findAll().size());
         assertEquals("Default workflow", workflow.getTitle());
     }
@@ -71,9 +72,9 @@ public class CreateBoardUseCaseTest {
     public void testCreateBoardShouldCreateDefaultWorkflowAndThenWorkflowShouldCreateDefaultLane() {
         Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(this.boardId));
 
-        Workflow workflow = workflowRepository.findAll().get(0);
-        Lane column = workflow.getColumns().get(0);
+        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));
+        Lane column = workflow.getLanes().get(0);
         assertEquals("Default Column", column.getTitle());
-        assertEquals(1, workflow.getColumns().size());
+        assertEquals(1, workflow.getLanes().size());
     }
 }

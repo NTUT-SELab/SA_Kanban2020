@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.workflow;
+package ddd.kanban.usecase.workflow.create;
 
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;

@@ -4,6 +4,7 @@ import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.workflow.Column;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.repository.WorkflowRepository;
+import ddd.kanban.usecase.workflow.WorkflowEntityMapper;
 
 import java.util.UUID;
 
@@ -20,8 +21,7 @@ public class CreateWorkflowUseCase {
         Workflow workflow = new Workflow(UUID.randomUUID().toString(), createWorkflowInput.getWorkflowTitle(), createWorkflowInput.getBoardId());
         String defaultColumnId = workflow.createColumn(DEFAULT_COLUMN_NAME, workflow.getId());
 
-        workflowRepository.add(workflow);
-        workflowRepository.save();
+        workflowRepository.add(WorkflowEntityMapper.mappingWorkflowEntityFrom(workflow));
 
         domainEventBus.postAll(workflow);
 

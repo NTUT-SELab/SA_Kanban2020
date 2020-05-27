@@ -1,7 +1,7 @@
 package ddd.kanban.usecase.board;
 
 import ddd.kanban.domain.model.board.Board;
-import ddd.kanban.usecase.board.DTO.BoardDTO;
+import ddd.kanban.usecase.board.dto.BoardDTO;
 
 public class BoardDTOMapper {
 

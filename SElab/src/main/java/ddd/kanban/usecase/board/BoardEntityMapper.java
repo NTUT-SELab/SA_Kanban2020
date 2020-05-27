@@ -1,7 +1,7 @@
 package ddd.kanban.usecase.board;
 
 import ddd.kanban.domain.model.board.Board;
-import ddd.kanban.usecase.board.Entity.BoardEntity;
+import ddd.kanban.usecase.board.entity.BoardEntity;
 
 public class BoardEntityMapper {
     public static Board mappingBoardFrom(BoardEntity boardEntity){

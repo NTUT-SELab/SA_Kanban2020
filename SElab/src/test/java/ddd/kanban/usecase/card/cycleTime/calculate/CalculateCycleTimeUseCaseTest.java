@@ -13,6 +13,7 @@ import ddd.kanban.usecase.card.create.CreateCardInput;
 import ddd.kanban.usecase.card.create.CreateCardOutput;
 import ddd.kanban.usecase.card.create.CreateCardUseCase;
 import ddd.kanban.usecase.handler.DomainEventHandler;
+import ddd.kanban.usecase.handler.FlowEventHandler;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.CardRepository;
 import ddd.kanban.usecase.repository.FlowEventRepository;
@@ -64,8 +65,10 @@ public class CalculateCycleTimeUseCaseTest {
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.boardRepository = new InMemoryBoardRepository();
         this.flowEventRepository = new InMemoryFlowEventRepository();
+
         this.domainEventBus = new DomainEventBus();
-        domainEventBus.register(new DomainEventHandler(this.workflowRepository, boardRepository, domainEventBus));
+        domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
+        domainEventBus.register(new FlowEventHandler(flowEventRepository));
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
 
         this.boardId = hierarchyInitial.CreateBoard();
@@ -81,9 +84,8 @@ public class CalculateCycleTimeUseCaseTest {
 
     @Test
     public void testCalculateCycleTimeUseCaseForSingleLane() throws ParseException {
-        DateProvider.setDate(dateFormat.parse("2020/5/22 00:00:00"));
+        DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
         this.cardIdWillMove = createCard("Implement Calculate Cycle Time UseCase");
-        this.cardIdWillNotMove = createCard("Buy house");
         this.moveCard(workflowRepository.findById(this.workflowId).getLaneEntities().get(0).getId(), this.beginningLaneId, this.cardIdWillMove);
         DateProvider.setDate(dateFormat.parse("2020/5/23 00:00:00"));
         this.moveCard(this.beginningLaneId, this.analysisLaneId, this.cardIdWillMove);
@@ -91,18 +93,31 @@ public class CalculateCycleTimeUseCaseTest {
         CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
         CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(this.cardIdWillMove, this.workflowId, this.beginningLaneId, this.beginningLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
-
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput,calculateCycleTimeOutput);
-
-        assertEquals(1,calculateCycleTimeOutput.getCycleTime().getDay());
+        assertEquals(3,calculateCycleTimeOutput.getCycleTime().getDay());
     }
 
     @Test
-    public void testCalculateCycleTimeUseCase() throws ParseException {
-        this.simulateMoveCard();
+    public void testCalculateCycleTimeUseCaseForCardJustUncommittedFromDefaultLane() throws ParseException {
+        DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
+        String cardId = createCard("Buy house");
+        this.moveCard(workflowRepository.findById(this.workflowId).getLaneEntities().get(0).getId(), this.beginningLaneId, cardId);
+        DateProvider.setDate(dateFormat.parse("2020/5/23 00:00:00"));
 
         CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
-        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(this.cardIdWillMove, this.workflowId, this.beginningLaneId, this.endLaneId);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningLaneId, this.beginningLaneId);
+        CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
+
+        calculateCycleTimeUseCase.execute(calculateCycleTimeInput,calculateCycleTimeOutput);
+
+        assertEquals(3,calculateCycleTimeOutput.getCycleTime().getDay());
+    }
+
+    @Test
+    public void testCalculateCycleTimeUseCaseForMoveCardFromReadyToDepoly() throws ParseException {
+        this.simulateMoveCard();
+        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(this.cardIdWillMove, this.workflowId, this.beginningLaneId, this.readyToDeployLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput,calculateCycleTimeOutput);
@@ -113,7 +128,6 @@ public class CalculateCycleTimeUseCaseTest {
     private void simulateMoveCard() throws ParseException {
         DateProvider.setDate(dateFormat.parse("2020/5/22 00:00:00"));
         this.cardIdWillMove = createCard("Implement Calculate Cycle Time UseCase");
-        this.cardIdWillNotMove = createCard("Buy house");
         this.moveCard(workflowRepository.findById(this.workflowId).getLaneEntities().get(0).getId(), this.beginningLaneId, this.cardIdWillMove);
         this.moveCard(this.beginningLaneId, this.analysisLaneId, this.cardIdWillMove);
 

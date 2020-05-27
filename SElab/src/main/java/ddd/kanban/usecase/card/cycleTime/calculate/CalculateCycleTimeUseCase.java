@@ -36,8 +36,15 @@ public class CalculateCycleTimeUseCase {
 
     private List<FlowEventPair> getCardFlowEventPairs(String cardId) {
         List<FlowEventPair> flowEventPairs = new ArrayList<>();
+
         FlowEvent committed = null;
+        boolean isDefaultLaneUnCommitEvent = true;
+
         for(FlowEvent flowEvent: this.flowEventRepository.findAll()){
+            if (isDefaultLaneUnCommitEvent){
+                isDefaultLaneUnCommitEvent = false;
+                continue;
+            }
             if (flowEvent.getCardId().equals(cardId)){
                 if (committed == null){
                     committed = flowEvent;

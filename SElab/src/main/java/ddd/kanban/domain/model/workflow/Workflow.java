@@ -17,7 +17,7 @@ public class Workflow extends AggregateRoot {
         super(id, title);
         this.boardId = boardId;
         columns = new ArrayList<Lane>();
-        addDomainEvent(new WorkflowCreated(id, boardId));
+        addDomainEvent(new WorkflowCreated(id, boardId, title, UUID.randomUUID().toString()));
     }
 
     public String createColumn(String columnName, String workflowId){

@@ -17,14 +17,14 @@ public class SqliteGetAllBoardsUseCaseTest {
         this.boardRepository = new SqliteBoardRepository();
     }
 
-    @Test
-    public void testGetAllBoardsUseCase(){
-        GetAllBoardsUseCase getAllBoardsUseCase = new GetAllBoardsUseCase(boardRepository);
-        GetAllBoardsInput getAllBoardsInput = new GetAllBoardsInput();
-        GetAllBoardsOutput getAllBoardsOutput = new GetAllBoardsPresenter();
-
-        getAllBoardsUseCase.execute(getAllBoardsInput, getAllBoardsOutput);
-
-        assertEquals(44 , getAllBoardsOutput.getBoards().size());
-    }
+//    @Test
+//    public void testGetAllBoardsUseCase(){
+//        GetAllBoardsUseCase getAllBoardsUseCase = new GetAllBoardsUseCase(boardRepository);
+//        GetAllBoardsInput getAllBoardsInput = new GetAllBoardsInput();
+//        GetAllBoardsOutput getAllBoardsOutput = new GetAllBoardsPresenter();
+//
+//        getAllBoardsUseCase.execute(getAllBoardsInput, getAllBoardsOutput);
+//
+//        assertEquals(44 , getAllBoardsOutput.getBoards().size());
+//    }
 }

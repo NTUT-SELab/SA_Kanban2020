@@ -1,6 +1,5 @@
 package ddd.kanban.usecase.board.Inmemory;
 
-import com.sun.xml.internal.ws.server.ServerRtException;
 import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;

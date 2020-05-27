@@ -34,14 +34,15 @@ public class CreateWorkflowUseCaseTest {
     @Test
     public void testCreateWorkflow() {
         CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
-
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow 1", boardId);
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
 
-        assertEquals("Workflow 1", createWorkflowOutput.getWorkflowTitle());
-        assertNotNull(createWorkflowOutput.getWorkflowId());
+        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(createWorkflowOutput.getWorkflowId()));
+
+        assertEquals(createWorkflowOutput.getWorkflowId(), workflow.getId());
+        assertEquals("Workflow 1", workflow.getTitle());
     }
 
     @Test
@@ -50,14 +51,9 @@ public class CreateWorkflowUseCaseTest {
 
         CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow 1", boardId);
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
-
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
 
-        assertEquals("Workflow 1", createWorkflowOutput.getWorkflowTitle());
-        assertNotNull(createWorkflowOutput.getWorkflowId());
-        assertNotNull(createWorkflowOutput.getDefaultColumnId());
-
         Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(createWorkflowOutput.getWorkflowId()));
-        assertEquals("Default Column", workflow.findColumnById(createWorkflowOutput.getDefaultColumnId()).getTitle());
+        assertEquals(1, workflow.getColumns().size());
     }
 }

@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.board;
+package ddd.kanban.usecase.board.sqlite;
 
 import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.SqliteBoardRepository;

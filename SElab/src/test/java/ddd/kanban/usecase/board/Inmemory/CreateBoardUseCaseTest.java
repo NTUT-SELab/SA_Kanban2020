@@ -1,5 +1,6 @@
-package ddd.kanban.usecase.board;
+package ddd.kanban.usecase.board.Inmemory;
 
+import com.sun.xml.internal.ws.server.ServerRtException;
 import ddd.kanban.adapter.presenter.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
@@ -35,16 +36,16 @@ public class CreateBoardUseCaseTest {
         this.domainEventBus = new DomainEventBus();
         this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
-        this.CreateBoardByHierarchyInitial();
     }
 
-    private void CreateBoardByHierarchyInitial(){
-        this.boardId = hierarchyInitial.CreateBoard();
+    private String createBoard(){
+        return hierarchyInitial.CreateBoard();
     }
 
     @Test
     public void testCreateBoardUseCase() {
-        assertEquals(1, boardRepository.findAll().size());
+        assertEquals(0, boardRepository.findAll().size());
+
         CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
         CreateBoardInput createBoardInput = new CreateBoardInput("TestBoard", "This is board that save in memory");
         CreateBoardOutput createBoardOutput = new CreateBoardPresenter();
@@ -54,28 +55,32 @@ public class CreateBoardUseCaseTest {
         assertEquals("TestBoard", board.getTitle());
         assertEquals("This is board that save in memory", board.getDescription());
 
-        assertEquals(2, boardRepository.findAll().size());
+        assertEquals(1, boardRepository.findAll().size());
 
     }
 
     @Test
     public void testCreateBoardShouldCreateDefaultWorkflow() {
-        Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(this.boardId));
-        assertEquals("Board1", board.getTitle());
-        assertEquals(1, boardRepository.findAll().size());
+        assertEquals(0, workflowRepository.findAll().size());
+
+        String boardId = this.createBoard();
+
+        assertEquals(1, workflowRepository.findAll().size());
 
         Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));
-        assertEquals(1, workflowRepository.findAll().size());
         assertEquals("Default workflow", workflow.getTitle());
+
     }
 
     @Test
-    public void testCreateBoardShouldCreateDefaultWorkflowAndThenWorkflowShouldCreateDefaultLane() {
-        Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(this.boardId));
+    public void testCreateBoardShouldCreateDefaultWorkflowAndThenWorkflowShouldCreateDefaultColumn() {
+        assertEquals(0, workflowRepository.findAll().size());
 
-        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));
-        Lane column = workflow.getColumns().get(0);
-        assertEquals("Default Column", column.getTitle());
+        String boardId = this.createBoard();
+        assertEquals(1, workflowRepository.findAll().size());
+
+        Workflow workflow =  WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));
         assertEquals(1, workflow.getColumns().size());
     }
+
 }

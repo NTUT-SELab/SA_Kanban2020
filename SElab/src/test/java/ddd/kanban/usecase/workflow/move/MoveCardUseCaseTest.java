@@ -74,13 +74,6 @@ public class MoveCardUseCaseTest {
 
         assertEquals(0, defaultColunn.getCommittedCards().size());
         assertEquals(1, column1.getCommittedCards().size());
-
-        assertEquals(cardId, column1.getCommittedCards()
-                                    .stream()
-                                    .filter(committedCard -> committedCard.getCardId().equalsIgnoreCase(cardId))
-                                    .map(committedCard -> committedCard.getCardId())
-                                    .findFirst()
-                                    .get());
     }
 
     private String createCardToDefaultLane(){

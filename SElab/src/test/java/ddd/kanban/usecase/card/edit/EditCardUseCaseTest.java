@@ -85,7 +85,7 @@ public class EditCardUseCaseTest {
 
         String cardId = this.createCard();
 
-        EditCardUseCase editCardUseCase = new EditCardUseCase(cardRepository);
+        EditCardUseCase editCardUseCase = new EditCardUseCase(cardRepository, domainEventBus);
         EditCardUseCaseInput editCardUseCaseInput = new EditCardUseCaseInput(this.workflowId, cardId, newCardName, newCardDescription, newCardCardType, cardTags, cardAssignUsers, newCardPlannedStartDate, newCardPlannedFinishDate, newCardPriority);
         EditCardUseCaseOutput editCardUseCaseOutput = new EditCardUseCaseOutput();
 

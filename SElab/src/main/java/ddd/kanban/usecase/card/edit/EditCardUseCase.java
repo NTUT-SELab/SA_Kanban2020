@@ -1,12 +1,17 @@
 package ddd.kanban.usecase.card.edit;
 
+import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.card.Card;
 import ddd.kanban.usecase.repository.CardRepository;
 
 public class EditCardUseCase {
     private CardRepository cardRepository;
+    private DomainEventBus domainEventBus;
 
-    public EditCardUseCase(CardRepository cardRepository) { this.cardRepository = cardRepository; }
+    public EditCardUseCase(CardRepository cardRepository, DomainEventBus domainEventBus) {
+        this.cardRepository = cardRepository;
+        this.domainEventBus = domainEventBus;
+    }
 
     public void execute(EditCardUseCaseInput editCardUseCaseInput, EditCardUseCaseOutput editCardUseCaseOutput) {
         Card card = cardRepository.findById( editCardUseCaseInput.getCardId() );
@@ -20,6 +25,8 @@ public class EditCardUseCase {
         card.setPriority(editCardUseCaseInput.getCardPriority());
 
         cardRepository.save(card);
+
+        domainEventBus.postAll(card);
 
         editCardUseCaseOutput.setCardId(card.getId());
         editCardUseCaseOutput.setCardName(card.getTitle());

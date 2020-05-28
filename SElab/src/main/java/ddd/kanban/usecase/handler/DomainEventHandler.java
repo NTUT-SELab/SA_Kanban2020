@@ -31,7 +31,7 @@ public class DomainEventHandler {
 
     @Subscribe
     public void handleDomainEvent(WorkflowCreated workflowCreated){
-        CommitWorkflowUseCase commitWorkflowUseCase = new CommitWorkflowUseCase(boardRepository);
+        CommitWorkflowUseCase commitWorkflowUseCase = new CommitWorkflowUseCase(boardRepository, domainEventBus);
         CommitWorkflowInput commitWorkflowInput = new CommitWorkflowInput(workflowCreated.getBoardId(), workflowCreated.getSourceId());
         CommitWorkflowOutput commitWorkflowOutput = new CommitWorkflowOutput();
 

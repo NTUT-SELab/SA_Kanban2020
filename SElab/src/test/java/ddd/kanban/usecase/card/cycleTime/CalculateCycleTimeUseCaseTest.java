@@ -142,7 +142,7 @@ public class CalculateCycleTimeUseCaseTest {
     }
 
     private String createColumn(String workflowId, String columeName){
-        CreateColumnUseCase createColumnUseCase = new CreateColumnUseCase(this.workflowRepository);
+        CreateColumnUseCase createColumnUseCase = new CreateColumnUseCase(this.workflowRepository, domainEventBus);
         CreateColumnInput createColumnInput = new CreateColumnInput(columeName, workflowId);
         CreateColumnOutput createColumnOutput = new CreateColumnOutput();
 

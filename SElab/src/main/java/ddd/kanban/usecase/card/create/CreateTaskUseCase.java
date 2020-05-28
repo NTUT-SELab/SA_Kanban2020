@@ -1,14 +1,17 @@
 package ddd.kanban.usecase.card.create;
 
+import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.card.Card;
 import ddd.kanban.domain.model.card.Task;
 import ddd.kanban.usecase.repository.CardRepository;
 
 public class CreateTaskUseCase {
     private CardRepository cardRepository;
+    private DomainEventBus domainEventBus;
 
-    public CreateTaskUseCase(CardRepository cardRepository){
+    public CreateTaskUseCase(CardRepository cardRepository, DomainEventBus domainEventBus){
         this.cardRepository = cardRepository;
+        this.domainEventBus = domainEventBus;
     }
 
     public void execute(CreateTaskInput createTaskInput, CreateTaskOutput createTaskOutput) {
@@ -17,6 +20,8 @@ public class CreateTaskUseCase {
         String taskId = card.createTask(createTaskInput.getTaskTitle(), createTaskInput.getCardId());
 
         cardRepository.save(card);
+
+        domainEventBus.postAll(card);
 
         createTaskOutput.setTaskTitle(createTaskInput.getTaskTitle());
         createTaskOutput.setTaskId(taskId);

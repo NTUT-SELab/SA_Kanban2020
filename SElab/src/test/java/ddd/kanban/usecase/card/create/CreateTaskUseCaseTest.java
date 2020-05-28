@@ -70,7 +70,7 @@ public class CreateTaskUseCaseTest {
     public void testCreateTask(){
         String cardId = this.createCard();
 
-        CreateTaskUseCase createTaskUseCase = new CreateTaskUseCase(cardRepository);
+        CreateTaskUseCase createTaskUseCase = new CreateTaskUseCase(cardRepository, domainEventBus);
         CreateTaskInput createTaskInput = new CreateTaskInput("Test Task", cardId);
         CreateTaskOutput createTaskOutput = new CreateTaskOutput();
 

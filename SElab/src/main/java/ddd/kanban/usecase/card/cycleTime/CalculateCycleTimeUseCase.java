@@ -1,11 +1,8 @@
-package ddd.kanban.usecase.card.cycleTime.calculate;
+package ddd.kanban.usecase.card.cycleTime;
 
 import ddd.kanban.domain.model.FlowEvent;
-import ddd.kanban.domain.model.card.event.CardUnCommitted;
-import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.usecase.repository.FlowEventRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.entity.ColumnEntity;
 import ddd.kanban.usecase.workflow.entity.ColumnEntity;
 
 import java.util.ArrayList;

@@ -111,7 +111,7 @@ public class CalculateCycleTimeUseCaseTest {
     }
 
     @Test
-    public void testCalculateCycleTimeUseCaseForMoveCardFromReadyToDepoly() throws ParseException {
+    public void testCalculateCycleTimeUseCaseForMoveCardFromReadyToDeploy() throws ParseException {
         this.simulateMoveCard();
         CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
         CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(this.cardIdWillMove, this.workflowId, this.beginningLaneId, this.readyToDeployLaneId);
@@ -141,9 +141,9 @@ public class CalculateCycleTimeUseCaseTest {
         this.moveCard(this.readyToDeployLaneId, this.endLaneId, this.cardIdWillMove);
     }
 
-    private String createColumn(String workflowId, String columeName){
+    private String createColumn(String workflowId, String columnName){
         CreateColumnUseCase createColumnUseCase = new CreateColumnUseCase(this.workflowRepository, domainEventBus);
-        CreateColumnInput createColumnInput = new CreateColumnInput(columeName, workflowId);
+        CreateColumnInput createColumnInput = new CreateColumnInput(columnName, workflowId);
         CreateColumnOutput createColumnOutput = new CreateColumnOutput();
 
         createColumnUseCase.execute(createColumnInput, createColumnOutput);

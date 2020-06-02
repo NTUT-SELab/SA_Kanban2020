@@ -70,12 +70,16 @@ public class CalculateCycleTimeUseCase {
     }
 
     private CycleTime calculateCycleTime(List<FlowEventPair> flowEventPairs, List<String> laneIntervalIds) {
-        long diff = 0;
-        for(FlowEventPair flowEventPair: flowEventPairs){
-            if (laneIntervalIds.contains(flowEventPair.getLaneId())){
-                diff += flowEventPair.getCycleTime().getMillisecond();
-            }
-        }
+//        long diff = 0;
+//        for(FlowEventPair flowEventPair: flowEventPairs){
+//            if (laneIntervalIds.contains(flowEventPair.getLaneId())){
+//                diff += flowEventPair.getCycleTime().getMillisecond();
+//            }
+//        }
+
+        long diff = flowEventPairs.stream()
+                    .mapToLong(flowEventPair -> flowEventPair.getCycleTime().getMillisecond())
+                    .sum();
         return new CycleTime(diff);
     }
 }

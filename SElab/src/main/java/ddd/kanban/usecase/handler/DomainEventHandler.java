@@ -46,11 +46,12 @@ public class DomainEventHandler {
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
+
     }
 
     @Subscribe
     public void handleDomainEvent(CardCreated cardCreated){
-        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository);
+        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository,domainEventBus);
         CommitCardInput commitCardInput = new CommitCardInput(cardCreated.getSourceId(), cardCreated.getWorkflowId(), cardCreated.getLaneId());
         CommitCardOutput commitCardOutput = new CommitCardOutput();
 

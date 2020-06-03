@@ -46,6 +46,7 @@ public class DomainEventHandler {
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
+
     }
 
     @Subscribe

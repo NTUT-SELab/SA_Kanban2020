@@ -14,6 +14,7 @@ import ddd.kanban.usecase.card.create.CreateCardUseCase;
 import ddd.kanban.usecase.card.edit.EditCardUseCase;
 import ddd.kanban.usecase.card.edit.EditCardUseCaseInput;
 import ddd.kanban.usecase.card.edit.EditCardUseCaseOutput;
+import ddd.kanban.usecase.card.mapper.CardEntityMapper;
 import ddd.kanban.usecase.handler.DomainEventHandler;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.CardRepository;
@@ -91,7 +92,7 @@ public class EditCardUseCaseTest {
 
         editCardUseCase.execute(editCardUseCaseInput, editCardUseCaseOutput);
 
-        Card card = cardRepository.findById(cardId);
+        Card card = CardEntityMapper.mappingCardFrom(cardRepository.findById(cardId));
         assertEquals(cardId, card.getId());
         assertEquals(newCardName, card.getTitle());
         assertEquals(newCardDescription, card.getDescription());

@@ -39,7 +39,7 @@ public class CardEntityMapper {
         card.setAssignUsers(cardEntity.getAssignUsers());
         card.setPlannedStartDate(cardEntity.getPlannedStartDate());
         card.setPlannedFinishDate(cardEntity.getPlannedFinishDate());
-        card.setPriority(card.getPriority());
+        card.setPriority(cardEntity.getPriority());
 
         return card;
     }

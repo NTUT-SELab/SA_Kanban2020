@@ -40,6 +40,10 @@ public class CardEntity {
         return taskEntitys;
     }
 
+    public void setTaskEntitys(List<TaskEntity> taskEntitys) {
+        this.taskEntitys = taskEntitys;
+    }
+
     public String getBoardId() {
         return boardId;
     }
@@ -56,56 +60,52 @@ public class CardEntity {
         return description;
     }
 
-    public CardTypeEntity getCardTypeEntity() {
-        return cardTypeEntity;
-    }
-
-    public List<String> getTags() {
-        return tags;
-    }
-
-    public List<String> getAssignUsers() {
-        return assignUsers;
-    }
-
-    public Date getPlannedStartDate() {
-        return plannedStartDate;
-    }
-
-    public Date getPlannedFinishDate() {
-        return plannedFinishDate;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setTaskEntitys(List<TaskEntity> taskEntitys) {
-        this.taskEntitys = taskEntitys;
-    }
-
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public CardTypeEntity getCardTypeEntity() {
+        return cardTypeEntity;
     }
 
     public void setCardTypeEntity(CardTypeEntity cardTypeEntity) {
         this.cardTypeEntity = cardTypeEntity;
     }
 
+    public List<String> getTags() {
+        return tags;
+    }
+
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public List<String> getAssignUsers() {
+        return assignUsers;
     }
 
     public void setAssignUsers(List<String> assignUsers) {
         this.assignUsers = assignUsers;
     }
 
+    public Date getPlannedStartDate() {
+        return plannedStartDate;
+    }
+
     public void setPlannedStartDate(Date plannedStartDate) {
         this.plannedStartDate = plannedStartDate;
     }
 
+    public Date getPlannedFinishDate() {
+        return plannedFinishDate;
+    }
+
     public void setPlannedFinishDate(Date plannedFinishDate) {
         this.plannedFinishDate = plannedFinishDate;
+    }
+
+    public int getPriority() {
+        return priority;
     }
 
     public void setPriority(int priority) {

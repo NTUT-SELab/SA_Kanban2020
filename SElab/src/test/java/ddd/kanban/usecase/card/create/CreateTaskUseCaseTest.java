@@ -9,6 +9,7 @@ import ddd.kanban.domain.model.card.Card;
 import ddd.kanban.domain.model.card.CardType;
 import ddd.kanban.domain.model.card.Task;
 import ddd.kanban.usecase.HierarchyInitial;
+import ddd.kanban.usecase.card.mapper.CardEntityMapper;
 import ddd.kanban.usecase.handler.DomainEventHandler;
 import ddd.kanban.usecase.handler.FlowEventHandler;
 import ddd.kanban.usecase.repository.BoardRepository;
@@ -76,7 +77,7 @@ public class CreateTaskUseCaseTest {
 
         createTaskUseCase.execute(createTaskInput, createTaskOutput);
 
-        Card card = cardRepository.findById(cardId);
+        Card card = CardEntityMapper.mappingCardFrom(cardRepository.findById(cardId));
         Task task = card.findTaskById(createTaskOutput.getTaskId());
 
         assertEquals(createTaskOutput.getTaskId(), task.getId());

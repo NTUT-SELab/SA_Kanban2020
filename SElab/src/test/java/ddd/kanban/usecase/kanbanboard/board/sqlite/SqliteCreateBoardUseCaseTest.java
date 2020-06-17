@@ -1,10 +1,14 @@
 package ddd.kanban.usecase.kanbanboard.board.sqlite;
 
 import ddd.kanban.adapter.presenter.kanbanboard.board.create.CreateBoardPresenter;
+import ddd.kanban.adapter.presenter.kanbanboard.board.get.GetAllBoardsPresenter;
 import ddd.kanban.adapter.repository.board.SqliteBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.kanbanboard.board.Board;
+import ddd.kanban.usecase.kanbanboard.board.get.GetAllBoardsInput;
+import ddd.kanban.usecase.kanbanboard.board.get.GetAllBoardsOutput;
+import ddd.kanban.usecase.kanbanboard.board.get.GetAllBoardsUseCase;
 import ddd.kanban.usecase.kanbanboard.board.mapper.BoardEntityMapper;
 import ddd.kanban.usecase.domainevent.handler.DomainEventHandler;
 import ddd.kanban.usecase.kanbanboard.board.create.CreateBoardInput;
@@ -16,6 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 

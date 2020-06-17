@@ -1,9 +1,10 @@
-package ddd.kanban.usecase.handler;
+package ddd.kanban.usecase.domainevent.handler;
 
 import com.google.common.eventbus.Subscribe;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.event.BoardCreated;
 import ddd.kanban.domain.model.card.event.CardCreated;
+import ddd.kanban.domain.model.card.event.CardMoved;
 import ddd.kanban.domain.model.workflow.event.WorkflowCreated;
 import ddd.kanban.usecase.board.commit.CommitWorkflowInput;
 import ddd.kanban.usecase.board.commit.CommitWorkflowOutput;
@@ -46,15 +47,15 @@ public class DomainEventHandler {
         CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
 
         createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
+
     }
 
     @Subscribe
     public void handleDomainEvent(CardCreated cardCreated){
-        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository);
+        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository,domainEventBus);
         CommitCardInput commitCardInput = new CommitCardInput(cardCreated.getSourceId(), cardCreated.getWorkflowId(), cardCreated.getLaneId());
         CommitCardOutput commitCardOutput = new CommitCardOutput();
 
         commitCardUseCase.execute(commitCardInput, commitCardOutput);
     }
-
 }

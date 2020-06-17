@@ -2,6 +2,7 @@ package ddd.kanban.usecase.card.edit;
 
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.card.Card;
+import ddd.kanban.usecase.card.mapper.CardEntityMapper;
 import ddd.kanban.usecase.repository.CardRepository;
 
 public class EditCardUseCase {
@@ -14,7 +15,7 @@ public class EditCardUseCase {
     }
 
     public void execute(EditCardUseCaseInput editCardUseCaseInput, EditCardUseCaseOutput editCardUseCaseOutput) {
-        Card card = cardRepository.findById( editCardUseCaseInput.getCardId() );
+        Card card = CardEntityMapper.mappingCardFrom(cardRepository.findById( editCardUseCaseInput.getCardId()));
         card.setTitle(editCardUseCaseInput.getCardName());
         card.setDescription(editCardUseCaseInput.getCardDescription());
         card.setCardType(editCardUseCaseInput.getCardCardType());
@@ -24,7 +25,7 @@ public class EditCardUseCase {
         card.setPlannedFinishDate(editCardUseCaseInput.getCardPlannedFinishDate());
         card.setPriority(editCardUseCaseInput.getCardPriority());
 
-        cardRepository.save(card);
+        cardRepository.save(CardEntityMapper.mappingCardEntityFrom(card));
 
         domainEventBus.postAll(card);
 

@@ -7,7 +7,7 @@ import ddd.kanban.domain.model.card.Card;
 import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;
-import ddd.kanban.usecase.handler.DomainEventHandler;
+import ddd.kanban.usecase.domainevent.handler.DomainEventHandler;
 import ddd.kanban.usecase.repository.BoardRepository;
 import ddd.kanban.usecase.repository.FlowEventRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
@@ -49,7 +49,7 @@ public class CommitCardUseCaseTest {
         assertEquals(0, lane.getCommittedCards().size());
 
         Card card = new Card(UUID.randomUUID().toString(), "Card", this.boardId, this.workflowId, this.columnId);
-        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository);
+        CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository,domainEventBus);
         CommitCardInput commitCardInput = new CommitCardInput(card.getId(), this.workflowId, this.columnId);
         CommitCardOutput commitCardOutput = new CommitCardOutput();
 

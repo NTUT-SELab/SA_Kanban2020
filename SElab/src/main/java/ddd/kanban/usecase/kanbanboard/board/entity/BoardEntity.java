@@ -16,13 +16,6 @@ public class BoardEntity {
         this.workflowIds = new ArrayList<>();
     }
 
-    public BoardEntity(String id, String title, String description, List<String> workflowIds){
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.workflowIds = workflowIds;
-    }
-
     public String getId() {
         return id;
     }

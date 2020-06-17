@@ -44,10 +44,6 @@ public class SqliteBoardRepository implements BoardRepository {
                 .orElseThrow(RuntimeException::new);
     }
 
-    private static Predicate<Board> findBoardById(String boardId){
-        return board -> board.getId().equals(boardId);
-    }
-
     @Override
     public List<BoardEntity> findAll() {
         return boards;

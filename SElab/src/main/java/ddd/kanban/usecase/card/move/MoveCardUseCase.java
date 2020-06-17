@@ -1,9 +1,9 @@
 package ddd.kanban.usecase.card.move;
 
 import ddd.kanban.domain.model.DomainEventBus;
-import ddd.kanban.domain.model.workflow.Workflow;
+import ddd.kanban.domain.model.kanbanboard.workflow.Workflow;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.mapper.WorkflowEntityMapper;
+import ddd.kanban.usecase.kanbanboard.workflow.mapper.WorkflowEntityMapper;
 
 public class MoveCardUseCase {
     private WorkflowRepository workflowRepository;

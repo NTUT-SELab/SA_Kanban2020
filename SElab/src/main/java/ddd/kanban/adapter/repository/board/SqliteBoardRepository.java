@@ -1,8 +1,8 @@
 package ddd.kanban.adapter.repository.board;
 
 import ddd.kanban.adapter.database.DataBaseUtility;
-import ddd.kanban.domain.model.board.Board;
-import ddd.kanban.usecase.board.entity.BoardEntity;
+import ddd.kanban.domain.model.kanbanboard.board.Board;
+import ddd.kanban.usecase.kanbanboard.board.entity.BoardEntity;
 import ddd.kanban.usecase.repository.BoardRepository;
 
 import java.sql.*;

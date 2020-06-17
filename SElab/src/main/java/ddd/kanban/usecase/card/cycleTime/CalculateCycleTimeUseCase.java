@@ -3,7 +3,7 @@ package ddd.kanban.usecase.card.cycleTime;
 import ddd.kanban.domain.model.FlowEvent;
 import ddd.kanban.usecase.repository.FlowEventRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.entity.ColumnEntity;
+import ddd.kanban.usecase.kanbanboard.workflow.entity.ColumnEntity;
 
 import java.util.ArrayList;
 import java.util.List;

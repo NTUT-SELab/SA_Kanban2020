@@ -1,5 +1,6 @@
 package ddd.kanban.usecase.workflow.mapper;
 
+import ddd.kanban.domain.model.workflow.Column;
 import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.workflow.entity.ColumnEntity;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 public class WorkflowEntityMapper {
     public static Workflow mappingWorkflowFrom(WorkflowEntity workflowEntity){
 
-        List<Lane> columns = workflowEntity.getLaneEntities()
+        List<Column> columns = workflowEntity.getLaneEntities()
                                     .stream()
                                     .map(ColumnEntityMapper::mappingColumnFrom)
                                     .collect(Collectors.toList());

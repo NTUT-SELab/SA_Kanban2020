@@ -12,24 +12,24 @@ import java.util.function.Predicate;
 
 public class Workflow extends AggregateRoot {
 
-    private List<Lane> columns;
+    private List<Column> columns;
     private String boardId;
 
     public Workflow(String id, String title, String boardId){
         super(id, title);
         this.boardId = boardId;
-        columns = new ArrayList<Lane>();
+        columns = new ArrayList<>();
         addDomainEvent(new WorkflowCreated(id, boardId, title, UUID.randomUUID().toString()));
     }
 
-    public Workflow(String id, String title, String boardId, List<Lane> columns){
+    public Workflow(String id, String title, String boardId, List<Column> columns){
         super(id, title);
         this.boardId = boardId;
         this.columns = columns;
     }
 
     public String createColumn(String columnName, String workflowId){
-        Lane column = new Column(UUID.randomUUID().toString(), columnName, workflowId);
+        Column column = new Column(UUID.randomUUID().toString(), columnName, workflowId);
         columns.add(column);
         return column.getId();
     }
@@ -41,7 +41,7 @@ public class Workflow extends AggregateRoot {
                 .orElseThrow(RuntimeException::new);
     }
 
-    public List<Lane> getColumns(){
+    public List<Column> getColumns(){
         return columns;
     }
 

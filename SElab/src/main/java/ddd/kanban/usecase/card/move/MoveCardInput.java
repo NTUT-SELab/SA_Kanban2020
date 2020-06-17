@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.workflow.move;
+package ddd.kanban.usecase.card.move;
 
 public class MoveCardInput {
     private final String workflowId;

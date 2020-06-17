@@ -6,6 +6,7 @@ import ddd.kanban.adapter.repository.flowevent.InMemoryFlowEventRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.common.DateProvider;
+import ddd.kanban.domain.model.workflow.Column;
 import ddd.kanban.domain.model.workflow.Lane;
 import ddd.kanban.domain.model.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;
@@ -22,9 +23,9 @@ import ddd.kanban.usecase.workflow.create.CreateColumnInput;
 import ddd.kanban.usecase.workflow.create.CreateColumnOutput;
 import ddd.kanban.usecase.workflow.create.CreateColumnUseCase;
 import ddd.kanban.usecase.workflow.mapper.WorkflowEntityMapper;
-import ddd.kanban.usecase.workflow.move.MoveCardInput;
-import ddd.kanban.usecase.workflow.move.MoveCardOutput;
-import ddd.kanban.usecase.workflow.move.MoveCardUseCase;
+import ddd.kanban.usecase.card.move.MoveCardInput;
+import ddd.kanban.usecase.card.move.MoveCardOutput;
+import ddd.kanban.usecase.card.move.MoveCardUseCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -97,7 +98,7 @@ public class CalculateCycleTimeUseCaseTest {
     @Test
     public void testCalculateCycleTimeUseCaseForSingleLane() throws ParseException {
         Workflow workflow;
-        List<Lane> lanes;
+        List<Column> lanes;
         Lane lane;
 
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
@@ -122,7 +123,7 @@ public class CalculateCycleTimeUseCaseTest {
     @Test
     public void testCalculateCycleTimeUseCaseForCardJustUncommittedFromDefaultLane() throws ParseException {
         Workflow workflow;
-        List<Lane> lanes;
+        List<Column> lanes;
         Lane lane;
 
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
@@ -158,7 +159,7 @@ public class CalculateCycleTimeUseCaseTest {
 
     private void simulateMoveCard() throws ParseException {
         Workflow workflow;
-        List<Lane> lanes;
+        List<Column> lanes;
         Lane lane;
 
         DateProvider.setDate(dateFormat.parse("2020/5/22 00:00:00"));

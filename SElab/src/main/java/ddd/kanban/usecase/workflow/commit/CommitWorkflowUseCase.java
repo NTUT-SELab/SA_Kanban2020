@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.board.commit;
+package ddd.kanban.usecase.workflow.commit;
 
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.board.Board;

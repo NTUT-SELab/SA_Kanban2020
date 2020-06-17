@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.workflow.move;
+package ddd.kanban.usecase.card.move;
 
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.card.InMemoryCardRepository;

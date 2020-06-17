@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.workflow.move;
+package ddd.kanban.usecase.card.move;
 
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.workflow.Workflow;

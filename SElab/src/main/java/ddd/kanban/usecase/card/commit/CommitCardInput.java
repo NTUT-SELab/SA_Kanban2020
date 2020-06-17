@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.workflow.commit;
+package ddd.kanban.usecase.card.commit;
 
 public class CommitCardInput {
     private String cardId;

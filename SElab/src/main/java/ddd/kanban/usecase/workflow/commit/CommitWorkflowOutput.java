@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.board.commit;
+package ddd.kanban.usecase.workflow.commit;
 
 public class CommitWorkflowOutput {
     private String boardId;

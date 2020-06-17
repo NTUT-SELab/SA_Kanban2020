@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.workflow.commit;
+package ddd.kanban.usecase.card.commit;
 
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;

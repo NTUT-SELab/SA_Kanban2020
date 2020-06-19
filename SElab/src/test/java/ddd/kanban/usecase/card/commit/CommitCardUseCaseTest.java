@@ -49,8 +49,9 @@ public class CommitCardUseCaseTest {
         assertEquals(0, lane.getCommittedCards().size());
 
         Card card = new Card(UUID.randomUUID().toString(), "Card", this.boardId, this.workflowId, this.columnId);
+
         CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository,domainEventBus);
-        CommitCardInput commitCardInput = new CommitCardInput(card.getId(), this.workflowId, this.columnId);
+        CommitCardInput commitCardInput = new CommitCardInput(card.getId(), this.workflowId, this.columnId, lane.getTitle());
         CommitCardOutput commitCardOutput = new CommitCardOutput();
 
         commitCardUseCase.execute(commitCardInput, commitCardOutput);

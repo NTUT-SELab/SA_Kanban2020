@@ -35,7 +35,7 @@ public class Workflow extends AggregateRoot {
         return column.getId();
     }
 
-    public Lane findColumnById(String columnId){
+    public Column findColumnById(String columnId){
         return columns.stream()
                 .filter(judgeColumnId(columnId))
                 .findFirst()
@@ -52,8 +52,9 @@ public class Workflow extends AggregateRoot {
 
     public String getBoardId(){return boardId;}
 
-    public String commitCard(String cardId, String laneId) {
+    public String commitCard(String cardId, String laneId, String defaultColumnTitle) {
         Lane column = this.findColumnById(laneId);
+        addDomainEvent(new CardCommitted(cardId, this.id, laneId, defaultColumnTitle, UUID.randomUUID().toString()));
         return column.commitCard(cardId);
     }
 

@@ -1,28 +1,28 @@
-package ddd.kanban.domain.model;
+package ddd.kanban.domain.model.reporting;
 
-import java.util.ArrayList;
+import ddd.kanban.domain.model.DomainEvent;
+import ddd.kanban.domain.model.PostableEventObject;
+import ddd.kanban.domain.model.EventPostable;
+
 import java.util.List;
 
-public abstract class AggregateRoot extends Entity implements EventPostable {
-
-    private List<DomainEvent> domainEvents;
+public class CycleTimeCalculator implements EventPostable {
 
     private PostableEventObject postableEventObjectObject = new PostableEventObject();
-
-    public AggregateRoot(final String id, String title) {
-        super(id, title);
-        domainEvents = new ArrayList<>();
-    }
-
+    @Override
     public void addDomainEvent(DomainEvent event) {
         postableEventObjectObject.addDomainEvent(event);
     }
 
+    @Override
     public List<DomainEvent> getDomainEvents() {
         return postableEventObjectObject.getDomainEvents();
     }
 
+    @Override
     public void clearDomainEvents() {
         this.postableEventObjectObject.clearDomainEvents();
     }
+
+    //TODO 俊凱
 }

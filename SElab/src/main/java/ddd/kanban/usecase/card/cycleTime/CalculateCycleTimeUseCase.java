@@ -3,10 +3,12 @@ package ddd.kanban.usecase.card.cycleTime;
 import ddd.kanban.domain.model.FlowEvent;
 import ddd.kanban.usecase.repository.FlowEventRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
-import ddd.kanban.usecase.workflow.entity.ColumnEntity;
+import ddd.kanban.usecase.kanbanboard.workflow.entity.ColumnEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CalculateCycleTimeUseCase {
 
@@ -35,13 +37,8 @@ public class CalculateCycleTimeUseCase {
         List<FlowEventPair> flowEventPairs = new ArrayList<>();
 
         FlowEvent committed = null;
-        boolean isDefaultLaneUnCommitEvent = true;
 
         for(FlowEvent flowEvent: this.flowEventRepository.findAll()){
-            if (isDefaultLaneUnCommitEvent){
-                isDefaultLaneUnCommitEvent = false;
-                continue;
-            }
             if (flowEvent.getCardId().equals(cardId)){
                 if (committed == null){
                     committed = flowEvent;
@@ -57,15 +54,11 @@ public class CalculateCycleTimeUseCase {
     }
 
     private List<String> getLaneIntervalIds(String workflowId, String beginningLaneId, String endLaneId) {
-        List<String> laneIntervalIds = new ArrayList<>();
-        Boolean isInLaneInterval = false;
+        List<ColumnEntity> laneEntities = this.workflowRepository.findById(workflowId).getLaneEntities();
+        List<String> laneIntervalIds = laneEntities.stream()
+                                                    .map(laneEntity -> laneEntity.getId())
+                                                    .collect(Collectors.toList());
 
-        for(ColumnEntity laneEntity: this.workflowRepository.findById(workflowId).getLaneEntities()){
-            if (isInLaneInterval || laneEntity.getId().equals(beginningLaneId)){
-                laneIntervalIds.add(laneEntity.getId());
-                isInLaneInterval = (laneEntity.getId().equals(endLaneId)) ? false : true;
-            }
-        }
         return laneIntervalIds;
     }
 

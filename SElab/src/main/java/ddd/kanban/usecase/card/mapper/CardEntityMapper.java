@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class CardEntityMapper {
     public static CardEntity mappingCardEntityFrom(Card card) {
-        CardEntity cardEntity = new CardEntity(card.getId(), card.getTitle(), card.getBoardId(), card.getWorkflowId(), card.getLaneId());
+        CardEntity cardEntity = new CardEntity(card.getId(), card.getTitle(), card.getBoardId(), card.getWorkflowId(), card.getColumnId());
         List<TaskEntity> taskEntityList = card.getTasks()
                                                 .stream()
                                                 .map(TaskEntityMapper::mappingTaskEntityFrom)

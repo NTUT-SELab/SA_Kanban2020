@@ -16,7 +16,7 @@ public class CardEventHandler {
     @Subscribe
     public void handleDoaminEvent(CardMoved cardMoved){
         Card card = CardEntityMapper.mappingCardFrom(cardRepository.findById(cardMoved.getSourceId()));
-        card.setColumnId(cardMoved.getToLaneId());
+        card.setColumnId(cardMoved.getToColumnId());
         cardRepository.save(CardEntityMapper.mappingCardEntityFrom(card));
     }
 }

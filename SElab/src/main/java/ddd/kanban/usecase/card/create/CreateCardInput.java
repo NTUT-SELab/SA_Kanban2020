@@ -5,13 +5,13 @@ public class CreateCardInput {
     private String cardTitle;
     private String boardId;
     private String workflowId;
-    private String ColumnId;
+    private String columnId;
 
     public CreateCardInput(String cardTitle, String boardId, String workflowId, String ColumnId){
         this.cardTitle = cardTitle;
         this.boardId = boardId;
         this.workflowId = workflowId;
-        this.ColumnId = ColumnId;
+        this.columnId = ColumnId;
     }
 
     public String getCardTitle() {
@@ -28,7 +28,7 @@ public class CreateCardInput {
     }
 
     public String getColumnId(){
-        return ColumnId;
+        return columnId;
     }
 
 }

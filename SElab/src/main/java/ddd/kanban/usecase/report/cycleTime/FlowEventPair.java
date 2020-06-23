@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.reporting.cycleTime;
+package ddd.kanban.usecase.report.cycleTime;
 
 import ddd.kanban.domain.model.FlowEvent;
 import ddd.kanban.domain.model.common.DateProvider;

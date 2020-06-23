@@ -1,11 +1,11 @@
-package ddd.kanban.domain.model.reporting;
+package ddd.kanban.domain.model.report;
 
 import ddd.kanban.domain.model.DomainEvent;
 import ddd.kanban.domain.model.PostableEventObject;
 import ddd.kanban.domain.model.EventPostable;
-import ddd.kanban.domain.model.reporting.event.CycleTimeCalculated;
-import ddd.kanban.usecase.reporting.cycleTime.CycleTime;
-import ddd.kanban.usecase.reporting.cycleTime.FlowEventPair;
+import ddd.kanban.domain.model.report.event.CycleTimeCalculated;
+import ddd.kanban.usecase.report.cycleTime.CycleTime;
+import ddd.kanban.usecase.report.cycleTime.FlowEventPair;
 
 import java.util.List;
 

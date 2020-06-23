@@ -1,8 +1,8 @@
-package ddd.kanban.usecase.reporting.cycleTime;
+package ddd.kanban.usecase.report.cycleTime;
 
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.FlowEvent;
-import ddd.kanban.domain.model.reporting.CycleTimeCalculator;
+import ddd.kanban.domain.model.report.CycleTimeCalculator;
 import ddd.kanban.usecase.repository.FlowEventRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
 import ddd.kanban.usecase.kanbanboard.workflow.entity.ColumnEntity;

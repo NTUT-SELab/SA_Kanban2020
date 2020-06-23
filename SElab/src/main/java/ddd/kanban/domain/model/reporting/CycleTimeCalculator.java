@@ -31,6 +31,7 @@ public class CycleTimeCalculator implements EventPostable {
                                     .filter(flowEventPair -> laneIntervalIds.contains(flowEventPair.getLaneId()))
                                     .mapToLong(flowEventPair -> flowEventPair.getCycleTime().getMillisecond())
                                     .sum();
+
         return new CycleTime(diff);
     }
 }

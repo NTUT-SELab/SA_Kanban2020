@@ -42,9 +42,7 @@ public class CalculateCycleTimeUseCaseTest {
     private String boardId;
     private String workflowId;
 
-    private String cardIdWillMove;
-    private String cardIdWillNotMove;
-
+    private String defaultLaneId;
     private String beginningLaneId;
     private String analysisLaneId;
     private String developmentLaneId;
@@ -62,57 +60,51 @@ public class CalculateCycleTimeUseCaseTest {
 
     @Before
     public void setUp(){
-        List<Workflow> workflows;
-        Workflow workflow;
-
         dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-        cardRepository = new InMemoryCardRepository();
-
+        this.cardRepository = new InMemoryCardRepository();
         this.workflowRepository = new InMemoryWorkflowRepository();
         this.boardRepository = new InMemoryBoardRepository();
         this.flowEventRepository = new InMemoryFlowEventRepository();
 
         this.domainEventBus = new DomainEventBus();
-        domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
-        domainEventBus.register(new FlowEventHandler(flowEventRepository));
-        hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
+        this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
+        this.domainEventBus.register(new FlowEventHandler(flowEventRepository));
+        this.hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
 
         this.boardId = hierarchyInitial.CreateBoard();
 
-        workflows = workflowRepository.findAll()
-                            .stream()
-                            .map(WorkflowEntityMapper::mappingWorkflowFrom)
-                            .collect(Collectors.toList());
-        workflow = workflows.get(0);
+
+        Workflow workflow = workflowRepository.findAll()
+                                                .stream()
+                                                .map(WorkflowEntityMapper::mappingWorkflowFrom)
+                                                .findFirst()
+                                                .orElseThrow(RuntimeException::new);
         this.workflowId = workflow.getId();
 
+        this.defaultLaneId = workflow.getColumns().get(0).getId();
         this.beginningLaneId = this.createColumn(this.workflowId, "Ready");
         this.analysisLaneId = this.createColumn(this.workflowId, "Analysis");
         this.developmentLaneId = this.createColumn(this.workflowId, "Development");
         this.testLaneId = this.createColumn(this.workflowId, "Test");
         this.readyToDeployLaneId = this.createColumn(this.workflowId, "Ready to Deploy");
         this.endLaneId = this.createColumn(this.workflowId, "Deployed");
+
     }
 
     @Test
     public void testCalculateCycleTimeUseCaseForSingleLane() throws ParseException {
-        Workflow workflow;
-        List<Column> lanes;
-        Lane lane;
+        String cardId;
 
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
-        this.cardIdWillMove = createCard("Implement Calculate Cycle Time UseCase");
-        workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId));
-        lanes = workflow.getColumns();
-        lane = lanes.get(0);
-        this.moveCard(lane.getId(), this.beginningLaneId, this.cardIdWillMove);
+        cardId = createCard("Implement Calculate Cycle Time UseCase");
+        this.moveCard(this.defaultLaneId, this.beginningLaneId, cardId);
 
         DateProvider.setDate(dateFormat.parse("2020/5/23 00:00:00"));
-        this.moveCard(this.beginningLaneId, this.analysisLaneId, this.cardIdWillMove);
+        this.moveCard(this.beginningLaneId, this.analysisLaneId, cardId);
 
         CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
-        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(this.cardIdWillMove, this.workflowId, this.beginningLaneId, this.beginningLaneId);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningLaneId, this.beginningLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput, calculateCycleTimeOutput);
@@ -122,66 +114,51 @@ public class CalculateCycleTimeUseCaseTest {
 
     @Test
     public void testCalculateCycleTimeUseCaseForCardJustUncommittedFromDefaultLane() throws ParseException {
-        Workflow workflow;
-        List<Column> lanes;
-        Lane lane;
+        String cardId;
 
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
-        this.cardIdWillNotMove = createCard("Buy house");
-        workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId));
-        lanes = workflow.getColumns();
-        lane = lanes.get(0);
-        this.moveCard(lane.getId(), this.beginningLaneId, cardIdWillNotMove);
+        cardId = createCard("Buy house");
+        this.moveCard(this.defaultLaneId, this.beginningLaneId, cardId);
 
-        DateProvider.setDate(dateFormat.parse("2020/5/23 00:00:00"));
+        DateProvider.setDate(dateFormat.parse("2020/6/20 00:00:00"));
 
         CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
-        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardIdWillNotMove, this.workflowId, this.beginningLaneId, this.beginningLaneId);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningLaneId, this.beginningLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput, calculateCycleTimeOutput);
 
-        assertEquals(3, calculateCycleTimeOutput.getCycleTime().getDay());
+        assertEquals(31, calculateCycleTimeOutput.getCycleTime().getDay());
     }
 
     @Test
     public void testCalculateCycleTimeUseCaseForMoveCardFromReadyToDeploy() throws ParseException {
-        this.simulateMoveCard();
+        String cardId;
+
+        DateProvider.setDate(dateFormat.parse("2020/5/22 00:00:00"));
+        cardId = createCard("Implement Calculate Cycle Time UseCase");
+        this.moveCard(this.defaultLaneId, this.beginningLaneId, cardId);
+        this.moveCard(this.beginningLaneId, this.analysisLaneId, cardId);
+
+        DateProvider.setDate(dateFormat.parse("2020/5/23 12:00:00"));
+        this.moveCard(this.analysisLaneId, this.developmentLaneId, cardId);
+
+        DateProvider.setDate(dateFormat.parse("2020/5/26 20:00:00"));
+        this.moveCard(this.developmentLaneId, this.testLaneId, cardId);
+
+        DateProvider.setDate(dateFormat.parse("2020/5/27 12:00:00"));
+        this.moveCard(this.testLaneId, this.readyToDeployLaneId, cardId);
+
+        DateProvider.setDate(dateFormat.parse("2020/5/27 17:00:00"));
+        this.moveCard(this.readyToDeployLaneId, this.endLaneId, cardId);
 
         CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
-        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(this.cardIdWillMove, this.workflowId, this.beginningLaneId, this.readyToDeployLaneId);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningLaneId, this.readyToDeployLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput, calculateCycleTimeOutput);
 
         assertEquals(5, calculateCycleTimeOutput.getCycleTime().getDay());
-    }
-
-    private void simulateMoveCard() throws ParseException {
-        Workflow workflow;
-        List<Column> lanes;
-        Lane lane;
-
-        DateProvider.setDate(dateFormat.parse("2020/5/22 00:00:00"));
-        this.cardIdWillMove = createCard("Implement Calculate Cycle Time UseCase");
-        workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId));
-        lanes = workflow.getColumns();
-        lane = lanes.get(0);
-
-        this.moveCard(lane.getId(), this.beginningLaneId, this.cardIdWillMove);
-        this.moveCard(this.beginningLaneId, this.analysisLaneId, this.cardIdWillMove);
-
-        DateProvider.setDate(dateFormat.parse("2020/5/23 12:00:00"));
-        this.moveCard(this.analysisLaneId, this.developmentLaneId, this.cardIdWillMove);
-
-        DateProvider.setDate(dateFormat.parse("2020/5/26 20:00:00"));
-        this.moveCard(this.developmentLaneId, this.testLaneId, this.cardIdWillMove);
-
-        DateProvider.setDate(dateFormat.parse("2020/5/27 12:00:00"));
-        this.moveCard(this.testLaneId, this.readyToDeployLaneId, this.cardIdWillMove);
-
-        DateProvider.setDate(dateFormat.parse("2020/5/27 17:00:00"));
-        this.moveCard(this.readyToDeployLaneId, this.endLaneId, this.cardIdWillMove);
     }
 
     private String createColumn(String workflowId, String columnName){

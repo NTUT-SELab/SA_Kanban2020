@@ -7,8 +7,8 @@ import ddd.kanban.usecase.repository.WorkflowRepository;
 import ddd.kanban.usecase.kanbanboard.workflow.entity.ColumnEntity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class CalculateCycleTimeUseCase {
@@ -22,9 +22,9 @@ public class CalculateCycleTimeUseCase {
     }
 
     public void execute(CalculateCycleTimeInput calculateCycleTimeInput, CalculateCycleTimeOutput calculateCycleTimeOutput){
+        CycleTimeCalculator cycleTimeCalculator = new CycleTimeCalculator();
         List<FlowEventPair> flowEventPairs;
         List<String> laneIntervalIds;
-        CycleTimeCalculator cycleTimeCalculator = new CycleTimeCalculator();
         CycleTime cycleTime;
 
         flowEventPairs = getCardFlowEventPairs(calculateCycleTimeInput.getCardId());
@@ -55,11 +55,25 @@ public class CalculateCycleTimeUseCase {
     }
 
     private List<String> getLaneIntervalIds(String workflowId, String beginningLaneId, String endLaneId) {
-        List<ColumnEntity> laneEntities = this.workflowRepository.findById(workflowId).getLaneEntities();
-        List<String> laneIntervalIds = laneEntities.stream()
+        List<ColumnEntity> columnEntities = this.workflowRepository.findById(workflowId).getColumnEntities();
+        int beginLaneEntityIndex = columnEntities.indexOf(findColumnByColumnId(columnEntities, beginningLaneId));
+        int endLaneEntityIndex = columnEntities.indexOf(findColumnByColumnId(columnEntities, endLaneId));
+        List<String> laneIntervalIds = columnEntities.subList(beginLaneEntityIndex, endLaneEntityIndex+1)
+                                                    .stream()
                                                     .map(laneEntity -> laneEntity.getId())
                                                     .collect(Collectors.toList());
 
         return laneIntervalIds;
+    }
+
+    private ColumnEntity findColumnByColumnId(List<ColumnEntity> columnEntities, String columnId){
+        return columnEntities.stream()
+                .filter(findColumnById(columnId))
+                .findFirst()
+                .orElseThrow(RuntimeException::new);
+    }
+
+    private Predicate<ColumnEntity> findColumnById(String columnId){
+        return ColumnEntity -> ColumnEntity.getId().equals(columnId);
     }
 }

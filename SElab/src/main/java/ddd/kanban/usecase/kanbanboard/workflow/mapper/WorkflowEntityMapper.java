@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class WorkflowEntityMapper {
     public static Workflow mappingWorkflowFrom(WorkflowEntity workflowEntity){
 
-        List<Column> columns = workflowEntity.getLaneEntities()
+        List<Column> columns = workflowEntity.getColumnEntities()
                                     .stream()
                                     .map(ColumnEntityMapper::mappingColumnFrom)
                                     .collect(Collectors.toList());
@@ -24,7 +24,7 @@ public class WorkflowEntityMapper {
                                             .stream()
                                             .map(ColumnEntityMapper::mappingColumnEntityFrom)
                                             .collect(Collectors.toList());
-        workflowEntity.setLaneEntities(laneEntities);
+        workflowEntity.setColumnEntities(laneEntities);
         return workflowEntity;
     }
 }

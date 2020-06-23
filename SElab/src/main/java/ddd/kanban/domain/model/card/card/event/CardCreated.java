@@ -1,10 +1,6 @@
-package ddd.kanban.domain.model.card.event;
+package ddd.kanban.domain.model.card.card.event;
 
 import ddd.kanban.domain.model.AbstractDomainEvent;
-import ddd.kanban.domain.model.DomainEvent;
-import ddd.kanban.domain.model.common.DateProvider;
-
-import java.util.Date;
 
 public class CardCreated extends AbstractDomainEvent {
     private String workflowId;

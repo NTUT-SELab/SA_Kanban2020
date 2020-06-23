@@ -1,9 +1,9 @@
 package ddd.kanban.domain.model.kanbanboard.workflow;
 
 import ddd.kanban.domain.model.AggregateRoot;
-import ddd.kanban.domain.model.card.event.CardCommitted;
-import ddd.kanban.domain.model.card.event.CardMoved;
-import ddd.kanban.domain.model.card.event.CardUnCommitted;
+import ddd.kanban.domain.model.card.card.event.CardCommitted;
+import ddd.kanban.domain.model.card.card.event.CardMoved;
+import ddd.kanban.domain.model.card.card.event.CardUnCommitted;
 import ddd.kanban.domain.model.kanbanboard.workflow.event.WorkflowCreated;
 
 import java.util.ArrayList;
@@ -46,21 +46,21 @@ public class Workflow extends AggregateRoot {
         return columns;
     }
 
-    public static Predicate<Lane> judgeColumnId(String columnId){
+    public static Predicate<Column> judgeColumnId(String columnId){
         return column -> column.getId().equals(columnId);
     }
 
     public String getBoardId(){return boardId;}
 
     public String commitCard(String cardId, String laneId, String defaultColumnTitle) {
-        Lane column = this.findColumnById(laneId);
+        Column column = this.findColumnById(laneId);
         addDomainEvent(new CardCommitted(cardId, this.id, laneId, defaultColumnTitle, UUID.randomUUID().toString()));
         return column.commitCard(cardId);
     }
 
     public String moveCard(String cardId, String fromLaneId, String toLaneId) {
-        Lane fromLane = findColumnById(fromLaneId);
-        Lane toLane = findColumnById(toLaneId);
+        Column fromLane = findColumnById(fromLaneId);
+        Column toLane = findColumnById(toLaneId);
 
         fromLane.unCommitCard(cardId);
         toLane.commitCard(cardId);

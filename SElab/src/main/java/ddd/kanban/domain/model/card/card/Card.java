@@ -1,7 +1,7 @@
-package ddd.kanban.domain.model.card;
+package ddd.kanban.domain.model.card.card;
 
 import ddd.kanban.domain.model.AggregateRoot;
-import ddd.kanban.domain.model.card.event.CardCreated;
+import ddd.kanban.domain.model.card.card.event.CardCreated;
 
 import java.util.ArrayList;
 import java.util.Date;

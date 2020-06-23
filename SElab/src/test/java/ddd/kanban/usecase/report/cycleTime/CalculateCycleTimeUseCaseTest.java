@@ -5,7 +5,7 @@ import ddd.kanban.adapter.repository.card.InMemoryCardRepository;
 import ddd.kanban.adapter.repository.flowevent.InMemoryFlowEventRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
-import ddd.kanban.domain.model.common.DateProvider;
+import ddd.kanban.domain.common.DateProvider;
 import ddd.kanban.domain.model.kanbanboard.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.card.create.CreateCardInput;
@@ -83,11 +83,9 @@ public class CalculateCycleTimeUseCaseTest {
     }
 
     @Test
-    public void testCalculateCycleTimeUseCaseForSingleLane() throws ParseException {
-        String cardId;
-
+    public void testCalculateCycleTimeUseCaseForSingleColumn() throws ParseException {
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
-        cardId = createCard("Implement Calculate Cycle Time UseCase");
+        String cardId = createCard("Implement Calculate Cycle Time UseCase");
         this.moveCard(this.defaultColumnId, this.beginningColumnId, cardId);
 
         DateProvider.setDate(dateFormat.parse("2020/5/23 00:00:00"));
@@ -163,7 +161,7 @@ public class CalculateCycleTimeUseCaseTest {
 
     private String createCard(String cardTitle){
         CreateCardUseCase createCardUseCase = new CreateCardUseCase(cardRepository, domainEventBus);
-        CreateCardInput createCardInput = new CreateCardInput(cardTitle, this.boardId, this.workflowId, this.beginningColumnId);
+        CreateCardInput createCardInput = new CreateCardInput(cardTitle, this.boardId, this.workflowId, this.defaultColumnId);
         CreateCardOutput createCardOutput = new CreateCardOutput();
 
         createCardUseCase.execute(createCardInput, createCardOutput);

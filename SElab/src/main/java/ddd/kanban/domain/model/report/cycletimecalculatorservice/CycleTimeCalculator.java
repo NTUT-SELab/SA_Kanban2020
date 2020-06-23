@@ -1,11 +1,7 @@
-package ddd.kanban.domain.model.report;
+package ddd.kanban.domain.model.report.cycletimecalculatorservice;
 
-import ddd.kanban.domain.model.DomainEvent;
-import ddd.kanban.domain.model.PostableEventObject;
-import ddd.kanban.domain.model.EventPostable;
-import ddd.kanban.domain.model.report.event.CycleTimeCalculated;
-import ddd.kanban.usecase.report.cycleTime.CycleTime;
-import ddd.kanban.usecase.report.cycleTime.FlowEventPair;
+import ddd.kanban.domain.model.*;
+import ddd.kanban.domain.model.report.cycletimecalculatorservice.event.CycleTimeCalculated;
 
 import java.util.List;
 
@@ -27,7 +23,7 @@ public class CycleTimeCalculator implements EventPostable {
         this.postableEventObjectObject.clearDomainEvents();
     }
 
-    public CycleTime calculateCycleTime(String cardId, List<FlowEventPair> flowEventPairs, List<String> laneIntervalIds) {
+    public CycleTime process(String cardId, List<FlowEventPair> flowEventPairs, List<String> laneIntervalIds) {
         long diff = flowEventPairs.stream()
                                     .filter(flowEventPair -> laneIntervalIds.contains(flowEventPair.getLaneId()))
                                     .mapToLong(flowEventPair -> flowEventPair.getCycleTime().getMillisecond())

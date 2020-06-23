@@ -1,7 +1,7 @@
-package ddd.kanban.usecase.report.cycleTime;
+package ddd.kanban.domain.model.report.cycletimecalculatorservice;
 
+import ddd.kanban.domain.common.DateProvider;
 import ddd.kanban.domain.model.FlowEvent;
-import ddd.kanban.domain.model.common.DateProvider;
 
 public class FlowEventPair {
     private FlowEvent committed;

@@ -1,4 +1,4 @@
-package ddd.kanban.domain.model.card;
+package ddd.kanban.domain.model.card.card;
 
 import ddd.kanban.domain.model.Entity;
 

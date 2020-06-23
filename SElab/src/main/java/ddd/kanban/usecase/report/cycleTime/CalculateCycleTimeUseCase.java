@@ -2,7 +2,9 @@ package ddd.kanban.usecase.report.cycleTime;
 
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.FlowEvent;
-import ddd.kanban.domain.model.report.CycleTimeCalculator;
+import ddd.kanban.domain.model.report.cycletimecalculatorservice.CycleTime;
+import ddd.kanban.domain.model.report.cycletimecalculatorservice.CycleTimeCalculator;
+import ddd.kanban.domain.model.report.cycletimecalculatorservice.FlowEventPair;
 import ddd.kanban.usecase.repository.FlowEventRepository;
 import ddd.kanban.usecase.repository.WorkflowRepository;
 import ddd.kanban.usecase.kanbanboard.workflow.entity.ColumnEntity;
@@ -27,13 +29,10 @@ public class CalculateCycleTimeUseCase {
     public void execute(CalculateCycleTimeInput calculateCycleTimeInput, CalculateCycleTimeOutput calculateCycleTimeOutput){
         CycleTimeCalculator cycleTimeCalculator = new CycleTimeCalculator();
         String cardId = calculateCycleTimeInput.getCardId();
-        List<FlowEventPair> flowEventPairs;
-        List<String> laneIntervalIds;
-        CycleTime cycleTime;
+        List<FlowEventPair> flowEventPairs = getCardFlowEventPairs(cardId);
+        List<String> laneIntervalIds = getLaneIntervalIds(calculateCycleTimeInput.getWorkflowId(), calculateCycleTimeInput.getBeginningLaneId(), calculateCycleTimeInput.getEndLaneId());
 
-        flowEventPairs = getCardFlowEventPairs(cardId);
-        laneIntervalIds = getLaneIntervalIds(calculateCycleTimeInput.getWorkflowId(), calculateCycleTimeInput.getBeginningLaneId(), calculateCycleTimeInput.getEndLaneId());
-        cycleTime = cycleTimeCalculator.calculateCycleTime(cardId, flowEventPairs, laneIntervalIds);
+        CycleTime cycleTime = cycleTimeCalculator.process(cardId, flowEventPairs, laneIntervalIds);
 
         domainEventBus.postAll(cycleTimeCalculator);
 

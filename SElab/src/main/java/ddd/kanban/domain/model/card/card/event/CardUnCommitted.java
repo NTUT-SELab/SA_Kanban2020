@@ -1,4 +1,4 @@
-package ddd.kanban.domain.model.card.event;
+package ddd.kanban.domain.model.card.card.event;
 
 import ddd.kanban.domain.model.FlowEvent;
 

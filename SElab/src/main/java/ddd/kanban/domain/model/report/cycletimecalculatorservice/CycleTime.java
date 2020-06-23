@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.report.cycleTime;
+package ddd.kanban.domain.model.report.cycletimecalculatorservice;
 
 public class CycleTime {
     private long millisecond = 0;

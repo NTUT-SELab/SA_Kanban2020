@@ -1,7 +1,7 @@
 package ddd.kanban.usecase.card.mapper;
 
-import ddd.kanban.domain.model.card.Card;
-import ddd.kanban.domain.model.card.Task;
+import ddd.kanban.domain.model.card.card.Card;
+import ddd.kanban.domain.model.card.card.Task;
 import ddd.kanban.usecase.card.entity.CardEntity;
 import ddd.kanban.usecase.card.entity.TaskEntity;
 

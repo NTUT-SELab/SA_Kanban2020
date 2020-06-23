@@ -3,7 +3,7 @@ package ddd.kanban.usecase.card.commit;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
-import ddd.kanban.domain.model.card.Card;
+import ddd.kanban.domain.model.card.card.Card;
 import ddd.kanban.domain.model.kanbanboard.workflow.Lane;
 import ddd.kanban.domain.model.kanbanboard.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;

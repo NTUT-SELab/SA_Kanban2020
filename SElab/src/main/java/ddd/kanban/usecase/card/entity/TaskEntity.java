@@ -1,7 +1,5 @@
 package ddd.kanban.usecase.card.entity;
 
-import ddd.kanban.domain.model.card.CardType;
-
 import java.util.Date;
 import java.util.List;
 

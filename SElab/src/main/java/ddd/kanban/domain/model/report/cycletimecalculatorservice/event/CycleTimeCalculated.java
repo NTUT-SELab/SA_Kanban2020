@@ -1,4 +1,4 @@
-package ddd.kanban.domain.model.report.event;
+package ddd.kanban.domain.model.report.cycletimecalculatorservice.event;
 
 import ddd.kanban.domain.model.AbstractDomainEvent;
 

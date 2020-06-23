@@ -5,7 +5,7 @@ import ddd.kanban.adapter.repository.card.InMemoryCardRepository;
 import ddd.kanban.adapter.repository.flowevent.InMemoryFlowEventRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
-import ddd.kanban.domain.model.card.Card;
+import ddd.kanban.domain.model.card.card.Card;
 import ddd.kanban.domain.model.kanbanboard.workflow.Lane;
 import ddd.kanban.domain.model.kanbanboard.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;

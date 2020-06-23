@@ -1,8 +1,8 @@
 package ddd.kanban.usecase.domainevent.handler;
 
 import com.google.common.eventbus.Subscribe;
-import ddd.kanban.domain.model.card.Card;
-import ddd.kanban.domain.model.card.event.CardMoved;
+import ddd.kanban.domain.model.card.card.Card;
+import ddd.kanban.domain.model.card.card.event.CardMoved;
 import ddd.kanban.usecase.card.mapper.CardEntityMapper;
 import ddd.kanban.usecase.repository.CardRepository;
 

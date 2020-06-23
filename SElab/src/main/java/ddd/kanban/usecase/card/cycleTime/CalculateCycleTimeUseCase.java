@@ -34,22 +34,21 @@ public class CalculateCycleTimeUseCase {
 
 
     private List<FlowEventPair> getCardFlowEventPairs(String cardId) {
+        List<FlowEvent> cardFlowEvents = this.flowEventRepository.findAll().stream()
+                                                                            .filter(flowEvent -> flowEvent.getCardId().equals(cardId))
+                                                                            .collect(Collectors.toList());
         List<FlowEventPair> flowEventPairs = new ArrayList<>();
-
         FlowEvent committed = null;
+        boolean isCommitted = true;
 
-        for(FlowEvent flowEvent: this.flowEventRepository.findAll()){
-            if (flowEvent.getCardId().equals(cardId)){
-                if (committed == null){
-                    committed = flowEvent;
-                }else{
-                    flowEventPairs.add(new FlowEventPair(committed, flowEvent));
-                    committed = null;
-                }
-            }
+        if (cardFlowEvents.size()%2  != 0) cardFlowEvents.add(null);
+        for(FlowEvent flowEvent: cardFlowEvents){
+            if (isCommitted)
+                committed = flowEvent;
+            else
+                flowEventPairs.add(new FlowEventPair(committed, flowEvent));
+            isCommitted = isCommitted == false;
         }
-        if (committed != null)
-            flowEventPairs.add(new FlowEventPair(committed, null));
         return flowEventPairs;
     }
 

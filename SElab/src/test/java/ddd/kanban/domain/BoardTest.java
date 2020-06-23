@@ -8,9 +8,6 @@ import java.util.UUID;
 import static org.junit.Assert.assertEquals;
 
 public class BoardTest {
-
-
-
     @Test
     public void testCreateBoardShouldGenerateDomainEvent(){
         String boardId = UUID.randomUUID().toString();

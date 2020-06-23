@@ -32,7 +32,6 @@ public class CommitWorkflowUseCaseTest {
 
     private BoardRepository boardRepository;
     private WorkflowRepository workflowRepository;
-    private String boardId;
     private DomainEventBus domainEventBus;
     private HierarchyInitial hierarchyInitial;
 
@@ -43,54 +42,25 @@ public class CommitWorkflowUseCaseTest {
         this.domainEventBus = new DomainEventBus();
         this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, domainEventBus));
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
-        boardId = hierarchyInitial.CreateBoard();
     }
 
     @Test
     public void testCreateBoardShouldCreateWorkflowAndCommitToBoard() {
-        CreateBoardUseCase createBoardUseCase = new CreateBoardUseCase(boardRepository, domainEventBus);
-        CreateBoardInput createBoardInput = new CreateBoardInput("board", "Test");
-        CreateBoardOutput createBoardOutput = new CreateBoardPresenter();
+        String boardId = hierarchyInitial.CreateBoard();
 
-        createBoardUseCase.execute(createBoardInput, createBoardOutput);
-
-        Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(createBoardOutput.getBoardId()));
+        Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(boardId));
         assertEquals(1, board.getWorkflowIds().size());
     }
 
     @Test
     public void testCreateWorkflowShouldCommitToBoard() {
+        String boardId = hierarchyInitial.CreateBoard();
         Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(boardId));
 
         assertEquals(1, board.getWorkflowIds().size());
 
-        CreateWorkflowUseCase createWorkflowUseCase = new CreateWorkflowUseCase(workflowRepository, domainEventBus);
-        CreateWorkflowInput createWorkflowInput = new CreateWorkflowInput("Workflow2", boardId);
-        CreateWorkflowOutput createWorkflowOutput = new CreateWorkflowOutput();
-
-        createWorkflowUseCase.execute(createWorkflowInput, createWorkflowOutput);
+        hierarchyInitial.CreateWorkflow(boardId);
 
         assertEquals(2, board.getWorkflowIds().size());
-    }
-
-    @Test
-    public void testCommitWorkflowUseCase() {
-        Workflow workflow = new Workflow(UUID.randomUUID().toString(),"Test Commit Workflow to It's Board", this.boardId);
-        workflow.clearDomainEvents();
-
-        Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(boardId));
-        assertEquals(1, board.getWorkflowIds().size());
-
-        CommitWorkflowInput commitWorkflowInput = new CommitWorkflowInput(this.boardId, workflow.getId());
-        CommitWorkflowOutput commitWorkflowOutput = new CommitWorkflowOutput();
-        CommitWorkflowUseCase commitWorkflowUseCase = new CommitWorkflowUseCase(this.boardRepository, domainEventBus);
-
-        commitWorkflowUseCase.execute(commitWorkflowInput, commitWorkflowOutput);
-
-        board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(boardId));
-        assertEquals(2, board.getWorkflowIds().size());
-
-        assertEquals(workflow.getId(), commitWorkflowOutput.getWorkflowId());
-        assertEquals(board.getId(), commitWorkflowOutput.getBoardId());
     }
 }

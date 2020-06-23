@@ -4,8 +4,8 @@ import ddd.kanban.domain.model.DomainEvent;
 import ddd.kanban.domain.model.PostableEventObject;
 import ddd.kanban.domain.model.EventPostable;
 import ddd.kanban.domain.model.reporting.event.CycleTimeCalculated;
-import ddd.kanban.usecase.card.cycleTime.CycleTime;
-import ddd.kanban.usecase.card.cycleTime.FlowEventPair;
+import ddd.kanban.usecase.reporting.cycleTime.CycleTime;
+import ddd.kanban.usecase.reporting.cycleTime.FlowEventPair;
 
 import java.util.List;
 

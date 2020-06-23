@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.card.cycleTime;
+package ddd.kanban.usecase.reporting.cycleTime;
 
 public class CalculateCycleTimeOutput {
     CycleTime cycleTime;

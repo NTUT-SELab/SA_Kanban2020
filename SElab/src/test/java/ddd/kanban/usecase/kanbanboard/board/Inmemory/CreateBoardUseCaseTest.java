@@ -25,7 +25,6 @@ public class CreateBoardUseCaseTest {
     private WorkflowRepository workflowRepository;
     private DomainEventBus domainEventBus;
     private HierarchyInitial hierarchyInitial;
-    private String boardId;
 
     @Before
     public void setUp() {
@@ -34,10 +33,6 @@ public class CreateBoardUseCaseTest {
         this.domainEventBus = new DomainEventBus();
         this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
-    }
-
-    private String createBoard(){
-        return hierarchyInitial.CreateBoard();
     }
 
     @Test
@@ -50,6 +45,7 @@ public class CreateBoardUseCaseTest {
         createBoardUseCase.execute(createBoardInput, createBoardOutput);
 
         Board board = BoardEntityMapper.mappingBoardFrom(boardRepository.findById(createBoardOutput.getBoardId()));
+        assertEquals(createBoardOutput.getBoardId(), board.getId());
         assertEquals("TestBoard", board.getTitle());
         assertEquals("This is board that save in memory", board.getDescription());
 
@@ -61,7 +57,7 @@ public class CreateBoardUseCaseTest {
     public void testCreateBoardShouldCreateDefaultWorkflow() {
         assertEquals(0, workflowRepository.findAll().size());
 
-        String boardId = this.createBoard();
+        hierarchyInitial.CreateBoard();
 
         assertEquals(1, workflowRepository.findAll().size());
 
@@ -74,7 +70,8 @@ public class CreateBoardUseCaseTest {
     public void testCreateBoardShouldCreateDefaultWorkflowAndThenWorkflowShouldCreateDefaultColumn() {
         assertEquals(0, workflowRepository.findAll().size());
 
-        String boardId = this.createBoard();
+        hierarchyInitial.CreateBoard();
+
         assertEquals(1, workflowRepository.findAll().size());
 
         Workflow workflow =  WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));

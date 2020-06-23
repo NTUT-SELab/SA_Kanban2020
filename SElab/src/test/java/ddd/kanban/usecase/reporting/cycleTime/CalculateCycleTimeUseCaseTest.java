@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.card.cycleTime;
+package ddd.kanban.usecase.reporting.cycleTime;
 
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;
 import ddd.kanban.adapter.repository.card.InMemoryCardRepository;
@@ -6,8 +6,6 @@ import ddd.kanban.adapter.repository.flowevent.InMemoryFlowEventRepository;
 import ddd.kanban.adapter.repository.workflow.InMemoryWorkflowRepository;
 import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.common.DateProvider;
-import ddd.kanban.domain.model.kanbanboard.workflow.Column;
-import ddd.kanban.domain.model.kanbanboard.workflow.Lane;
 import ddd.kanban.domain.model.kanbanboard.workflow.Workflow;
 import ddd.kanban.usecase.HierarchyInitial;
 import ddd.kanban.usecase.card.create.CreateCardInput;
@@ -31,8 +29,6 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 

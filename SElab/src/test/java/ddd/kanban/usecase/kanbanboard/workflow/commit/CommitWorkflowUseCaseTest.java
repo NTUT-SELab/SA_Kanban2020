@@ -1,4 +1,4 @@
-package ddd.kanban.usecase.kanbanboard.board.Inmemory;
+package ddd.kanban.usecase.kanbanboard.workflow.commit;
 
 import ddd.kanban.adapter.presenter.kanbanboard.board.create.CreateBoardPresenter;
 import ddd.kanban.adapter.repository.board.InMemoryBoardRepository;

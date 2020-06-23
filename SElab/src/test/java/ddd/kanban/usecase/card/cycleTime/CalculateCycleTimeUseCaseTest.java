@@ -103,7 +103,7 @@ public class CalculateCycleTimeUseCaseTest {
         DateProvider.setDate(dateFormat.parse("2020/5/23 00:00:00"));
         this.moveCard(this.beginningLaneId, this.analysisLaneId, cardId);
 
-        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
+        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository, this.domainEventBus);
         CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningLaneId, this.beginningLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
@@ -122,7 +122,7 @@ public class CalculateCycleTimeUseCaseTest {
 
         DateProvider.setDate(dateFormat.parse("2020/6/20 00:00:00"));
 
-        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
+        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository, this.domainEventBus);
         CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningLaneId, this.beginningLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
@@ -152,7 +152,7 @@ public class CalculateCycleTimeUseCaseTest {
         DateProvider.setDate(dateFormat.parse("2020/5/27 17:00:00"));
         this.moveCard(this.readyToDeployLaneId, this.endLaneId, cardId);
 
-        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository);
+        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository, this.domainEventBus);
         CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningLaneId, this.readyToDeployLaneId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 

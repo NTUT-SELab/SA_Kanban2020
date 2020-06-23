@@ -1,5 +1,6 @@
 package ddd.kanban.usecase.card.cycleTime;
 
+import ddd.kanban.domain.model.DomainEventBus;
 import ddd.kanban.domain.model.FlowEvent;
 import ddd.kanban.domain.model.reporting.CycleTimeCalculator;
 import ddd.kanban.usecase.repository.FlowEventRepository;
@@ -15,21 +16,26 @@ public class CalculateCycleTimeUseCase {
 
     private FlowEventRepository flowEventRepository;
     private WorkflowRepository workflowRepository;
+    private DomainEventBus domainEventBus;
 
-    public CalculateCycleTimeUseCase(WorkflowRepository workflowRepository, FlowEventRepository flowEventRepository) {
+    public CalculateCycleTimeUseCase(WorkflowRepository workflowRepository, FlowEventRepository flowEventRepository, DomainEventBus domainEventBus) {
         this.workflowRepository = workflowRepository;
         this.flowEventRepository = flowEventRepository;
+        this.domainEventBus = domainEventBus;
     }
 
     public void execute(CalculateCycleTimeInput calculateCycleTimeInput, CalculateCycleTimeOutput calculateCycleTimeOutput){
         CycleTimeCalculator cycleTimeCalculator = new CycleTimeCalculator();
+        String cardId = calculateCycleTimeInput.getCardId();
         List<FlowEventPair> flowEventPairs;
         List<String> laneIntervalIds;
         CycleTime cycleTime;
 
-        flowEventPairs = getCardFlowEventPairs(calculateCycleTimeInput.getCardId());
+        flowEventPairs = getCardFlowEventPairs(cardId);
         laneIntervalIds = getLaneIntervalIds(calculateCycleTimeInput.getWorkflowId(), calculateCycleTimeInput.getBeginningLaneId(), calculateCycleTimeInput.getEndLaneId());
-        cycleTime = cycleTimeCalculator.calculateCycleTime(flowEventPairs, laneIntervalIds);
+        cycleTime = cycleTimeCalculator.calculateCycleTime(cardId, flowEventPairs, laneIntervalIds);
+
+        domainEventBus.postAll(cycleTimeCalculator);
 
         calculateCycleTimeOutput.setCycleTime(cycleTime);
     }

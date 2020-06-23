@@ -101,7 +101,7 @@ public class CalculateCycleTimeUseCaseTest {
     }
 
     @Test
-    public void testCalculateCycleTimeUseCaseForCardJustUncommittedFromDefaultLane() throws ParseException {
+    public void testCalculateCycleTimeUseCaseForCardJustUncommittedFromDefaultColumn() throws ParseException {
         String cardId;
 
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));

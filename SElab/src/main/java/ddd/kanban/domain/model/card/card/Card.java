@@ -128,7 +128,7 @@ public class Card extends AggregateRoot {
         return laneId;
     }
 
-    public void setLaneId(String laneId) {
+    public void setColumnId(String laneId) {
         this.laneId = laneId;
     }
 }

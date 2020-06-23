@@ -4,8 +4,8 @@ abstract public class FlowEvent extends AbstractDomainEvent {
     private final String workflowId;
     private final String cardId;
 
-    public FlowEvent(String cardId, String workflowId, String laneId, String summary, String id) {
-        super(laneId, summary, id);
+    public FlowEvent(String cardId, String workflowId, String ColumnId, String summary, String id) {
+        super(ColumnId, summary, id);
         this.workflowId = workflowId;
         this.cardId = cardId;
     }

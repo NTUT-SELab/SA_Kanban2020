@@ -27,7 +27,7 @@ public class CreateColumnUseCaseTest {
     public void setUp(){
         workflowRepository = new InMemoryWorkflowRepository();
         boardRepository = new InMemoryBoardRepository();
-        this.domainEventBus = new DomainEventBus();
+        domainEventBus = new DomainEventBus();
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
         boardId = hierarchyInitial.CreateBoard();
         workflowId = hierarchyInitial.CreateWorkflow(boardId);

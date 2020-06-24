@@ -29,12 +29,11 @@ public class CreateCardUseCaseTest {
     @Before
     public void setUp(){
         cardRepository = new InMemoryCardRepository();
-
-        this.workflowRepository = new InMemoryWorkflowRepository();
-        this.boardRepository = new InMemoryBoardRepository();
-        this.domainEventBus = new DomainEventBus();
+        workflowRepository = new InMemoryWorkflowRepository();
+        boardRepository = new InMemoryBoardRepository();
+        domainEventBus = new DomainEventBus();
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
-        domainEventBus.register(new DomainEventHandler(this.workflowRepository, boardRepository, domainEventBus));
+        domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, domainEventBus));
     }
 
     @Test

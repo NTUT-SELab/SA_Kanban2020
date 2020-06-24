@@ -58,41 +58,35 @@ public class CalculateCycleTimeUseCaseTest {
     public void setUp(){
         dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-        this.cardRepository = new InMemoryCardRepository();
-        this.workflowRepository = new InMemoryWorkflowRepository();
-        this.boardRepository = new InMemoryBoardRepository();
-        this.flowEventRepository = new InMemoryFlowEventRepository();
+        cardRepository = new InMemoryCardRepository();
+        workflowRepository = new InMemoryWorkflowRepository();
+        boardRepository = new InMemoryBoardRepository();
+        flowEventRepository = new InMemoryFlowEventRepository();
 
-        this.domainEventBus = new DomainEventBus();
-        this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
-        this.domainEventBus.register(new FlowEventHandler(flowEventRepository));
-        this.hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
+        domainEventBus = new DomainEventBus();
+        domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, domainEventBus));
+        domainEventBus.register(new FlowEventHandler(flowEventRepository));
+        hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
 
-        this.boardId = hierarchyInitial.CreateBoard();
+        boardId = hierarchyInitial.CreateBoard();
 
         Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findAll().get(0));
-        this.workflowId = workflow.getId();
-
-        this.defaultColumnId = workflow.getColumns().get(0).getId();
-        this.beginningColumnId = this.createColumn(this.workflowId, "Ready");
-        this.analysisColumnId = this.createColumn(this.workflowId, "Analysis");
-        this.developmentColumnId = this.createColumn(this.workflowId, "Development");
-        this.testColumnId = this.createColumn(this.workflowId, "Test");
-        this.readyToDeployColumnId = this.createColumn(this.workflowId, "Ready to Deploy");
-        this.endColumnId = this.createColumn(this.workflowId, "Deployed");
+        workflowId = workflow.getId();
+        defaultColumnId = workflow.getColumns().get(0).getId();
+        createFullKanbanBoardGameColumns();
     }
 
     @Test
     public void testCalculateCycleTimeUseCaseForSingleColumn() throws ParseException {
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
         String cardId = createCard("Implement Calculate Cycle Time UseCase");
-        this.moveCard(this.defaultColumnId, this.beginningColumnId, cardId);
+        moveCard(defaultColumnId, beginningColumnId, cardId);
 
         DateProvider.setDate(dateFormat.parse("2020/5/23 00:00:00"));
-        this.moveCard(this.beginningColumnId, this.analysisColumnId, cardId);
+        moveCard(beginningColumnId, analysisColumnId, cardId);
 
-        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository, this.domainEventBus);
-        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningColumnId, this.beginningColumnId);
+        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(workflowRepository, flowEventRepository, domainEventBus);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, workflowId, beginningColumnId, beginningColumnId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput, calculateCycleTimeOutput);
@@ -101,17 +95,14 @@ public class CalculateCycleTimeUseCaseTest {
     }
 
     @Test
-    public void testCalculateCycleTimeUseCaseForCardJustUncommittedFromDefaultColumn() throws ParseException {
-        String cardId;
-
+    public void testCalculateCycleTimeUseCaseForCardWithoutMove() throws ParseException {
         DateProvider.setDate(dateFormat.parse("2020/5/20 00:00:00"));
-        cardId = createCard("Buy house");
-        this.moveCard(this.defaultColumnId, this.beginningColumnId, cardId);
+        String cardId = createCard("Buy house");
 
         DateProvider.setDate(dateFormat.parse("2020/6/20 00:00:00"));
 
-        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository, this.domainEventBus);
-        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningColumnId, this.beginningColumnId);
+        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(workflowRepository, flowEventRepository, domainEventBus);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, workflowId, defaultColumnId, defaultColumnId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput, calculateCycleTimeOutput);
@@ -121,27 +112,25 @@ public class CalculateCycleTimeUseCaseTest {
 
     @Test
     public void testCalculateCycleTimeUseCaseForMoveCardFromReadyToDeploy() throws ParseException {
-        String cardId;
-
         DateProvider.setDate(dateFormat.parse("2020/5/22 00:00:00"));
-        cardId = createCard("Implement Calculate Cycle Time UseCase");
-        this.moveCard(this.defaultColumnId, this.beginningColumnId, cardId);
-        this.moveCard(this.beginningColumnId, this.analysisColumnId, cardId);
+        String cardId = createCard("Implement Calculate Cycle Time UseCase");
+        moveCard(defaultColumnId, beginningColumnId, cardId);
+        moveCard(beginningColumnId, analysisColumnId, cardId);
 
         DateProvider.setDate(dateFormat.parse("2020/5/23 12:00:00"));
-        this.moveCard(this.analysisColumnId, this.developmentColumnId, cardId);
+        moveCard(analysisColumnId, developmentColumnId, cardId);
 
         DateProvider.setDate(dateFormat.parse("2020/5/26 20:00:00"));
-        this.moveCard(this.developmentColumnId, this.testColumnId, cardId);
+        moveCard(developmentColumnId, testColumnId, cardId);
 
         DateProvider.setDate(dateFormat.parse("2020/5/27 12:00:00"));
-        this.moveCard(this.testColumnId, this.readyToDeployColumnId, cardId);
+        moveCard(testColumnId, readyToDeployColumnId, cardId);
 
         DateProvider.setDate(dateFormat.parse("2020/5/27 17:00:00"));
-        this.moveCard(this.readyToDeployColumnId, this.endColumnId, cardId);
+        moveCard(readyToDeployColumnId, endColumnId, cardId);
 
-        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(this.workflowRepository, this.flowEventRepository, this.domainEventBus);
-        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, this.workflowId, this.beginningColumnId, this.readyToDeployColumnId);
+        CalculateCycleTimeUseCase calculateCycleTimeUseCase = new CalculateCycleTimeUseCase(workflowRepository, flowEventRepository, domainEventBus);
+        CalculateCycleTimeInput calculateCycleTimeInput = new CalculateCycleTimeInput(cardId, workflowId, beginningColumnId, readyToDeployColumnId);
         CalculateCycleTimeOutput calculateCycleTimeOutput = new CalculateCycleTimeOutput();
 
         calculateCycleTimeUseCase.execute(calculateCycleTimeInput, calculateCycleTimeOutput);
@@ -150,7 +139,7 @@ public class CalculateCycleTimeUseCaseTest {
     }
 
     private String createColumn(String workflowId, String columnName){
-        CreateColumnUseCase createColumnUseCase = new CreateColumnUseCase(this.workflowRepository, domainEventBus);
+        CreateColumnUseCase createColumnUseCase = new CreateColumnUseCase(workflowRepository, domainEventBus);
         CreateColumnInput createColumnInput = new CreateColumnInput(columnName, workflowId);
         CreateColumnOutput createColumnOutput = new CreateColumnOutput();
 
@@ -161,7 +150,7 @@ public class CalculateCycleTimeUseCaseTest {
 
     private String createCard(String cardTitle){
         CreateCardUseCase createCardUseCase = new CreateCardUseCase(cardRepository, domainEventBus);
-        CreateCardInput createCardInput = new CreateCardInput(cardTitle, this.boardId, this.workflowId, this.defaultColumnId);
+        CreateCardInput createCardInput = new CreateCardInput(cardTitle, boardId, workflowId, defaultColumnId);
         CreateCardOutput createCardOutput = new CreateCardOutput();
 
         createCardUseCase.execute(createCardInput, createCardOutput);
@@ -175,5 +164,14 @@ public class CalculateCycleTimeUseCaseTest {
         MoveCardOutput moveCardOutput = new MoveCardOutput();
 
         moveCardUseCase.execute(moveCardInput, moveCardOutput);
+    }
+
+    private void createFullKanbanBoardGameColumns(){
+        beginningColumnId = createColumn(workflowId, "Ready");
+        analysisColumnId = createColumn(workflowId, "Analysis");
+        developmentColumnId = createColumn(workflowId, "Development");
+        testColumnId = createColumn(workflowId, "Test");
+        readyToDeployColumnId = createColumn(workflowId, "Ready to Deploy");
+        endColumnId = createColumn(workflowId, "Deployed");
     }
 }

@@ -17,7 +17,6 @@ import static org.junit.Assert.assertEquals;
 
 
 public class CommitWorkflowUseCaseTest {
-
     private BoardRepository boardRepository;
     private WorkflowRepository workflowRepository;
     private DomainEventBus domainEventBus;
@@ -26,9 +25,9 @@ public class CommitWorkflowUseCaseTest {
     @Before
     public void setUp() {
         boardRepository = new InMemoryBoardRepository();
-        this.workflowRepository = new InMemoryWorkflowRepository();
-        this.domainEventBus = new DomainEventBus();
-        this.domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, domainEventBus));
+        workflowRepository = new InMemoryWorkflowRepository();
+        domainEventBus = new DomainEventBus();
+        domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, domainEventBus));
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
     }
 

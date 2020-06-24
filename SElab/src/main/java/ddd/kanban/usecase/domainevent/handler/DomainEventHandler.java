@@ -58,7 +58,7 @@ public class DomainEventHandler {
         Column defaultColumn = workflow.findColumnById(cardCreated.getColumnId());
 
         CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository,domainEventBus);
-        CommitCardInput commitCardInput = new CommitCardInput(cardCreated.getSourceId(), cardCreated.getWorkflowId(), cardCreated.getColumnId(), defaultColumn.getTitle());
+        CommitCardInput commitCardInput = new CommitCardInput(cardCreated.getSourceId(), cardCreated.getWorkflowId(), cardCreated.getColumnId());
         CommitCardOutput commitCardOutput = new CommitCardOutput();
 
         commitCardUseCase.execute(commitCardInput, commitCardOutput);

@@ -31,25 +31,25 @@ public class CommitCardUseCaseTest {
     public void setUp(){
         workflowRepository = new InMemoryWorkflowRepository();
         boardRepository = new InMemoryBoardRepository();
-        this.domainEventBus = new DomainEventBus();
-        domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, this.domainEventBus));
+        domainEventBus = new DomainEventBus();
+        domainEventBus.register(new DomainEventHandler(workflowRepository, boardRepository, domainEventBus));
         hierarchyInitial = new HierarchyInitial(boardRepository, workflowRepository, domainEventBus);
-        this.boardId = hierarchyInitial.CreateBoard();
-        this.workflowId = hierarchyInitial.CreateWorkflow(this.boardId);
-        this.columnId = hierarchyInitial.CreateColumn(this.workflowId);
+        boardId = hierarchyInitial.CreateBoard();
+        workflowId = hierarchyInitial.CreateWorkflow(boardId);
+        columnId = hierarchyInitial.CreateColumn(workflowId);
     }
 
     @Test
     public void testCommitCard(){
-        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(this.workflowId));
-        Column column = workflow.findColumnById(this.columnId);
+        Workflow workflow = WorkflowEntityMapper.mappingWorkflowFrom(workflowRepository.findById(workflowId));
+        Column column = workflow.findColumnById(columnId);
 
         assertEquals(0, column.getCommittedCards().size());
 
-        Card card = new Card(UUID.randomUUID().toString(), "Card", this.boardId, this.workflowId, this.columnId);
+        Card card = new Card(UUID.randomUUID().toString(), "Card", boardId, workflowId, columnId);
 
         CommitCardUseCase commitCardUseCase = new CommitCardUseCase(workflowRepository,domainEventBus);
-        CommitCardInput commitCardInput = new CommitCardInput(card.getId(), this.workflowId, this.columnId, column.getTitle());
+        CommitCardInput commitCardInput = new CommitCardInput(card.getId(), workflowId, columnId);
         CommitCardOutput commitCardOutput = new CommitCardOutput();
 
         commitCardUseCase.execute(commitCardInput, commitCardOutput);

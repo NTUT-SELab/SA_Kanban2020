@@ -26,7 +26,7 @@ public class CycleTimeCalculator implements EventPostable {
 
     public CycleTime process(String cardId, List<FlowEventPair> flowEventPairs, List<String> columnIntervalIds) {
         long diff = flowEventPairs.stream()
-                                    .filter(flowEventPair -> columnIntervalIds.contains(flowEventPair.getLaneId()))
+                                    .filter(flowEventPair -> columnIntervalIds.contains(flowEventPair.getColumnId()))
                                     .mapToLong(flowEventPair -> flowEventPair.getCycleTime().getMillisecond())
                                     .sum();
         CycleTime cycleTime = new CycleTime(diff);

@@ -18,7 +18,7 @@ public class CreateCardUseCase {
 
 
     public void execute(CreateCardInput createCardInput, CreateCardOutput createCardOutput) {
-        Card card = new Card(UUID.randomUUID().toString(), createCardInput.getCardTitle(), createCardInput.getBoardId(), createCardInput.getWorkflowId(), createCardInput.getLaneId());
+        Card card = new Card(UUID.randomUUID().toString(), createCardInput.getCardTitle(), createCardInput.getBoardId(), createCardInput.getWorkflowId(), createCardInput.getColumnId());
 
         cardRepository.add(CardEntityMapper.mappingCardEntityFrom(card));
 

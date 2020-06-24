@@ -3,14 +3,14 @@ package ddd.kanban.domain.model.card.card.event;
 import ddd.kanban.domain.model.AbstractDomainEvent;
 
 public class CardMoved extends AbstractDomainEvent {
-    private String toLaneId;
+    private String toColumnId;
 
-    public CardMoved(String cardId, String toLaneTitle, String toLaneId, String id){
+    public CardMoved(String cardId, String toColumnId, String id){
         super(cardId, id);
-        this.toLaneId = toLaneId;
+        this.toColumnId = toColumnId;
     }
 
-    public String getToLaneId() {
-        return toLaneId;
+    public String getToColumnId() {
+        return toColumnId;
     }
 }

@@ -12,7 +12,7 @@ public class FlowEventPair {
         this.uncommitted = uncommitted;
     }
 
-    public String getLaneId() {
+    public String getColumnId() {
         return committed.getSourceId();
     }
 

@@ -66,7 +66,7 @@ public class MoveCardUseCaseTest {
         Column column1 = workflow.findColumnById(this.columnId);
         Card card = CardEntityMapper.mappingCardFrom(cardRepository.findById(cardId));
 
-        assertEquals(defaultColumnId, card.getLaneId());
+        assertEquals(defaultColumnId, card.getColumnId());
         assertEquals(1, defaultColumn.getCommittedCards().size());
         assertEquals(0, column1.getCommittedCards().size());
 
@@ -82,7 +82,7 @@ public class MoveCardUseCaseTest {
         assertEquals(1, column1.getCommittedCards().size());
 
         card = CardEntityMapper.mappingCardFrom(cardRepository.findById(cardId));
-        assertEquals(column1.getId(), card.getLaneId());
+        assertEquals(column1.getId(), card.getColumnId());
     }
 
     private String createCardToDefaultColumn(){

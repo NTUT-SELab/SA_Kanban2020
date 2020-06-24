@@ -6,20 +6,21 @@ import ddd.kanban.domain.model.report.cycletimecalculatorservice.CycleTime;
 import java.util.List;
 
 public class CycleTimeCalculated extends AbstractDomainEvent {
-    private List<String> laneIntervalIds;
+
+    private List<String> columnIntervalIds;
     private CycleTime cycleTime;
 
-    public CycleTimeCalculated(String cardId, String cardName, List<String> laneIntervalIds, CycleTime cycleTime, String id){
+    public CycleTimeCalculated(String cardId, String cardName, List<String> columnIntervalIds, CycleTime cycleTime, String id){
         super(cardId, id);
-        this.laneIntervalIds = laneIntervalIds;
+        this.columnIntervalIds = columnIntervalIds;
         this.cycleTime = cycleTime;
     }
 
-    public void setLaneIntervalIds(List<String> laneIntervalIds) {
-        this.laneIntervalIds = laneIntervalIds;
+    public List<String> getColumnIntervalIds() {
+        return columnIntervalIds;
     }
 
-    public void setCycleTime(CycleTime cycleTime) {
-        this.cycleTime = cycleTime;
+    public CycleTime getCycleTime() {
+        return cycleTime;
     }
 }

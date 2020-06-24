@@ -3,14 +3,14 @@ package ddd.kanban.usecase.report.cycleTime;
 public class CalculateCycleTimeInput {
     private String cardId;
     private String workflowId;
-    private String beginningLaneId;
-    private String endLaneId;
+    private String beginningColumnId;
+    private String endColumnId;
 
-    public CalculateCycleTimeInput(String cardId, String workflowId, String beginningLaneId, String endLaneId) {
+    public CalculateCycleTimeInput(String cardId, String workflowId, String beginningColumnId, String endColumnId) {
         this.cardId = cardId;
         this.workflowId = workflowId;
-        this.beginningLaneId = beginningLaneId;
-        this.endLaneId = endLaneId;
+        this.beginningColumnId = beginningColumnId;
+        this.endColumnId = endColumnId;
     }
 
     public String getCardId() {
@@ -21,11 +21,11 @@ public class CalculateCycleTimeInput {
         return workflowId;
     }
 
-    public String getBeginningLaneId() {
-        return beginningLaneId;
+    public String getBeginningColumnId() {
+        return beginningColumnId;
     }
 
-    public String getEndLaneId() {
-        return endLaneId;
+    public String getEndColumnId() {
+        return endColumnId;
     }
 }

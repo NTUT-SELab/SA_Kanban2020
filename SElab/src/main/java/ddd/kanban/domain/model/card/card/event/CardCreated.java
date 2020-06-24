@@ -4,19 +4,19 @@ import ddd.kanban.domain.model.AbstractDomainEvent;
 
 public class CardCreated extends AbstractDomainEvent {
     private String workflowId;
-    private String laneId;
+    private String columnId;
 
-    public CardCreated(String cardId, String workflowId, String laneId, String cardTitle, String id){
+    public CardCreated(String cardId, String workflowId, String ColumnId, String id){
         super(cardId, id);
         this.workflowId = workflowId;
-        this.laneId = laneId;
+        this.columnId = ColumnId;
     }
 
     public String getWorkflowId() {
         return workflowId;
     }
 
-    public String getLaneId() {
-        return laneId;
+    public String getColumnId() {
+        return columnId;
     }
 }

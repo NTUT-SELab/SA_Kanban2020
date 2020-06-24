@@ -52,9 +52,9 @@ public class Workflow extends AggregateRoot {
 
     public String getBoardId(){return boardId;}
 
-    public String commitCard(String cardId, String columnId, String defaultColumnTitle) {
+    public String commitCard(String cardId, String columnId) {
         Column column = this.findColumnById(columnId);
-        addDomainEvent(new CardCommitted(cardId, this.id, columnId, defaultColumnTitle, UUID.randomUUID().toString()));
+        addDomainEvent(new CardCommitted(cardId, this.id, columnId, UUID.randomUUID().toString()));
         return column.commitCard(cardId);
     }
 
@@ -65,9 +65,9 @@ public class Workflow extends AggregateRoot {
         fromColumn.unCommitCard(cardId);
         toColumn.commitCard(cardId);
 
-        addDomainEvent(new CardUnCommitted(cardId, this.id, fromColumn.getId(), fromColumn.getTitle(), UUID.randomUUID().toString()));
-        addDomainEvent(new CardCommitted(cardId, this.id, toColumn.getId(), toColumn.getTitle(), UUID.randomUUID().toString()));
-        addDomainEvent(new CardMoved(cardId, toColumn.getTitle(), toColumn.getId(), UUID.randomUUID().toString()));
+        addDomainEvent(new CardUnCommitted(cardId, this.id, fromColumn.getId(), UUID.randomUUID().toString()));
+        addDomainEvent(new CardCommitted(cardId, this.id, toColumn.getId(), UUID.randomUUID().toString()));
+        addDomainEvent(new CardMoved(cardId, toColumn.getId(), UUID.randomUUID().toString()));
 
         return cardId;
     }

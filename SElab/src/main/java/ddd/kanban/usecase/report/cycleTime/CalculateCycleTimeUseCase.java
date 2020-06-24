@@ -30,9 +30,9 @@ public class CalculateCycleTimeUseCase {
         CycleTimeCalculator cycleTimeCalculator = new CycleTimeCalculator();
         String cardId = calculateCycleTimeInput.getCardId();
         List<FlowEventPair> flowEventPairs = getCardFlowEventPairs(cardId);
-        List<String> laneIntervalIds = getColumnIntervalIds(calculateCycleTimeInput.getWorkflowId(), calculateCycleTimeInput.getBeginningLaneId(), calculateCycleTimeInput.getEndLaneId());
+        List<String> columnIntervalIds = getColumnIntervalIds(calculateCycleTimeInput.getWorkflowId(), calculateCycleTimeInput.getBeginningColumnId(), calculateCycleTimeInput.getEndColumnId());
 
-        CycleTime cycleTime = cycleTimeCalculator.process(cardId, flowEventPairs, laneIntervalIds);
+        CycleTime cycleTime = cycleTimeCalculator.process(cardId, flowEventPairs, columnIntervalIds);
 
         domainEventBus.postAll(cycleTimeCalculator);
 

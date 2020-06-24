@@ -20,11 +20,11 @@ public class WorkflowEntityMapper {
 
     public static WorkflowEntity mappingWorkflowEntityFrom(Workflow workflow){
         WorkflowEntity workflowEntity = new WorkflowEntity(workflow.getId(), workflow.getTitle(), workflow.getBoardId());
-        List<ColumnEntity> laneEntities = workflow.getColumns()
+        List<ColumnEntity> columnEntities = workflow.getColumns()
                                             .stream()
                                             .map(ColumnEntityMapper::mappingColumnEntityFrom)
                                             .collect(Collectors.toList());
-        workflowEntity.setColumnEntities(laneEntities);
+        workflowEntity.setColumnEntities(columnEntities);
         return workflowEntity;
     }
 }

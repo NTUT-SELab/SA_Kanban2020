@@ -6,7 +6,7 @@ public class CardMoved extends AbstractDomainEvent {
     private String toLaneId;
 
     public CardMoved(String cardId, String toLaneTitle, String toLaneId, String id){
-        super(cardId, toLaneTitle, id);
+        super(cardId, id);
         this.toLaneId = toLaneId;
     }
 

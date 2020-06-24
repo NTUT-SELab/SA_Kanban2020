@@ -5,7 +5,7 @@ abstract public class FlowEvent extends AbstractDomainEvent {
     private final String cardId;
 
     public FlowEvent(String cardId, String workflowId, String laneId, String summary, String id) {
-        super(laneId, summary, id);
+        super(laneId, id);
         this.workflowId = workflowId;
         this.cardId = cardId;
     }

@@ -4,6 +4,7 @@ import ddd.kanban.domain.model.*;
 import ddd.kanban.domain.model.report.cycletimecalculatorservice.event.CycleTimeCalculated;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CycleTimeCalculator implements EventPostable {
 
@@ -23,12 +24,13 @@ public class CycleTimeCalculator implements EventPostable {
         this.postableEventObjectObject.clearDomainEvents();
     }
 
-    public CycleTime process(String cardId, List<FlowEventPair> flowEventPairs, List<String> laneIntervalIds) {
+    public CycleTime process(String cardId, List<FlowEventPair> flowEventPairs, List<String> columnIntervalIds) {
         long diff = flowEventPairs.stream()
-                                    .filter(flowEventPair -> laneIntervalIds.contains(flowEventPair.getLaneId()))
+                                    .filter(flowEventPair -> columnIntervalIds.contains(flowEventPair.getLaneId()))
                                     .mapToLong(flowEventPair -> flowEventPair.getCycleTime().getMillisecond())
                                     .sum();
-        addDomainEvent(new CycleTimeCalculated(cardId, "", ""));
-        return new CycleTime(diff);
+        CycleTime cycleTime = new CycleTime(diff);
+        addDomainEvent(new CycleTimeCalculated(cardId, "", columnIntervalIds, cycleTime, UUID.randomUUID().toString()));
+        return cycleTime;
     }
 }

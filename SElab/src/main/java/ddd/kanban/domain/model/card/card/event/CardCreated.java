@@ -7,7 +7,7 @@ public class CardCreated extends AbstractDomainEvent {
     private String laneId;
 
     public CardCreated(String cardId, String workflowId, String laneId, String cardTitle, String id){
-        super(cardId, cardTitle, id);
+        super(cardId, id);
         this.workflowId = workflowId;
         this.laneId = laneId;
     }

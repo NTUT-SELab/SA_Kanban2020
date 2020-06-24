@@ -30,7 +30,7 @@ public class CalculateCycleTimeUseCase {
         CycleTimeCalculator cycleTimeCalculator = new CycleTimeCalculator();
         String cardId = calculateCycleTimeInput.getCardId();
         List<FlowEventPair> flowEventPairs = getCardFlowEventPairs(cardId);
-        List<String> laneIntervalIds = getLaneIntervalIds(calculateCycleTimeInput.getWorkflowId(), calculateCycleTimeInput.getBeginningLaneId(), calculateCycleTimeInput.getEndLaneId());
+        List<String> laneIntervalIds = getColumnIntervalIds(calculateCycleTimeInput.getWorkflowId(), calculateCycleTimeInput.getBeginningLaneId(), calculateCycleTimeInput.getEndLaneId());
 
         CycleTime cycleTime = cycleTimeCalculator.process(cardId, flowEventPairs, laneIntervalIds);
 
@@ -59,16 +59,16 @@ public class CalculateCycleTimeUseCase {
         return flowEventPairs;
     }
 
-    private List<String> getLaneIntervalIds(String workflowId, String beginningLaneId, String endLaneId) {
+    private List<String> getColumnIntervalIds(String workflowId, String beginningColumnId, String endColumnId) {
         List<ColumnEntity> columnEntities = this.workflowRepository.findById(workflowId).getColumnEntities();
-        int beginLaneEntityIndex = columnEntities.indexOf(findColumnByColumnId(columnEntities, beginningLaneId));
-        int endLaneEntityIndex = columnEntities.indexOf(findColumnByColumnId(columnEntities, endLaneId));
-        List<String> laneIntervalIds = columnEntities.subList(beginLaneEntityIndex, endLaneEntityIndex+1)
+        int beginColumnEntityIndex = columnEntities.indexOf(findColumnByColumnId(columnEntities, beginningColumnId));
+        int endColumnEntityIndex = columnEntities.indexOf(findColumnByColumnId(columnEntities, endColumnId));
+        List<String> columnIntervalIds = columnEntities.subList(beginColumnEntityIndex, endColumnEntityIndex+1)
                                                     .stream()
-                                                    .map(laneEntity -> laneEntity.getId())
+                                                    .map(ColumnEntity -> ColumnEntity.getId())
                                                     .collect(Collectors.toList());
 
-        return laneIntervalIds;
+        return columnIntervalIds;
     }
 
     private ColumnEntity findColumnByColumnId(List<ColumnEntity> columnEntities, String columnId){

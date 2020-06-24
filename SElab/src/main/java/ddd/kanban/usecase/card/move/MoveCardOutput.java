@@ -4,12 +4,12 @@ public class MoveCardOutput {
     private String toColumnId;
     private String cardId;
 
-    public String getToLaneId() {
+    public String getToColumnId() {
         return toColumnId;
     }
 
-    public void setToLaneId(String toLaneId) {
-        this.toColumnId = toLaneId;
+    public void setToColumnId(String toColumnId) {
+        this.toColumnId = toColumnId;
     }
 
     public String getCardId() {

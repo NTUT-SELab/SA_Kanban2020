@@ -32,7 +32,7 @@ public class CardEntityMapper {
                                         .stream()
                                         .map(TaskEntityMapper::mappingTaskFrom)
                                         .collect(Collectors.toList());
-        Card card = new Card(cardEntity.getId(), cardEntity.getTitle(), cardEntity.getBoardId(), cardEntity.getWorkflowId(), cardEntity.getLaneId(), tasks);
+        Card card = new Card(cardEntity.getId(), cardEntity.getTitle(), cardEntity.getBoardId(), cardEntity.getWorkflowId(), cardEntity.getColumnId(), tasks);
         card.setDescription(cardEntity.getDescription());
         card.setCardType(CardTypeMapper.mappingCardTypeFrom(cardEntity.getCardTypeEntity()));
         card.setTags(cardEntity.getTags());

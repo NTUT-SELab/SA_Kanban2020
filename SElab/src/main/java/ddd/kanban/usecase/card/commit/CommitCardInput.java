@@ -4,13 +4,13 @@ public class CommitCardInput {
     private String cardId;
     private String workflowId;
     private String laneId;
-    private String laneTitle;
+    private String ColumnTitle;
 
-    public CommitCardInput(String cardId, String workflowId, String laneId, String laneTitle) {
+    public CommitCardInput(String cardId, String workflowId, String laneId, String ColumnTitle) {
         this.cardId = cardId;
         this.workflowId = workflowId;
         this.laneId = laneId;
-        this.laneTitle = laneTitle;
+        this.ColumnTitle = ColumnTitle;
     }
 
     public String getCardId() {
@@ -21,11 +21,11 @@ public class CommitCardInput {
         return workflowId;
     }
 
-    public String getLaneId() {
+    public String getColumnId() {
         return laneId;
     }
 
-    public String getLaneTitle() {
-        return laneTitle;
+    public String getColumnTitle() {
+        return ColumnTitle;
     }
 }

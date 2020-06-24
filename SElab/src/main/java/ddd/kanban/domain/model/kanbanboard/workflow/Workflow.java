@@ -58,16 +58,16 @@ public class Workflow extends AggregateRoot {
         return column.commitCard(cardId);
     }
 
-    public String moveCard(String cardId, String fromLaneId, String toLaneId) {
-        Column fromLane = findColumnById(fromLaneId);
-        Column toLane = findColumnById(toLaneId);
+    public String moveCard(String cardId, String fromColumnId, String toColumnId) {
+        Column fromColumn = findColumnById(fromColumnId);
+        Column toColumn = findColumnById(toColumnId);
 
-        fromLane.unCommitCard(cardId);
-        toLane.commitCard(cardId);
+        fromColumn.unCommitCard(cardId);
+        toColumn.commitCard(cardId);
 
-        addDomainEvent(new CardUnCommitted(cardId, this.id, fromLane.getId(), fromLane.getTitle(), UUID.randomUUID().toString()));
-        addDomainEvent(new CardCommitted(cardId, this.id, toLane.getId(), toLane.getTitle(), UUID.randomUUID().toString()));
-        addDomainEvent(new CardMoved(cardId, toLane.getTitle(), toLane.getId(), UUID.randomUUID().toString()));
+        addDomainEvent(new CardUnCommitted(cardId, this.id, fromColumn.getId(), fromColumn.getTitle(), UUID.randomUUID().toString()));
+        addDomainEvent(new CardCommitted(cardId, this.id, toColumn.getId(), toColumn.getTitle(), UUID.randomUUID().toString()));
+        addDomainEvent(new CardMoved(cardId, toColumn.getTitle(), toColumn.getId(), UUID.randomUUID().toString()));
 
         return cardId;
     }

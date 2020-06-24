@@ -5,8 +5,8 @@ import ddd.kanban.domain.model.AbstractDomainEvent;
 public class CardMoved extends AbstractDomainEvent {
     private String toColumnId;
 
-    public CardMoved(String cardId, String toLaneTitle, String toColumnId, String id){
-        super(cardId, toLaneTitle, id);
+    public CardMoved(String cardId, String toColumnTitle, String toColumnId, String id){
+        super(cardId, toColumnTitle, id);
         this.toColumnId = toColumnId;
     }
 
